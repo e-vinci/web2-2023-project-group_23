@@ -11,6 +11,7 @@ import { Navbar as BootstrapNavbar } from 'bootstrap';
 const Navbar = () => {
   const navbarWrapper = document.querySelector('#navbarWrapper');
   const navbar = `
+  
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">Add your brand here</a>
@@ -40,11 +41,17 @@ const Navbar = () => {
               <li class="nav-item">
               <a class="nav-link" href="#" data-uri="/loginpage">Login Page</a>
             </li> 
+
+            <li class="nav-item">
+              <a class="nav-link" href="#" data-uri="/contactpage">Contact Page</a>
+            </li> 
+
             </ul>
           </div>
         </div>
       </nav>
   `;
+  
   navbarWrapper.innerHTML = navbar;
 };
 
