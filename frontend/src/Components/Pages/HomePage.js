@@ -49,6 +49,7 @@ function renderHomepage() {
 
 </section>
 
+
 <!-- packages section starts  -->
 
 <section class="packages" id="packages">
@@ -133,7 +134,9 @@ function renderHomepage() {
 
 </section>
 
-<!-- packages section ends -->`;
+<!-- packages section ends -->
+`;
+
 
   const main = document.querySelector('main');
   main.innerHTML = page;
