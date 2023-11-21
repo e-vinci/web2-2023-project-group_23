@@ -47,7 +47,13 @@ function renderHomepage() {
 
     </form>
 
-</section>`;
+</section>
+
+
+
+
+
+`;
 
   const main = document.querySelector('main');
   main.innerHTML = page;
