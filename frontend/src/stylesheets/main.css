@@ -162,18 +162,24 @@ section{
   color:var(--orange);
 }
 
-.header .icons div{
-  height:4.5rem;
-  width:4.5rem;
-  line-height:4.5rem;
+.header .icons {
+  display: flex;
+  align-items: center;
+}
+
+.header .icons div {
+  height: 4.5rem;
+  width: 4.5rem;
+  line-height: 4.5rem;
   font-size: 2rem;
   border-radius: .5rem;
   margin-left: .5rem;
-  background:var(--bg-color-2);
-  color:var(--text-color-1);
+  background: var(--bg-color-2);
+  color: var(--text-color-1);
   cursor: pointer;
   text-align: center;
 }
+
 
 .header .icons div:hover{
   color:#fff;
