@@ -9,10 +9,79 @@ import { Navbar as BootstrapNavbar } from 'bootstrap';
  */
 
 const Navbar = () => {
+  renderNavbar();
+  navbartip();
+};
+ 
+
+function renderNavbar() {
+  const navbarshow = `
+  <header class="header">
+
+    <a href="#" class="logo"> <i class="fas fa-utensils"></i> VINCI EATS </a>
+
+    <form action="" class="search-form">
+        <input type="search" name="" placeholder="search here..." id="searchBox">
+        <label for="searchBox" class="fas fa-search"></label>
+    </form>
+
+    <div class="icons">
+        <div class="fas fa-search" id="search-btn"></div>
+        <div class="fas fa-share" id="theme-btn"></div>
+        <div class="fas fa-user" id="login-btn"></div>
+        <div class="fas fa-bars" id="menu-btn"></div>
+    </div>
+
+    <nav class="navbar">
+        <a href="#home">home</a>
+        <a href="#packages">packages</a>
+        <a href="#services">services</a>
+        <a href="#pricing">pricing</a>
+        <a href="#review">review</a>
+        <a href="#contact">contact</a>
+        <a href="#blogs">blogs</a>
+    </nav>
+     
+</header>
+  `;
+
   const navbarWrapper = document.querySelector('#navbarWrapper');
-  const navbar = `
-  
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  navbarWrapper.innerHTML = navbarshow;
+}
+
+function navbartip(){
+
+  const navbar = document.querySelector('.navbar')
+  const searchForm = document.querySelector('.search-form');
+
+  document.querySelector('#menu-btn').onclick = () =>{
+    navbar.classList.toggle('active');
+    searchForm.classList.remove('active');
+}
+ 
+
+
+
+document.querySelector('#search-btn').onclick = () =>{
+    searchForm.classList.toggle('active');
+    navbar.classList.remove('active');
+   
+}
+
+window.onscroll = () =>{
+    navbar.classList.remove('active');
+
+    searchForm.classList.remove('active');
+}
+ 
+
+}
+
+ 
+export default Navbar;
+
+
+ /* <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">Add your brand here</a>
           <button
@@ -50,9 +119,4 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
-  `;
-  
-  navbarWrapper.innerHTML = navbar;
-};
-
-export default Navbar;
+      */
