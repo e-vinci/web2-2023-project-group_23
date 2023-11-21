@@ -49,6 +49,7 @@ function renderHomepage() {
 
 </section>
 `;
+</section>`;
 
   const main = document.querySelector('main');
   main.innerHTML = page;
