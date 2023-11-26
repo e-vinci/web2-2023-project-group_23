@@ -16,7 +16,7 @@ const Navbar = () => {
 
 function renderNavbar() {
   const navbarshow = `
-  <header class="header">
+ /* <header class="header">
 
     <a href="#" class="logo"> <i class="fas fa-utensils"></i> VINCI EATS </a>
 
@@ -31,6 +31,7 @@ function renderNavbar() {
         <div class="fas fa-user" id="login-btn"></div>
         <div class="fas fa-bars" id="menu-btn"></div>
     </div>
+
 
     <nav class="navbar">
         <a href="#home">home</a>

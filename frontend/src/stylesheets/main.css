@@ -12,6 +12,8 @@ input {
 }
 */
 
+
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&display=swap');
 
 :root{
@@ -32,6 +34,17 @@ input {
     text-transform: capitalize;
     transition:all .2s linear;
 }
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--black-color);
+  line-height: 1.2;
+  font-weight: 500;
+}
+
+
 
 html{
     font-size: 62.5%;
@@ -66,7 +79,8 @@ body.active{
 }
 
 section{
-    padding:2rem 7%;
+    padding: 1rem 7%;
+    
 }
 
 .heading{
@@ -755,7 +769,7 @@ form.sign-in-form {
 
 
 
-  /*                  CONTACT PAGE            */
+  /*               CONTACT PAGE            
 
   .containercontact{
     width: 100%;
@@ -885,9 +899,233 @@ form.sign-in-form {
    }
   }
 
+  */
 
 
-  /**** FOOTER */
+
+
+  /* ========== services =========== */
+  .services {
+    padding: 10rem 0 10rem;
+  }
+  .services .row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    gap: 2rem;
+    align-items: center
+;
+  }
+  .services .row h2 {
+    font-size: 6rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+  }
+  .services .row h3 {
+    font-size: 2.5rem;
+    margin-top: 1.5rem;
+    text-align: center;
+  }
+  .services .row .col img {
+    height: 20rem;
+  }
+  .services .row .card {
+    padding: 3rem;
+    border-radius: 0 0 1rem 1rem;
+    background-color: var(--white-color);
+    position: relative;
+    text-align: center;
+  }
+  .services .row .card::before {
+    content: "";
+    position: absolute;
+    top: -1.5%;
+    left: -1.5%;
+    width: calc(100% + 1rem);
+    height: calc(100% + 1rem);
+    border-radius: 1rem;
+    background: linear-gradient(to bottom, transparent 50%, #f3f3f3);
+    z-index: -1;
+  }
+  .services .row .card:hover::before {
+    background: linear-gradient(to bottom, transparent 50%, #ffcf03);
+  }
+  
+  @media (max-width: 567px) {
+    .services .row h2 {
+      font-size: 3.5rem;
+    }
+  }
+
+
+
+  /* ========== about =========== */
+.about {
+  background-color: var(--grey-color-1);
+  padding: 5rem 5 0rem;
+}
+.about .row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: rem;
+}
+.about .row .col:first-child img {
+  height: 60rem;
+}
+.about .row .col h2 {
+  font-size: 4.5rem;
+  margin-bottom: 2rem;
+}
+.about .row .col p {
+  margin-bottom: 4rem;
+  width: 80%;
+}
+.about .row .col .d-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+.about .row .col .d-grid .card {
+  padding: 5rem;
+  border-radius: 1rem;
+  transition: all 300ms ease-in-out;
+}
+.about .row .col .d-grid .card h4 {
+  font-size: 1.8rem;
+  margin: 0.5rem 0 0.5rem;
+}
+.about .row .col .d-grid .card span {
+  font-size: 1.5rem;
+}
+.about .row .col .d-grid .card:hover {
+  background-color: var(--white-color);
+  box-shadow: var(--box-shadow);
+}
+
+@media (max-width: 1200px) {
+  .about .row .col h2 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+  }
+  .about .row .col p {
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+  .about .row .col .d-grid {
+    gap: 1rem;
+  }
+  .about .row .col .d-grid .card {
+    padding: 1rem;
+  }
+  .about .row .col .d-grid .card img {
+    height: 5rem;
+  }
+}
+@media (max-width: 800px) {
+  .about {
+    padding: 5rem 0 10rem;
+  }
+  .about .row {
+    grid-template-columns: 1fr;
+    gap: 3rem 0;
+  }
+}
+  
+
+/* ========== App =========== */
+.app {
+  padding: 0rem 0 20rem;
+}
+
+.app .row {
+  background-color: var(--primary-color);
+  border-radius: 2rem;
+  position: relative;
+}
+.app .row .col:first-child {
+  margin-left: 10rem;
+}
+.app .row .col:first-child .circle {
+  border-radius: 50%;
+  height: 57rem;
+  width: 70rem;
+  border: 7rem solid var(--red-color-1);
+  position: relative;
+}
+.app .row .col:first-child .circle .inner-circle {
+  border-radius: 50%;
+  height: 49rem;
+  width: 43rem;
+  border: 7rem solid var(--red-color-2);
+}
+.app .row .col:first-child .circle img {
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40rem;
+}
+.app .row .col:last-child {
+  position: absolute;
+  top: 50%;
+  right: 15rem;
+  transform: translateY(-50%);
+  width: 40%;
+}
+.app .row .col:last-child h2 {
+  color: var(--white-color);
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+}
+.app .row .col:last-child p {
+  color: var(--white-color);
+  margin-bottom: 2rem;
+}
+.app .row .col:last-child .d-flex img:first-child {
+  margin-right: 2rem;
+}
+
+@media (max-width: 1300px) {
+  .app .row .col:first-child {
+    margin-left: 0;
+  }
+  .app .row .col:last-child h2 {
+    font-size: 3.5rem;
+  }
+}
+@media (max-width: 996px) {
+  .app {
+    background-color: var(--primary-color);
+    padding: 10rem 0 10rem;
+    height: 40rem;
+  }
+  .app .row {
+    height: 100%;
+  }
+  .app .row .col:first-child {
+    display: none;
+  }
+  .app .row .col:last-child {
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+  }
+  .app .row .col:last-child h2 {
+    font-size: 3rem;
+  }
+  .app .row .col:last-child img {
+    height: 4rem;
+  }
+}
+@media (max-width: 567px) {
+  .app .row .col:last-child h2 {
+    font-size: 2.5rem;
+  }
+}
+
+
+
+/* ========== footer =========== */
 
   .footer{
     background: var(--bg-color-1);
@@ -934,4 +1172,7 @@ form.sign-in-form {
 .footer .credit span{
     color:var(--orange);
 }
+
+
+
 
