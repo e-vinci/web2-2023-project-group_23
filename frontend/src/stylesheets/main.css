@@ -923,7 +923,7 @@ form.sign-in-form {
   .services .row h3 {
     font-size: 2.5rem;
     margin-top: 1.5rem;
-    text-align: center;
+    text-align: left;
   }
   .services .row .col img {
     height: 20rem;
@@ -932,7 +932,7 @@ form.sign-in-form {
     padding: 3rem;
     border-radius: 0 0 1rem 1rem;
     background-color: var(--white-color);
-    position: relative;
+    position:relative;
     text-align: center;
   }
   .services .row .card::before {

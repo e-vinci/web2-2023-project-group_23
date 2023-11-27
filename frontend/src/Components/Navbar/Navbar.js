@@ -25,6 +25,10 @@ function renderNavbar() {
         <label for="searchBox" class="fas fa-search"></label>
     </form>
 
+    
+            
+    
+
     <div class="icons">
         <div class="fas fa-search" id="search-btn"></div>
         <div class="fas fa-share" id="theme-btn"></div>
