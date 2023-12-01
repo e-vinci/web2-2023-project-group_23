@@ -8,7 +8,7 @@ import { clearPage, renderPageTitle } from '../../utils/render';
 
 const signUpPage = () => {
   clearPage();
-  renderPageTitle('HOMEPAGE');
+  renderPageTitle('SiginPAGE');
   Signuppagefuntion();
 
   
@@ -16,7 +16,6 @@ const signUpPage = () => {
 
 function Signuppagefuntion() {
   const Signup = `
-   
   <section class="vh-100" style="background-color: #eee;">
   <div class="container h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
@@ -43,6 +42,7 @@ function Signuppagefuntion() {
                     <div class="form-outline flex-fill mb-0">
                       <input type="email" id="form3Example3c" class="form-control" />
                       <label class="form-label" for="form3Example3c">Your Email</label>
+          
                     </div>
                   </div>
 

@@ -18,7 +18,7 @@ function renderNavbar() {
   const navbarshow = `
   <header class="header">
 
-    <a href="#" data-uri="/"class="logo"> <i class="fas fa-utensils"></i> VINCI EATS </a>
+    <a href="#" data-uri="/" class="logo"> <i class="fas fa-utensils"></i> VINCI EATS </a>
 
     <form action="" class="search-form">
         <input type="search" name="" placeholder="search here..." id="searchBox">
@@ -28,9 +28,13 @@ function renderNavbar() {
     
     <div class="icons">
         <div class="fas fa-search" id="search-btn"></div>
-        <div class="fas fa-share" href="#" data-uri="/" id="theme-btn"></div>
-        <div class="fas fa-user" href="#" data-uri="/signuppage" id="login-btn"></div>
+      
+        <div class="fa-solid fa-address-book" href="#" data-uri="/contactpage" id="theme-btn"></div>
+        <div class="fa-solid fa-house" href="#" data-uri="/" id="theme-btn"></div>
         <div class="fas fa-user" href="#" data-uri="/signinpage" id="login-btn"></div>
+ 
+       
+     
         
         
 </a>
@@ -44,7 +48,6 @@ function renderNavbar() {
       <a class="nav-link" href="#" data-uri="/profilepage">Profile Page</a>
       
       
-    
         <a href="#home">home</a>
         <a href="#packages">packages</a>
         <a href="#services">services</a>

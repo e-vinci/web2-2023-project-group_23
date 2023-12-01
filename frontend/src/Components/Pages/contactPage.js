@@ -7,57 +7,102 @@ const ContactPage = ()=>{
 
 function rendercontactusPage(){
   const render = `
+  <!--Section: Contact v.2-->
+<section class="mb-4">
 
-<br><br><br><br><br>
-  <form
-  <div class="containercontact">
-  <div class="contentcontact">
-  <form id="contact-form" name="contact-form" action="mail.php" method="POST">
-    <div class="left-side">
-      <div class="address details">
-        <i class="fas fa-map-marker-alt"></i>
-        <div class="topic">Address</div>
-        <div class="text-one">Pl. de l'Alma 3, 1200 Woluwe-Saint-Lambert</div>
-        <div class="text-two">Bruxelles</div>
-      </div>
-      <div class="phone details">
-        <i class="fas fa-phone-alt"></i>
-        <div class="topic">Phone</div>
-        <div class="text-one">+0098 9893 5647</div>
-        <div class="text-two">+0096 3434 5678</div>
-      </div>
-      <div class="email details">
-        <i class="fas fa-envelope"></i>
-        <div class="topic">Email</div>
-        <div class="text-one">vincid@gmail.com</div>
-        <div class="text-two">info.vincid@gmail.com</div>
-      </div>
-    </div>
-    <div class="right-side">
-      <div class="topic-text">Send us a message</div>
-      <p>If you have any work from me or any types of quries related to our site, you can send a message from here. It's will be pleasure to help you.</p>
-    <form action="#">
-      <div class="input-box">
-        <input type="text" id="name"  placeholder="Enter your name">
-      </div>
-      <div class="input-box">
-        <input type="text" id="email"  placeholder="Enter your email">
-      </div>
+    <!--Section heading-->
+    <h2 class="h1-responsive font-weight-bold text-center my-4">Contact us</h2>
+    <!--Section description-->
+    <p class="text-center w-responsive mx-auto mb-5">Do you have any questions? Please do not hesitate to contact us directly. Our team will come back to you within
+        a matter of hours to help you.</p>
 
-      <div class="form-group">
-      <label for="exampleFormControlTextarea1">YOUR MESSAGE</label>
-      <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+    <div class="row">
+
+        <!--Grid column-->
+        <div class="col-md-9 mb-md-0 mb-5">
+            <form id="contact-form" name="contact-form" action="mail.php" method="POST">
+
+                <!--Grid row-->
+                <div class="row">
+
+                    <!--Grid column-->
+                    <div class="col-md-6">
+                        <div class="md-form mb-0">
+                            <input type="text" id="name" name="name" class="form-control">
+                            <label for="name" class="">Your name</label>
+                        </div>
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-md-6">
+                        <div class="md-form mb-0">
+                            <input type="text" id="email" name="email" class="form-control">
+                            <label for="email" class="">Your email</label>
+                        </div>
+                    </div>
+                    <!--Grid column-->
+
+                </div>
+                <!--Grid row-->
+
+                <!--Grid row-->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="md-form mb-0">
+                            <input type="text" id="subject" name="subject" class="form-control">
+                            <label for="subject" class="">Subject</label>
+                        </div>
+                    </div>
+                </div>
+                <!--Grid row-->
+
+                <!--Grid row-->
+                <div class="row">
+
+                    <!--Grid column-->
+                    <div class="col-md-12">
+
+                        <div class="md-form">
+                            <textarea type="text" id="message" name="message" rows="2" class="form-control md-textarea"></textarea>
+                            <label for="message">Your message</label>
+                        </div>
+
+                    </div>
+                </div>
+                <!--Grid row-->
+
+            </form>
+
+            <div class="text-center text-md-left">
+                <a class="btn btn-primary" onclick="document.getElementById('contact-form').submit();">Send</a>
+            </div>
+            <div class="status"></div>
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-md-3 text-center">
+            <ul class="list-unstyled mb-0">
+                <li><i class="fas fa-map-marker-alt fa-2x"></i>
+                    <p>Pl. de l'Alma 3, 1200 Woluwe-Saint-Lambert</p>
+                </li>
+
+                <li><i class="fas fa-phone mt-4 fa-2x"></i>
+                    <p>+(32) 1 234 567 89</p>
+                </li>
+
+                <li><i class="fas fa-envelope mt-4 fa-2x"></i>
+                    <p>VinciEatsTeams@hotmail.com</p>
+                </li>
+            </ul>
+        </div>
+        <!--Grid column-->
+
     </div>
-    
-    </form>
-    
-    <div class="d-grid gap-2 col-6 mx-auto">
-    <button  id="send"  class="btn btn-primary" type"sumbit">SEND MESSAGE</button>
-    </div>
-  
-  </div>
-  </div>
-</div>
+
+</section>
+<!--Section: Contact v.2-->
         `;
 
 const main = document.querySelector("main");
