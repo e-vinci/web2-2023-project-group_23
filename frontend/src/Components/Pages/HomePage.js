@@ -20,8 +20,9 @@ function renderHomepage() {
   <section class="home" id="home">
 
     <div class="image" data-aos="fade-down">
-        <img src="${logomain}" alt="">
+        <img src="${logomain}" href="#" data-uri="/" alt="">
     </div>
+    
 
     <div class="content" data-aos="fade-up">
         <h3>Most tasty FOODS FOR YOU </h3>
@@ -186,12 +187,17 @@ function renderHomepage() {
             <span>Money Back Guarantee</span>
           </div>
 
-          
           <div class="card">
             <img src=${securityicon} alt="" />
             <h4>Secure Payment</h4>
             <span>100% Secure Payment</span>
           </div>
+          
+          <div class="card">
+          <img src=${securityicon} alt="" />
+          <h4>Secure Payment</h4>
+          <span>100% Secure Payment</span>
+        </div>
           
         </div>
       </div>

@@ -377,7 +377,7 @@ section{
 /* Haziq a fait ca */
 /**$$$$$$$$$$$$$$$$$$$$$$*/ 
 /*
-.container {
+.containerlogin {
   position: relative;
   width: 100%;
   background-color: #fff;
@@ -385,7 +385,7 @@ section{
   overflow: hidden;
 }
 
-.forms-container {
+.forms-containerlogin {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -393,7 +393,7 @@ section{
   left: 0;
 }
 
-.signin-signup {
+.signin-signuplogin {
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -405,7 +405,7 @@ section{
   z-index: 5;
 }
 
-form {
+.form{
   display: flex;
   align-items: center;
   justify-content: center;
@@ -417,22 +417,23 @@ form {
   grid-row: 1 / 2;
 }
 
-form.sign-up-form {
+form.sign-up-formlogin {
+  
   opacity: 0;
   z-index: 1;
 }
 
-form.sign-in-form {
+form.sign-in-formlogin {
   z-index: 2;
 }
 
-.title {
+.titlelogin {
   font-size: 2.2rem;
   color: #444;
   margin-bottom: 10px;
 }
 
-.input-field {
+.input-fieldlogin {
   max-width: 380px;
   width: 100%;
   background-color: #f0f0f0;
@@ -445,7 +446,7 @@ form.sign-in-form {
   position: relative;
 }
 
-.input-field i {
+.input-fieldlogin i {
   text-align: center;
   line-height: 55px;
   color: #acacac;
@@ -453,7 +454,7 @@ form.sign-in-form {
   font-size: 1.1rem;
 }
 
-.input-field input {
+.input-fieldlogin input {
   background: none;
   outline: none;
   border: none;
@@ -463,22 +464,22 @@ form.sign-in-form {
   color: #333;
 }
 
-.input-field input::placeholder {
+.input-fieldlogin input::placeholder {
   color: #aaa;
   font-weight: 500;
 }
 
-.social-text {
+.social-textlogin {
   padding: 0.7rem 0;
   font-size: 1rem;
 }
 
-.social-media {
+.social-medialogin {
   display: flex;
   justify-content: center;
 }
 
-.social-icon {
+.social-iconlogin {
   height: 46px;
   width: 46px;
   display: flex;
@@ -493,12 +494,12 @@ form.sign-in-form {
   transition: 0.3s;
 }
 
-.social-icon:hover {
+.social-iconlogin:hover {
   color: #4481eb;
   border-color: #4481eb;
 }
 
-.btn {
+.btnlogin {
   width: 150px;
   background-color: #5995fd;
   border: none;
@@ -513,10 +514,11 @@ form.sign-in-form {
   transition: 0.5s;
 }
 
-.btn:hover {
+.btnlogin:hover {
   background-color: #4d84e2;
 }
-.panels-container {
+
+.panels-containerlogin {
   position: absolute;
   height: 100%;
   width: 100%;
@@ -525,8 +527,9 @@ form.sign-in-form {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 }
+/*
 
-.container:before {
+.containerlogin:before {
   content: "";
   position: absolute;
   height: 2000px;
@@ -540,13 +543,13 @@ form.sign-in-form {
   z-index: 6;
 }
 
-.image {
+.imagelogin {
   width: 100%;
   transition: transform 1.1s ease-in-out;
   transition-delay: 0.4s;
 }
 
-.panel {
+.panellogin {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -555,34 +558,34 @@ form.sign-in-form {
   z-index: 6;
 }
 
-.left-panel {
+.left-panellogin {
   pointer-events: all;
   padding: 3rem 17% 2rem 12%;
 }
 
-.right-panel {
+.right-panellogin {
   pointer-events: none;
   padding: 3rem 12% 2rem 17%;
 }
 
-.panel .content {
+.panellogin .contentlogin {
   color: #fff;
   transition: transform 0.9s ease-in-out;
   transition-delay: 0.6s;
 }
 
-.panel h3 {
+.panellogin h3 {
   font-weight: 600;
   line-height: 1;
   font-size: 1.5rem;
 }
 
-.panel p {
+.panellogin p {
   font-size: 0.95rem;
   padding: 0.7rem 0;
 }
 
-.btn.transparent {
+.btn.transparentlogin {
   margin: 0;
   background: none;
   border: 2px solid #fff;
@@ -1172,7 +1175,4 @@ form.sign-in-form {
 .footer .credit span{
     color:var(--orange);
 }
-
-
-
 

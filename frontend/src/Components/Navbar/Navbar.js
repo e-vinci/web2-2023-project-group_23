@@ -16,28 +16,34 @@ const Navbar = () => {
 
 function renderNavbar() {
   const navbarshow = `
- /* <header class="header">
+  <header class="header">
 
-    <a href="#" class="logo"> <i class="fas fa-utensils"></i> VINCI EATS </a>
+    <a href="#" data-uri="/"class="logo"> <i class="fas fa-utensils"></i> VINCI EATS </a>
 
     <form action="" class="search-form">
         <input type="search" name="" placeholder="search here..." id="searchBox">
-        <label for="searchBox" class="fas fa-search"></label>
+        <label for="searchBox" class="fas fa-searchheader"></label>
     </form>
 
     
-            
-    
-
     <div class="icons">
         <div class="fas fa-search" id="search-btn"></div>
-        <div class="fas fa-share" id="theme-btn"></div>
-        <div class="fas fa-user" id="login-btn"></div>
+        <div class="fas fa-share" href="#" data-uri="/" id="theme-btn"></div>
+        <div class="fas fa-user" href="#" data-uri="/loginpage" id="login-btn"></div>
+        
+        
+</a>
         <div class="fas fa-bars" id="menu-btn"></div>
     </div>
 
 
     <nav class="navbar">
+      <a class="nav-link" aria-current="page" href="#" data-uri="/">Home</a>
+      <a class="nav-link" href="#" data-uri="/loginpage">Login Page</a>
+      <a class="nav-link" href="#" data-uri="/profilepage">Profile Page</a>
+      
+      
+    
         <a href="#home">home</a>
         <a href="#packages">packages</a>
         <a href="#services">services</a>
@@ -70,7 +76,7 @@ function navbartip(){
 document.querySelector('#search-btn').onclick = () =>{
     searchForm.classList.toggle('active');
     navbar.classList.remove('active');
-   
+ 
 }
 
 window.onscroll = () =>{
@@ -79,7 +85,6 @@ window.onscroll = () =>{
     searchForm.classList.remove('active');
 }
  
-
 }
 
  
