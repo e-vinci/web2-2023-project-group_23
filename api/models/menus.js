@@ -7,21 +7,15 @@ const defaultMenus = [
   {
     id: 1,
     title: 'Classic Burger Menu',
-    Type: 'Burger',
+    type: 'Burger',
     description: 'Le gentleman du burger saura t´ouvrir l´appétit. Composé d´un Steak Frais de race, d´Oignons Caramélisés, de Tomate, de Salade, de Cornichons, de Cheddar et de son appétissante sauce Classic.',
     price: 14,
+    image: '../assets/menu1.pnj',
   },
   {
     id: 2,
     title: 'French Burger Menu',
     type: 'Burger',
-    description: 'Renoue avec la French touch en profitant de notre burger composé d´un Steak Frais de Race, de Champignons, de Ciboulette, d´Oignons Rouges, de Mâche, d´Emmental, et de l´onctueuse sauce Cream',
-    price: 14,
-  },
-  {
-    id: 2,
-    type: 'French Burger Menu',
-    sepcification: 'Burger',
     description: 'Renoue avec la French touch en profitant de notre burger composé d´un Steak Frais de Race, de Champignons, de Ciboulette, d´Oignons Rouges, de Mâche, d´Emmental, et de l´onctueuse sauce Cream',
     price: 14,
   },
