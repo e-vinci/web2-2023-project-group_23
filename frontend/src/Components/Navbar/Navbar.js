@@ -29,7 +29,8 @@ function renderNavbar() {
     <div class="icons">
         <div class="fas fa-search" id="search-btn"></div>
         <div class="fas fa-share" href="#" data-uri="/" id="theme-btn"></div>
-        <div class="fas fa-user" href="#" data-uri="/loginpage" id="login-btn"></div>
+        <div class="fas fa-user" href="#" data-uri="/signuppage" id="login-btn"></div>
+        <div class="fas fa-user" href="#" data-uri="/signinpage" id="login-btn"></div>
         
         
 </a>

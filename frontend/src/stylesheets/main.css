@@ -125,11 +125,11 @@ section{
 /* header */
 
 .header{
-  position: fixed;
+  position: relative;
   top:0; left:0; right:0;
   background:var(--bg-color-1);
   box-shadow: var(--box-shadow);
-  padding: 1.5rem 7%;
+  padding: 1.2rem 7%;
   z-index: 1000;
   display: flex;
   align-items: center;

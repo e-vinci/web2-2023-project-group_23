@@ -6,16 +6,16 @@ import { clearPage, renderPageTitle } from '../../utils/render';
 /* import logo1 from '../../img/register.svg' */
 /* import logo2 from '../../img/log.svg'; */
 
-const loginpage = () => {
+const signUpPage = () => {
   clearPage();
   renderPageTitle('HOMEPAGE');
-  loginpagefuntion();
+  Signuppagefuntion();
 
   
 };
 
-function loginpagefuntion() {
-  const login = `
+function Signuppagefuntion() {
+  const Signup = `
    
   <section class="vh-100" style="background-color: #eee;">
   <div class="container h-100">
@@ -67,6 +67,7 @@ function loginpagefuntion() {
                     <label class="form-check-label" for="form2Example3">
                       I agree all statements in <a href="#!">Terms of service</a>
                     </label>
+                    
                   </div>
 
                   <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
@@ -93,7 +94,7 @@ function loginpagefuntion() {
 
     `;
   const main = document.querySelector('main');
-  main.innerHTML = login;
+  main.innerHTML = Signup;
 }
 
 
@@ -352,4 +353,4 @@ function ad() {
 
 */;
 
-export default loginpage;
+export default signUpPage ;
