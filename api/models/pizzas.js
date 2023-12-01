@@ -1,5 +1,5 @@
 const path = require('node:path');
-const escape = require('escape-html');
+
 const { parse, serialize } = require('../utils/json');
 
 const jsonDbPath = path.join(__dirname, '/../data/pizzas.json');

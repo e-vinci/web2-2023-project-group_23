@@ -1,0 +1,7 @@
+### Read all Menus with File variable
+@baseUrl = http://localhost:3000
+GET {{baseUrl}}/menus
+
+
+### Read pizza identified by 2
+GET {{baseUrl}}/menus/2

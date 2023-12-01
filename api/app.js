@@ -10,6 +10,7 @@ const corsOptions = {
 const usersRouter = require('./routes/users');
 const pizzaRouter = require('./routes/pizzas');
 const authsRouter = require('./routes/auths');
+const menuRouter = require('./routes/menus');
 
 const app = express();
 
@@ -23,5 +24,6 @@ app.use(cors(corsOptions));
 app.use('/users', usersRouter);
 app.use('/pizzas', pizzaRouter);
 app.use('/auths', authsRouter);
+app.use('/menus', menuRouter);
 
 module.exports = app;

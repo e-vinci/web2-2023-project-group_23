@@ -96,9 +96,66 @@ const defaultMenus = [
     price: 14.90,
   },
 
-
-
-
-
 ];
 
+function readAllMenus(orderBy) {
+  const orderByTitle = orderBy?.includes('title') ? orderBy : undefined;
+  let orderedMenu;
+  const menus = parse(jsonDbPath, defaultMenus);
+  if (orderByTitle) orderedMenu = [...menus].sort((a, b) => a.title.localeCompare(b.title));
+  if (orderByTitle === '-title') orderedMenu = orderedMenu.reverse();
+  const allMenussPotentiallyOrderd = orderedMenu ?? menus;
+  return allMenussPotentiallyOrderd;
+}
+
+function readOneMenus(id) {
+  const idNumber = parseInt(id, 10);
+  const menus = parse(jsonDbPath, defaultMenus);
+  const indexOfMenuFound = menus.findIndex((menu) => menu.id === idNumber);
+  if (indexOfMenuFound < 0) return undefined;
+  return menus[indexOfMenuFound];
+}
+
+function createOneMenus(title, type, description, price) {
+  const menus = parse(jsonDbPath, defaultMenus);
+
+  const createMenu = {
+    id: getNextId(),
+    title,
+    type,
+    description,
+    price,
+  };
+
+  menus.push(createMenu);
+  serialize(jsonDbPath, defaultMenus);
+  return createMenu;
+}
+
+function getNextId() {
+  const menus = parse(jsonDbPath, defaultMenus);
+  const lastItemIndex = menus?.length !== 0 ? menus.length - 1 : undefined;
+  if (lastItemIndex === undefined) return 1;
+  const lastId = menus[lastItemIndex]?.id;
+  const nextId = lastId + 1;
+  return nextId;
+}
+
+function deleteOneMenu(id) {
+  const idNumber = parseInt(id, 10);
+  const menus = parse(jsonDbPath, defaultMenus);
+  const foundIndex = menus.findIndex((menu) => menu.id === idNumber);
+  if (foundIndex < 0) return undefined;
+  const deletedMenus = menus.splice(foundIndex, 1);
+  const deletedMenu = deletedMenus[0];
+  serialize(jsonDbPath, menus);
+
+  return deletedMenu;
+}
+
+module.exports = {
+  readAllMenus,
+  readOneMenus,
+  createOneMenus,
+  deleteOneMenu,
+};
