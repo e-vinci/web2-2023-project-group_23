@@ -11,16 +11,19 @@ import android from '../../img/google-play.png';
 import securityicon from '../../img/security-icon.svg';
 
 
-const HomePage = () => {
-  renderHomepage();
-};
+import readAllMenus from '../../models/menus';
 
-function renderHomepage() {
-  const page = `
+
+/* BURGERS IMAGES */
+
+
+const HomePage = async () => {
+  
+  let page = `
   <section class="home" id="home">
 
     <div class="image" data-aos="fade-down">
-        <img src="${logomain}" href="#" data-uri="/" alt="">
+    <img src="${logomain}" href="#" data-uri="/" alt="">
     </div>
     
 
@@ -54,10 +57,16 @@ function renderHomepage() {
             <span>Time</span>
             <input type="time">
         </div>
+        <div class="inputBox">
+            <span>Menu</span>
+            <input type="number">
+        </div>
 
         <input type="submit" value="book now" class="btn">
 
     </form>
+  
+  
 
 </section>
 
@@ -65,67 +74,36 @@ function renderHomepage() {
 <!-- packages section starts  -->
 
 <section class="packages" id="packages">
-
-    <h1 class="heading"> our <span> MENUS </span> </h1>
-
+    <h1 class="heading"> our <span> Menus </span> </h1>
     <div class="box-container">
+    `
+    const infos = await readAllMenus();
+    const items = infos;
+    items.forEach(element => {
+      page += ` 
+      
+      <div class="box" data-aos="fade-up">
+          <div class="image">
+              <img src=${element.image} alt="">
+              <h3> <i class="fas fa-utensils"></i> ${element.type} </h3>
+          </div>
+          <div class="content">
+              <div class="price"> ${element.price} <span>350.99</span> </div>
+              <p>${element.description} </p>
+              <a href="#" class="btn"> Order now</a>
+          </div>
+      </div>
+     ` 
+    });
 
-        <div class="box" data-aos="fade-up">
-            <div class="image">
-                <img src="images/blog-1.jpg" alt="">
-                <h3> <i class="fas fa-utensils"></i> Burger </h3>
-            </div>
-            <div class="content">
-                <div class="price"> 290.99 <span>350.99</span> </div>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero, vitae.</p>
-                <a href="#" class="btn"> Order now</a>
-            </div>
-        </div>
 
-        <div class="box" data-aos="fade-up">
-            <div class="image">
-                <img src="images/blog-2.jpg" alt="">
-                <h3> <i class="fas fa-utensils"></i> Burger </h3>
-            </div>
-            <div class="content">
-                <div class="price"> 290.99 <span>350.99</span> </div>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero, vitae.</p>
-                <a href="#" class="btn"> Order now</a>
-            </div>
-        </div>
+    page +=
+    
 
-        <div class="box" data-aos="fade-up">
-            <div class="image">
-                <img src="images/blog-3.jpg" alt="">
-                <h3> <i class="fas fa-utensils"></i> Burger </h3>
-            </div>
-            <div class="content">
-                <div class="price"> 290.99 <span>350.99</span> </div>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero, vitae.</p>
-                <a href="#" class="btn"> Order now</a>
-            </div>
-        </div>
-
-        <div class="box" data-aos="fade-up">
-            <div class="image">
-                <img src="images/blog-4.jpg" alt="">
-                <h3> <i class="fas fa-utensils"></i> Burger </h3>
-            </div>
-            <div class="content">
-                <div class="price"> 290.99 <span>350.99</span> </div>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero, vitae.</p>
-                <a href="#" class="btn"> Order now</a>
-            </div>
-        </div>
-
-  
+    `
     </div>
-
-</section>
-
-
-
-<section class="section services" id="services">
+    </section>
+    <section class="section services" id="services">
       <div class="row container">
         <div class="col">
           <h2>Why we are Best in our Twon</h2>
