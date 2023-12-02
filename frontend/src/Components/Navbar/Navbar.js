@@ -28,7 +28,8 @@ function renderNavbar() {
     
     <div class="icons">
         <div class="fas fa-search" id="search-btn"></div>
-      
+       
+        <div class="fa-solid fa-cart-shopping"" href="#" data-uri="/cart" id="theme-btn"></div>
         <div class="fa-solid fa-address-book" href="#" data-uri="/contactpage" id="theme-btn"></div>
         <div class="fa-solid fa-house" href="#" data-uri="/" id="theme-btn"></div>
         <div class="fas fa-user" href="#" data-uri="/signinpage" id="login-btn"></div>

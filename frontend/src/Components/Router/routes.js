@@ -7,6 +7,8 @@ import ContactPage from '../Pages/contactPage';
 import profilepage from '../Pages/Profilepage';
 import signInPage from '../Pages/SigninPage';
 import PrivacyPolicy from '../PrivacyPolicy/PrivacyPolicy';
+import CartPage from '../Pages/cartpage';
+import PaymentPage from '../Pages/PaymenPage';
 
 
 const routes = {
@@ -18,6 +20,8 @@ const routes = {
   '/profilepage' : profilepage,
   '/signinpage' : signInPage,
   '/privaypolicy' : PrivacyPolicy,
+  '/cart' : CartPage,
+  '/payment' : PaymentPage
 };
 
 export default routes;

@@ -10,7 +10,6 @@ import apple from '../../img/app-store.png';
 import android from '../../img/google-play.png';
 import securityicon from '../../img/security-icon.svg';
 
-
 import readAllMenus from '../../models/menus';
 
 
@@ -45,7 +44,7 @@ const HomePage = async () => {
 
         <div class="inputBox">
             <span>where</span>
-            <input type="text" placeholder="search places">
+            <input type="text" id ="location" placeholder="search places">
         </div>
 
         <div class="inputBox">
@@ -80,15 +79,16 @@ const HomePage = async () => {
     const infos = await readAllMenus();
     const items = infos;
     items.forEach(element => {
+
       page += ` 
-      
       <div class="box" data-aos="fade-up">
           <div class="image">
-              <img src=${element.image} alt="">
+              <img src="" alt="">
               <h3> <i class="fas fa-utensils"></i> ${element.type} </h3>
           </div>
           <div class="content">
-              <div class="price"> ${element.price} <span>350.99</span> </div>
+          <h1>  ${element.title}</h1>
+              <div class="price"> ${element.price} $ <span>350.99</span> </div>
               <p>${element.description} </p>
               <a href="#" class="btn"> Order now</a>
           </div>
@@ -216,6 +216,5 @@ const HomePage = async () => {
   main.innerHTML = page;
 
 }
-
 
 export default HomePage;
