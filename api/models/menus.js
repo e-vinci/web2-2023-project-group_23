@@ -10,7 +10,6 @@ const defaultMenus = [
     type: 'Burger',
     description: 'Le gentleman du burger saura t´ouvrir l´appétit. Composé d´un Steak Frais de race, d´Oignons Caramélisés, de Tomate, de Salade, de Cornichons, de Cheddar et de son appétissante sauce Classic.',
     price: 14,
-    image: '../assets/menu1.pnj',
   },
   {
     id: 2,
