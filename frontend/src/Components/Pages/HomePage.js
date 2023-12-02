@@ -65,7 +65,6 @@ const HomePage = async () => {
 
     </form>
   
-  
 
 </section>
 
@@ -96,10 +95,8 @@ const HomePage = async () => {
      ` 
     });
 
-
     page +=
     
-
     `
     </div>
     </section>

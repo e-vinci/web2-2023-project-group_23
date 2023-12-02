@@ -73,7 +73,7 @@ function Profilepagefuntion() {
               <hr>
               <div class="row">
                 <div class="col-sm-3">
-                  <p class="mb-0">TOTALS POST POSTED </p>
+                  <p class="mb-0">TOTALS MENUS KIFFER </p>
                 </div>
                 <div class="col-sm-9">
                   <p class="text-muted mb-0"></p>
@@ -82,7 +82,7 @@ function Profilepagefuntion() {
               <hr>
               <div class="row">
                 <div class="col-sm-3">
-                  <p class="mb-0">TOTALS POST SELLED </p>
+                  <p class="mb-0">TOTALS MENUS COMMANDER </p>
                 </div>
                 <div class="col-sm-9">
                   <p class="text-muted mb-0"></p>
@@ -109,6 +109,25 @@ function Profilepagefuntion() {
               </div>
             </div>
           </div>
+
+        <section class="packages" id="packages">
+          <h1 class="heading"> YOUR FAVOURITES <span> Menus </span> </h1>
+          <div class="box-container">
+          <div class="box" data-aos="fade-up">
+          <div class="image">
+              <img src="" alt="">
+              <h3> <i class="fas fa-utensils"></i> </h3>
+          </div>
+          <div class="content">
+          <h1>  </h1>
+              <div class="price"> $ <span>350.99</span> </div>
+              <p> </p>
+              <a href="#" class="btn"> Order now</a>
+          </div>
+          
+      </div>
+      </div>
+      </section>
 
     `;
 

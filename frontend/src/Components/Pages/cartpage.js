@@ -195,7 +195,7 @@ const render = `
               Go to checkout
             </button>
           </a>
-            
+          
           </div>
         </div>
       </div>
@@ -207,8 +207,6 @@ const render = `
   const main = document.querySelector("main");
   main.innerHTML = render;
   
-
-
   };
 
  
