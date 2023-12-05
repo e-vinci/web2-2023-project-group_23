@@ -24,7 +24,7 @@ const HomePage = async () => {
     <div class="image" data-aos="fade-down">
     <img src="${logomain}" href="#" data-uri="/" alt="">
     </div>
-    
+
 
     <div class="content" data-aos="fade-up">
         <h3>Most tasty FOODS FOR YOU </h3>
@@ -75,23 +75,32 @@ const HomePage = async () => {
     <h1 class="heading"> our <span> Menus </span> </h1>
     <div class="box-container">
     `
+  
     const infos = await readAllMenus();
     const items = infos;
     items.forEach(element => {
+    const number = numberrandom();
 
       page += ` 
+      
+       
       <div class="box" data-aos="fade-up">
+      
           <div class="image">
-              <img src="" alt="">
+          <a href= "">
+              <img src="${element.imagelink}" alt="">
               <h3> <i class="fas fa-utensils"></i> ${element.type} </h3>
           </div>
           <div class="content">
           <h1>  ${element.title}</h1>
-              <div class="price"> ${element.price} $ <span>350.99</span> </div>
+              <div class="price"> ${element.price} €  <span>${number}€  </span> </div>
               <p>${element.description} </p>
               <a href="#" class="btn"> Order now</a>
+              </a>
           </div>
+         
       </div>
+     
      ` 
     });
 
@@ -212,6 +221,11 @@ const HomePage = async () => {
   const main = document.querySelector('main');
   main.innerHTML = page;
 
+}
+
+function numberrandom(){
+  const nombre = Math.floor(Math.random() * 10) + 20;
+  return nombre;
 }
 
 export default HomePage;
