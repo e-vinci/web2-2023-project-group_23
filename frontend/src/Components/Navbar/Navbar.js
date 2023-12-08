@@ -47,6 +47,7 @@ function renderNavbar() {
       <a class="nav-link" aria-current="page" href="#" data-uri="/">Home</a>
       <a class="nav-link" href="#" data-uri="/loginpage">Login Page</a>
       <a class="nav-link" href="#" data-uri="/profilepage">Profile Page</a>
+      <a class="nav-link" href="#" data-uri="/signuppage">Signup</a>
       
       
         <a href="#home">home</a>
