@@ -28,11 +28,39 @@ Content-Type: application/json
     "password":"manager"
 }
 
+### Create the manager user
+POST {{baseUrl}}/auths/register
+Content-Type: application/json
+
+{
+    "username":"manag",
+    "email":"muahmma",
+    "password":"manager",
+    "phone":"0492488977",
+    "adresse":"RUE DE S",
+    "totalOrder":1,
+    "menuslIKE":[2, 6]
+}
+
+### Create the manager user
+POST {{baseUrl}}/auths/register
+Content-Type: application/json
+
+{
+    "username":"maa",
+    "email":"muahmma",
+    "password":"manager",
+    "phone":"0492488977",
+    "adresse":"RUE DE S"
+}
+
+
+
 ### Login the manager user
 POST {{baseUrl}}/auths/login
 Content-Type: application/json
 
 {
-    "username":"manager",
+    "username":"manag",
     "password":"manager"
 }

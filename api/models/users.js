@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const path = require('node:path');
+const escape = require('escape-html');
 const { parse, serialize } = require('../utils/json');
 
 const jwtSecret = 'ilovemypizza!';
@@ -14,6 +15,7 @@ const defaultUsers = [
   {
     id: 1,
     username: 'admin',
+    email: 'muhammad.haziq@student.vinci.be',
     password: bcrypt.hashSync('admin', saltRounds),
   },
 ];
@@ -39,11 +41,11 @@ async function login(username, password) {
   return authenticatedUser;
 }
 
-async function register(username, password) {
+async function register(username, email, password, phone, adresse, totalOrder, menuslIKE) {
   const userFound = readOneUserFromUsername(username);
   if (userFound) return undefined;
 
-  await createOneUser(username, password);
+  await createOneUser(username, email, password, phone, adresse, totalOrder, menuslIKE);
 
   const token = jwt.sign(
     { username }, // session data added to the payload (payload : part 2 of a JWT)
@@ -67,15 +69,20 @@ function readOneUserFromUsername(username) {
   return users[indexOfUserFound];
 }
 
-async function createOneUser(username, password) {
+async function createOneUser(username, email, password, phone, adresse, totalOrder, menuslIKE) {
   const users = parse(jsonDbPath, defaultUsers);
 
   const hashedPassword = await bcrypt.hash(password, saltRounds);
 
   const createdUser = {
     id: getNextId(),
-    username,
+    username: escape(username),
+    email: escape(email),
     password: hashedPassword,
+    phone: escape(phone),
+    adresse: escape(adresse),
+    totalOrder: escape(totalOrder),
+    menuslIKE: escape(menuslIKE),
   };
 
   users.push(createdUser);

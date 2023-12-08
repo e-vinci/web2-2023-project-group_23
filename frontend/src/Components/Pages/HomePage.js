@@ -216,7 +216,7 @@ const HomePage = async () => {
 </section>
 <!-- packages section ends -->
 `;
-
+ 
 
   const main = document.querySelector('main');
   main.innerHTML = page;
