@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import logomain from '../../img/vinci-eats.png';
 import delivryboy from '../../img/delivery-icon.svg';
 import delivryboy2 from '../../img/delivery-guy-2.svg';
@@ -10,14 +11,13 @@ import apple from '../../img/app-store.png';
 import android from '../../img/google-play.png';
 import securityicon from '../../img/security-icon.svg';
 
+
 import readAllMenus from '../../models/menus';
 
-
-/* BURGERS IMAGES */
-
-
 const HomePage = async () => {
-  
+
+  const infos = await readAllMenus();
+  const items = infos;
   let page = `
   <section class="home" id="home">
 
@@ -39,7 +39,6 @@ const HomePage = async () => {
 <!-- filter form section starts  -->
 
 <section class="form-container" data-aos="zoom-in">
-
     <form action="">
 
         <div class="inputBox">
@@ -56,13 +55,24 @@ const HomePage = async () => {
             <span>Time</span>
             <input type="time">
         </div>
+
         <div class="inputBox">
-            <span>Menu</span>
-            <input type="number">
+        <span>Menu</span>
+        <div class="select-container"> <!-- Nouveau conteneur pour styliser le select -->
+          <select id="menu" class="select-box" placeholder="Choose a menu">
+  `;
+
+  // Ajoutez ces lignes pour créer les options directement dans la chaîne HTML
+  items.forEach(menu => {
+    page += `<option value="${menu.id}">${menu.title}</option>`;
+  });
+
+  page += `
+          </select>
         </div>
+      </div>
 
-        <input type="submit" value="book now" class="btn">
-
+      <input type="submit" value="book now" class="btn">
     </form>
   
 
@@ -75,15 +85,12 @@ const HomePage = async () => {
     <h1 class="heading"> our <span> Menus </span> </h1>
     <div class="box-container">
     `
-  
-    const infos = await readAllMenus();
-    const items = infos;
+
     items.forEach(element => {
     const number = numberrandom();
 
       page += ` 
       
-       
       <div class="box" data-aos="fade-up">
       
           <div class="image">
@@ -220,8 +227,26 @@ const HomePage = async () => {
 
   const main = document.querySelector('main');
   main.innerHTML = page;
-
+  initAutocomplete()
 }
+
+function initAutocomplete() {
+  const locationInput = document.getElementById('location');
+
+  const autocomplete = new google.maps.places.Autocomplete(locationInput);
+  autocomplete.addListener('place_changed', () => {
+      // eslint-disable-next-line no-unused-vars
+      const place = autocomplete.getPlace();
+      // Vous pouvez accéder aux détails de l'endroit ici, par exemple :
+      // console.log(place);
+  });
+}
+
+const script = document.createElement('script');
+script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyDY9V2SD0cPEzDfNid_CfJc8KVdWqeRiDQ&libraries=places&callback=initAutocomplete";
+script.defer = true;
+script.async = true;
+document.head.appendChild(script);
 
 function numberrandom(){
   const nombre = Math.floor(Math.random() * 10) + 20;
