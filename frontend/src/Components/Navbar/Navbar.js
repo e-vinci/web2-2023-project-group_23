@@ -35,28 +35,16 @@ function renderNavbar() {
         <div class="fas fa-user" href="#" data-uri="/signinpage" id="login-btn"></div>
  
        
-     
-        
-        
-</a>
+    </a>
         <div class="fas fa-bars" id="menu-btn"></div>
     </div>
-
 
     <nav class="navbar">
       <a class="nav-link" aria-current="page" href="#" data-uri="/">Home</a>
       <a class="nav-link" href="#" data-uri="/loginpage">Login Page</a>
       <a class="nav-link" href="#" data-uri="/profilepage">Profile Page</a>
       <a class="nav-link" href="#" data-uri="/signuppage">Signup</a>
-      
-      
-        <a href="#home">home</a>
-        <a href="#packages">packages</a>
-        <a href="#services">services</a>
-        <a href="#pricing">pricing</a>
-        <a href="#review">review</a>
-        <a href="#contact">contact</a>
-        <a href="#blogs">blogs</a>
+      <a class="nav-link" href="#" data-uri="/contactpage">Contact</a>
     </nav>
      
 </header>
@@ -66,73 +54,40 @@ function renderNavbar() {
   navbarWrapper.innerHTML = navbarshow;
 }
 
-function navbartip(){
-
-  const navbar = document.querySelector('.navbar')
+function navbartip() {
+  const navbar = document.querySelector('.navbar');
   const searchForm = document.querySelector('.search-form');
+  const menuBtn = document.querySelector('#menu-btn');
 
-  document.querySelector('#menu-btn').onclick = () =>{
-    navbar.classList.toggle('active');
-    searchForm.classList.remove('active');
-}
- 
+  menuBtn.onclick = () => {
+      navbar.classList.toggle('active');
+      searchForm.classList.remove('active');
+  }
 
+  document.querySelector('#search-btn').onclick = () => {
+      searchForm.classList.toggle('active');
+      navbar.classList.remove('active');
+  }
 
+  window.onscroll = () => {
+      navbar.classList.remove('active');
+      searchForm.classList.remove('active');
+  }
 
-document.querySelector('#search-btn').onclick = () =>{
-    searchForm.classList.toggle('active');
-    navbar.classList.remove('active');
- 
-}
+  document.addEventListener('click', (event) => {
+      const isClickInsideNavbar = navbar.contains(event.target);
+      const isClickInsideSearchForm = searchForm.contains(event.target);
+      const isClickInsideMenuBtn = menuBtn.contains(event.target);
 
-window.onscroll = () =>{
-    navbar.classList.remove('active');
-
-    searchForm.classList.remove('active');
-}
- 
+      
+      if (!isClickInsideNavbar && !isClickInsideSearchForm && !isClickInsideMenuBtn) {
+          navbar.classList.remove('active');
+          searchForm.classList.remove('active');
+      }
+  });
 }
 
  
 export default Navbar;
 
 
- /* <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">Add your brand here</a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="#" data-uri="/">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#" data-uri="/game">Game</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#" data-uri="/new">New Page</a>
-              </li>   
-              
-              <li class="nav-item">
-              <a class="nav-link" href="#" data-uri="/loginpage">Login Page</a>
-            </li> 
-
-            <li class="nav-item">
-              <a class="nav-link" href="#" data-uri="/contactpage">Contact Page</a>
-            </li> 
-
-            </ul>
-          </div>
-        </div>
-      </nav>
-      */

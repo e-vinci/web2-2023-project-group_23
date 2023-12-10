@@ -42,7 +42,7 @@ function SignInpagefuntion() {
 
                   <div class="form-outline mb-4">
                     <input type="email" id="username" class="form-control form-control-lg" />
-                    <label class="form-label" for="form2Example17">Username /label>
+                    <label class="form-label" for="form2Example17">Username </label>
                   </div>
 
                   <div class="form-outline mb-4">
@@ -55,12 +55,15 @@ function SignInpagefuntion() {
                   </div>
                   <div id="errorContainer" class="alert alert-danger" role="alert"></div>
 
-                  <a class="small text-muted" href="#!">Forgot password?</a>
-                  <a class="nav-link" aria-current="page" href="#" data-uri="/">Home</a>
-                  <p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account?  
-                      style="color: #393f81;">Register here</a></p>
+
+                      <p class="mb-5 pb-lg-2" style="color: #393f81;">
+                          <span style="font-size: 18px;">Don't have an account? </span>
+                         <a class="nav-link" href="/signuppage" data-uri="/signuppage" style="color: #ff0000; font-weight: bold; font-size: 18px;">Register here</a>
+                      </p>
                   <a href="#!" class="small text-muted">Terms of use.</a>
                   <a href="/privaypolicy" class="small text-muted">Privacy policy</a>
+
+      
                 </form>
 
               </div>

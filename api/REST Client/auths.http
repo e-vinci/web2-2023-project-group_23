@@ -54,6 +54,19 @@ Content-Type: application/json
     "adresse":"RUE DE S"
 }
 
+### Create the manager user
+POST {{baseUrl}}/auths/register
+Content-Type: application/json
+
+{
+    "username":"dilhaa",
+    "email":"muahmma",
+    "password":"manager",
+    "phone":"0492488977",
+    "adresse":"RUE DE S"
+}
+
+
 
 
 ### Login the manager user
