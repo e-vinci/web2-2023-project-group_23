@@ -14,6 +14,23 @@ import securityicon from '../../img/security-icon.svg';
 
 import readAllMenus from '../../models/menus';
 
+function initAutocomplete() {
+  const locationInput = document.getElementById('location');
+  // eslint-disable-next-line no-unused-vars
+  const autocomplete = new google.maps.places.Autocomplete(locationInput);
+  autocomplete.addListener('place_changed', () => {
+      // eslint-disable-next-line no-unused-vars
+      const place = autocomplete.getPlace();
+
+  });
+}
+
+const script = document.createElement('script');
+script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyDY9V2SD0cPEzDfNid_CfJc8KVdWqeRiDQ&libraries=places&callback=initAutocomplete";
+script.defer = true;
+script.async = false;
+document.head.appendChild(script);
+
 const HomePage = async () => {
 
   const infos = await readAllMenus();
@@ -227,26 +244,12 @@ const HomePage = async () => {
 
   const main = document.querySelector('main');
   main.innerHTML = page;
+
   initAutocomplete()
+ 
 }
 
-function initAutocomplete() {
-  const locationInput = document.getElementById('location');
 
-  const autocomplete = new google.maps.places.Autocomplete(locationInput);
-  autocomplete.addListener('place_changed', () => {
-      // eslint-disable-next-line no-unused-vars
-      const place = autocomplete.getPlace();
-      // Vous pouvez accéder aux détails de l'endroit ici, par exemple :
-      // console.log(place);
-  });
-}
-
-const script = document.createElement('script');
-script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyDY9V2SD0cPEzDfNid_CfJc8KVdWqeRiDQ&libraries=places&callback=initAutocomplete";
-script.defer = true;
-script.async = true;
-document.head.appendChild(script);
 
 function numberrandom(){
   const nombre = Math.floor(Math.random() * 10) + 20;
