@@ -20,6 +20,20 @@ const defaultUsers = [
   },
 ];
 
+function readAllUsers() {
+  const data = parse(jsonDbPath, defaultUsers);
+  return data;
+}
+
+function readOneUser(id) {
+  const idnumer = parseInt(id, 10);
+  const usersjsn = parse(jsonDbPath, defaultUsers);
+  const indexOfUserFound = usersjsn.findIndex((user) => user.id === idnumer);
+  if (indexOfUserFound < 0) return undefined;
+
+  return usersjsn[indexOfUserFound];
+}
+
 async function login(username, password) {
   const userFound = readOneUserFromUsername(username);
   if (!userFound) return undefined;
@@ -105,4 +119,6 @@ module.exports = {
   login,
   register,
   readOneUserFromUsername,
+  readAllUsers,
+  readOneUser,
 };

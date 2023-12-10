@@ -1,7 +1,20 @@
 const express = require('express');
-const { register, login } = require('../models/users');
+const {
+  register, login, readAllUsers, readOneUser,
+} = require('../models/users');
 
 const router = express.Router();
+
+router.get('/', (req, res) => {
+  const alluser = readAllUsers();
+  return res.json(alluser);
+});
+
+router.get('/:id', (req, res) => {
+  const userfound = readOneUser(req?.params?.id);
+  if (!userfound) return res.sendStatus(404);
+  return res.json(userfound);
+});
 
 /* Register a user */
 router.post('/register', async (req, res) => {
