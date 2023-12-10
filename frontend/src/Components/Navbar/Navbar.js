@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import { Navbar as BootstrapNavbar } from 'bootstrap';
-
+import { getAuthenticatedUser, isAuthenticated } from '../../utils/auths';
 /**
  * Render the Navbar which is styled by using Bootstrap
  * Each item in the Navbar is tightly coupled with the Router configuration :
@@ -15,8 +15,44 @@ const Navbar = () => {
  
 
 function renderNavbar() {
-  const navbarshow = `
+  const authenticatedUser = getAuthenticatedUser();
+  const anonymousUserNavbar = `
+
   <header class="header">
+
+  <a href="#" data-uri="/" class="logo"> <i class="fas fa-utensils"></i> VINCI EATS </a>
+
+  <form action="" class="search-form">
+      <input type="search" name="" placeholder="search here..." id="searchBox">
+      <label for="searchBox" class="fas fa-searchheader"></label>
+  </form>
+
+  
+  <div class="icons">
+      <div class="fas fa-search" id="search-btn"></div>
+      
+      <div class="fa-solid fa-cart-shopping"" href="#" data-uri="/cart" id="theme-btn"></div>
+      <div class="fas fa-user" href="#" data-uri="/signinpage" id="login-btn"></div>
+      <div class="fa-solid fa-house" href="#" data-uri="/" id="theme-btn"></div>
+      
+  
+  </a>
+      <div class="fas fa-bars" id="menu-btn"></div>
+  </div>
+
+  <nav class="navbar">
+    <a class="nav-link" aria-current="page" href="#" data-uri="/">Home</a>
+    <a class="nav-link" href="#" data-uri="/signinpage">Login Page</a>
+    <a class="nav-link" href="#" data-uri="/signuppage">Signup</a>
+    
+  </nav>
+   
+</header>
+
+  `;
+
+ const authenticatedUserNavbar = `
+ <header class="header">
 
     <a href="#" data-uri="/" class="logo"> <i class="fas fa-utensils"></i> VINCI EATS </a>
 
@@ -37,6 +73,8 @@ function renderNavbar() {
         <div class="fa-solid fa-cart-shopping"" href="#" data-uri="/cart" id="theme-btn"></div>
         <div class="fas fa-user" href="#" data-uri="/signinpage" id="login-btn"></div>
         <div class="fa-solid fa-house" href="#" data-uri="/" id="theme-btn"></div>
+
+        <div class="fa-sharp fa-regular fa-right-from-bracket" href="#" data-uri="/logout" id="theme-btn"></div>
         
     
     </a>
@@ -48,14 +86,18 @@ function renderNavbar() {
       <a class="nav-link" aria-current="page" href="#" data-uri="/">Home</a>
       <a class="nav-link" href="#" data-uri="/signinpage">Login Page</a>
       <a class="nav-link" href="#" data-uri="/signuppage">Signup</a>
+
+     
+      <a class="nav-link disabled" href="#">${authenticatedUser?.username}</a>
+   
       
     </nav>
-     
+  
 </header>
   `;
 
   const navbarWrapper = document.querySelector('#navbarWrapper');
-  navbarWrapper.innerHTML = navbarshow;
+  navbarWrapper.innerHTML = isAuthenticated() ? authenticatedUserNavbar : anonymousUserNavbar;
 }
 
 function navbartip() {
