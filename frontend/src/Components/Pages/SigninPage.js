@@ -1,11 +1,9 @@
 import { clearPage, renderPageTitle } from '../../utils/render';
-/* import Navigate from '../Router/Navigate'; */
+ import Navigate from '../Router/Navigate'; 
 
-/* import Navbar from '../Navbar/Navbar'; */
+ import Navbar from '../Navbar/Navbar'; 
+ import { setAuthenticatedUser } from '../../utils/auths';
 
-/* import logo1 from '../../img/register.svg' */
-
- /* import logo2 from '../../img/log.svg'; */
 
 
 
@@ -13,6 +11,7 @@ const signInPage = () => {
   clearPage();
   renderPageTitle('Sign-in');
   SignInpagefuntion();
+  ad();
 
 };
 
@@ -42,18 +41,19 @@ function SignInpagefuntion() {
                   <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h5>
 
                   <div class="form-outline mb-4">
-                    <input type="email" id="form2Example17" class="form-control form-control-lg" />
-                    <label class="form-label" for="form2Example17">Email address</label>
+                    <input type="email" id="username" class="form-control form-control-lg" />
+                    <label class="form-label" for="form2Example17">Username /label>
                   </div>
 
                   <div class="form-outline mb-4">
-                    <input type="password" id="form2Example27" class="form-control form-control-lg" />
+                    <input type="password" id="passeword" class="form-control form-control-lg" />
                     <label class="form-label" for="form2Example27">Password</label>
                   </div>
 
                   <div class="pt-1 mb-4">
-                    <button class="btn btn-dark btn-lg btn-block" type="button">Login</button>
+                  <input type="submit" id="signINButton" class="btn" value="Sign IN" />
                   </div>
+                  <div id="errorContainer" class="alert alert-danger" role="alert"></div>
 
                   <a class="small text-muted" href="#!">Forgot password?</a>
                   <a class="nav-link" aria-current="page" href="#" data-uri="/">Home</a>
@@ -77,6 +77,60 @@ function SignInpagefuntion() {
   const main = document.querySelector('main');
   main.innerHTML = signIn;
   
+}
+
+function ad (){
+  const signInBtn = document.querySelector('#signINButton')
+  const errorContainer = document.querySelector('#errorContainer');
+  signInBtn.addEventListener('click', async(e)=>{
+    e.preventDefault();
+    const username = document.querySelector('#username').value;
+    const password = document.querySelector('#passeword').value;
+
+    // Réinitialiser les erreurs précédentes
+    errorContainer.innerHTML = '';
+    errorContainer.style.display = 'none';
+
+    const missingFields = [];
+    if (!username) missingFields.push('Username');
+    if (!password) missingFields.push('Password');
+
+
+    if (missingFields.length > 0) {
+      // Construire le message d'erreur
+      const errorMessage = `Veuillez remplir les champs suivants : ${missingFields.join(', ')}.`;
+
+      // Afficher le message d'erreur dans l'élément approprié
+      errorContainer.innerHTML = errorMessage;
+      errorContainer.style.display = 'block'; // Afficher le conteneur d'erreur
+
+      return;
+    }
+    const options = {
+      method: 'POST',
+      body: JSON.stringify({
+        username,
+        password,
+  
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+    const response = await fetch('/api/auths/login', options);
+  if (!response.ok) throw new Error(`fetch error : ${response.status} : ${response.statusText}`);
+  const authenticatedUser = await response.json();
+  console.log('Newly registered & authenticated user : ', authenticatedUser);
+
+
+  setAuthenticatedUser(authenticatedUser);
+
+  Navbar();
+  
+  Navigate('/');
+  
+    
+  })
 }
 
 export default signInPage;

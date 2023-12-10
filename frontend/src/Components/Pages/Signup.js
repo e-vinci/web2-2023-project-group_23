@@ -1,5 +1,8 @@
 import { clearPage, renderPageTitle } from '../../utils/render';
 
+import { setAuthenticatedUser } from '../../utils/auths';
+import Navbar from '../Navbar/Navbar';
+
 import Navigate from '../Router/Navigate' 
 
 /* import Navbar from '../Navbar/Navbar'; */
@@ -196,10 +199,12 @@ function ad() {
   if (!response.ok) throw new Error(`fetch error : ${response.status} : ${response.statusText}`);
   const authenticatedUser = await response.json();
   console.log('Newly registered & authenticated user : ', authenticatedUser);
+
+  setAuthenticatedUser(authenticatedUser);
+  Navbar();
   
   Navigate('/');
   
-    
   })
 }
 export default signUpPage;

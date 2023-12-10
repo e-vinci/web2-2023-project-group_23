@@ -9,6 +9,7 @@ import signInPage from '../Pages/SigninPage';
 import PrivacyPolicy from '../PrivacyPolicy/PrivacyPolicy';
 import CartPage from '../Pages/cartpage';
 import PaymentPage from '../Pages/PaymenPage';
+import Logout from '../logout';
 
 
 const routes = {
@@ -21,7 +22,8 @@ const routes = {
   '/signinpage' : signInPage,
   '/privaypolicy' : PrivacyPolicy,
   '/cart' : CartPage,
-  '/payment' : PaymentPage
+  '/payment' : PaymentPage,
+  '/logout' : Logout,
 };
 
 export default routes;
