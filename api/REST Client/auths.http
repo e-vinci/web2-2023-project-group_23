@@ -15,6 +15,33 @@ Content-Type: application/json
 GET {{baseUrl}}/auths
 
 
+### Read member with ID == 1
+
+GET {{baseUrl}}/auths/2
+
+### Read member with username == admin
+
+GET {{baseUrl}}/admin
+
+
+### Get informations from username (5)
+POST {{baseUrl}}/auths/username
+Content-Type: application/json
+
+{
+    "username": "HAZIKO22"
+}
+
+
+### Get id from username (5)
+POST {{baseUrl}}/auths/readUserFromUsername
+Content-Type: application/json
+
+{
+    "username": "HAZIKO22"
+}
+
+
 ### Login the default admin
 POST {{baseUrl}}/auths/login
 Content-Type: application/json

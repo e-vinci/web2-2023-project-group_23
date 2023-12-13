@@ -34,6 +34,13 @@ function readOneUser(id) {
   return usersjsn[indexOfUserFound];
 }
 
+async function readIdFromUsername(username) {
+  const users = parse(jsonDbPath, defaultUsers);
+  const indexOfUserFound = users.findIndex((user) => user.username === username);
+  if (indexOfUserFound < 0) return undefined;
+  return parseInt(users[indexOfUserFound].id, 10);
+}
+
 async function login(username, password) {
   const userFound = readOneUserFromUsername(username);
   if (!userFound) return undefined;
@@ -58,9 +65,7 @@ async function login(username, password) {
 async function register(username, email, password, phone, adresse, totalOrder, menuslIKE) {
   const userFound = readOneUserFromUsername(username);
   if (userFound) return undefined;
-
   await createOneUser(username, email, password, phone, adresse, totalOrder, menuslIKE);
-
   const token = jwt.sign(
     { username }, // session data added to the payload (payload : part 2 of a JWT)
     jwtSecret, // secret used for the signature (signature part 3 of a JWT)
@@ -121,4 +126,5 @@ module.exports = {
   readOneUserFromUsername,
   readAllUsers,
   readOneUser,
+  readIdFromUsername,
 };

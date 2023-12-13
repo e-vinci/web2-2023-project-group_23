@@ -1,6 +1,6 @@
 const express = require('express');
 const {
-  register, login, readAllUsers, readOneUser,
+  register, login, readAllUsers, readOneUser, readOneUserFromUsername, readIdFromUsername,
 } = require('../models/users');
 
 const router = express.Router();
@@ -14,6 +14,22 @@ router.get('/:id', (req, res) => {
   const userfound = readOneUser(req?.params?.id);
   if (!userfound) return res.sendStatus(404);
   return res.json(userfound);
+});
+
+router.post('/username', async (req, res) => {
+  const username = req?.body?.username?.length !== 0 ? req.body.username : undefined;
+  if (!username) return res.sendStatus(400);
+  const userFound = await readOneUserFromUsername(username);
+  if (!userFound) return res.sendStatus(404);
+  return res.json(userFound);
+});
+
+router.post('/readUserFromUsername', async (req, res) => {
+  const username = req?.body?.id?.length !== 0 ? req.body.username : undefined;
+  if (!username) return res.sendStatus(400);
+  const returned = await readIdFromUsername(username);
+  if (!returned) return res.sendStatus(404);
+  return res.json(returned);
 });
 
 /* Register a user */
