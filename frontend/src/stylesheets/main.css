@@ -11,8 +11,120 @@ input {
   font-family: "Poppins", sans-serif;
 }
 */
+.PageAdminCss body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+}
+
+.PageAdminCss {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.PageAdminCss h2 {
+  color: #333;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.admin-table th, .admin-table td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+}
+
+.admin-table th {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.admin-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.admin-table tbody tr:hover {
+  background-color: #e2e2e2;
+}
+
+.admin-table img {
+  max-width: 100px;
+  max-height: 80px;
+  display: block;
+  margin: 0 auto;
+}
+
+.admin-table a {
+  color: #007BFF;
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+.admin-table a:hover {
+  text-decoration: underline;
+  font-weight: bold;
+  color: #0056b3;
+}
 
 
+
+
+
+/*
+
+
+*/
+.FormulaireList{
+  display: flex;
+  justify-content: center;
+}
+.FormulaireList body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.FormulaireList form {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Ajout de cette ligne pour centrer le formulaire */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  background-color: #fff;
+}
+
+.FormulaireList label {
+  margin-bottom: 8px;
+}
+
+.FormulaireList input, textarea {
+  padding: 8px;
+  margin-bottom: 12px;
+  box-sizing: border-box;
+}
+
+.FormulaireList button {
+  background-color: #4caf50;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&display=swap');
 
