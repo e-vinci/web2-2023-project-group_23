@@ -87,7 +87,8 @@ function renderNavbar() {
       <a class="nav-link" href="#" data-uri="/signuppage">Signup</a>
 
      
-      <a class="nav-link disabled" href="#">${authenticatedUser?.username}</a>
+      <a class="nav-link disabled" href="#">${authenticatedUser?.username }</a>
+      <a class="nav-link disabled" href="#">${authenticatedUser?.id}</a>
    
       
     </nav>

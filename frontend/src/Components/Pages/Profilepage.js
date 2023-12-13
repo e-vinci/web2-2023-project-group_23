@@ -1,13 +1,18 @@
 import { clearPage, renderPageTitle } from '../../utils/render';
+import { getAuthenticatedUser } from '../../utils/auths';
+
+import userinformation  from '../../models/profils';
 
 const profilepage = () => {
     clearPage();
     renderPageTitle('Profile Page ');
     Profilepagefuntion()
     
-  
 }
-function Profilepagefuntion() {
+
+async function Profilepagefuntion() {
+  const authenticatedUser = getAuthenticatedUser();
+  const infos = await userinformation(authenticatedUser.username);
     const profile = `
     <div class="containerpanier p-5 px-5 py-5 ">
     <h1> My Profil </h1> <br> 
@@ -17,9 +22,9 @@ function Profilepagefuntion() {
             <div class="card-body text-center">
               <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
                 class="rounded-circle img-fluid" style="width: 150px;">
-                <h5 class="my-3" >MUHMMAD HAZIQ</h5>
-                <p class="text-muted mb-1">STUDENT</p>
-                <p class="text-muted mb-4">BRUXELLES</p>
+                <h5 class="my-3" >${infos.username}</h5>
+                <p class="text-muted mb-4">${infos.email}</p>
+                <p class="text-muted mb-4">STUDENT</p>
                 
             </div>
             </div>
@@ -55,7 +60,7 @@ function Profilepagefuntion() {
             <div class="card-body">
               <div class="row">
                 <div class="col-sm-3">
-                  <p class="mb-0">Full Name</p>
+                  <p class="mb-0">Username : ${infos.username}</p>
                 </div>
                 <div class="col-sm-9">
                   <p class="text-muted mb-0"></p>
@@ -64,7 +69,7 @@ function Profilepagefuntion() {
               <hr>
               <div class="row">
                 <div class="col-sm-3">
-                  <p class="mb-0">Email</p>
+                  <p class="mb-0">Email ${infos.email}</p>
                 </div>
                 <div class="col-sm-9">
                   <p class="text-muted mb-0"></p>
@@ -82,7 +87,7 @@ function Profilepagefuntion() {
               <hr>
               <div class="row">
                 <div class="col-sm-3">
-                  <p class="mb-0">TOTALS MENUS COMMANDER </p>
+                  <p class="mb-0">TOTALS MENUS COMMANDER : ${infos.totalOrder}</p>
                 </div>
                 <div class="col-sm-9">
                   <p class="text-muted mb-0"></p>
@@ -91,7 +96,7 @@ function Profilepagefuntion() {
                <hr>
               <div class="row">
                 <div class="col-sm-3">
-                  <p class="mb-0">Phone</p>
+                  <p class="mb-0">Phone : ${infos.phone}</p>
                 </div>
                 <div class="col-sm-9">
                   <p class="text-muted mb-0"></p>
@@ -101,7 +106,7 @@ function Profilepagefuntion() {
               <hr>
               <div class="row">
                 <div class="col-sm-3">
-                  <p class="mb-0">adresse</p>
+                  <p class="mb-0">Adresse ${infos.adresse}</p>
                 </div>
                 <div class="col-sm-9">
                   <p class="text-muted mb-0"> </p>
@@ -138,6 +143,9 @@ function Profilepagefuntion() {
         console.error('Main element not found');
     }
 }
+
+
+
   
 
 

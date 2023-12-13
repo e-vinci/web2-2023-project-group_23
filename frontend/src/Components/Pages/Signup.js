@@ -147,7 +147,6 @@ function ad() {
     const adresse = `${street}, ${city}, ${zip}`;
     const termsCheckbox = document.querySelector('#form2Example3c');
 
-
     // Réinitialiser les erreurs précédentes
     errorContainer.innerHTML = '';
     errorContainer.style.display = 'none';
@@ -196,7 +195,8 @@ function ad() {
       },
     };
     const response = await fetch('/api/auths/register', options);
-  if (!response.ok) throw new Error(`fetch error : ${response.status} : ${response.statusText}`);
+  if (!response.ok) throw new Error(`fetch error : ${response.status} : ${response.statusText}`); 
+   
   const authenticatedUser = await response.json();
   console.log('Newly registered & authenticated user : ', authenticatedUser);
 
