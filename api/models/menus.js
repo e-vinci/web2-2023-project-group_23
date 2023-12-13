@@ -124,7 +124,6 @@ function readOneMenus(id) {
 
 function createOneMenus(title, type, description, price) {
   const menus = parse(jsonDbPath, defaultMenus);
-
   const createMenu = {
     id: getNextId(),
     title,

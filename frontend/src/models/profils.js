@@ -7,11 +7,8 @@ const userinformation = async(username)=>{
             'Content-Type': 'application/json',
           },
         };
-    
         const response = await fetch('/api/auths/username', options);
-    
         const user = await response.json();
-    
         return user;
       } catch (err) {
         console.error('user::error: ', err);
@@ -19,4 +16,16 @@ const userinformation = async(username)=>{
       }
     };
 
-    export default userinformation;
+  const getMenuByid  = async(id)=>{
+      try{
+        const response = await fetch(`/api/menus/${id}`);
+        const menu = await response.json();
+        return menu;
+      }catch (err) {
+        console.error('user::error: ', err);
+        throw err;
+      }
+      
+    }
+
+    export {userinformation, getMenuByid};

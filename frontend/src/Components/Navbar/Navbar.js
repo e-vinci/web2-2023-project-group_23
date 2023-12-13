@@ -19,7 +19,6 @@ function renderNavbar() {
   const anonymousUserNavbar = `
 
   <header class="header">
-
   <a href="#" data-uri="/" class="logo"> <i class="fas fa-utensils"></i> VINCI EATS </a>
 
   <form action="" class="search-form">

@@ -1,6 +1,7 @@
+/* eslint-disable max-len */
 const express = require('express');
 const {
-  register, login, readAllUsers, readOneUser, readOneUserFromUsername, readIdFromUsername,
+  register, login, readAllUsers, readOneUser, readOneUserFromUsername, readIdFromUsername, addMenuLikeToUser,
 } = require('../models/users');
 
 const router = express.Router();
@@ -14,6 +15,18 @@ router.get('/:id', (req, res) => {
   const userfound = readOneUser(req?.params?.id);
   if (!userfound) return res.sendStatus(404);
   return res.json(userfound);
+});
+
+// For user to add a menu in favourite
+router.post('/addMenuLike', async (req, res) => {
+  const username = req?.body?.username?.length !== 0 ? req.body.username : undefined;
+  const menuId = req?.body?.menuId?.length !== 0 ? req.body.menuId : undefined;
+
+  if (!username || !menuId) return res.sendStatus(404);
+
+  const updatedUser = await addMenuLikeToUser(username, menuId);
+  if (!updatedUser) return res.sendStatus(404);
+  return res.json(updatedUser);
 });
 
 router.post('/username', async (req, res) => {
