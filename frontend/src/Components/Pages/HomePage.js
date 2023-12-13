@@ -24,16 +24,16 @@ function initAutocomplete() {
 
   });
 }
-
 const script = document.createElement('script');
 script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyDY9V2SD0cPEzDfNid_CfJc8KVdWqeRiDQ&libraries=places&callback=initAutocomplete";
 script.defer = true;
-script.async = false;
+script.async = true; // Modification de "false" à "true"
+script.onerror = () => {
+  console.error('Erreur de chargement de l\'API Google Maps');
+};
 document.head.appendChild(script);
 
-
 const HomePage = async () => {
-
   const infos = await readAllMenus();
   const items = infos;
   let page = `
@@ -245,12 +245,8 @@ const HomePage = async () => {
   const main = document.querySelector('main');
   main.innerHTML = page;
   initAutocomplete();
-  
+ 
 }
-
-
-
-
 
 function numberrandom(){
   const nombre = Math.floor(Math.random() * 10) + 20;
