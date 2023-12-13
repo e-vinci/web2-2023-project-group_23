@@ -24,17 +24,37 @@ const defaultUsers = [
   },
 ];
 
+// Pour ajouter les menus a ses favouris
+async function addMenuLikeToUser(username, menuId) {
+  const user = readOneUserFromUsername(username);
+  if (!user) {
+    return undefined; // L'utilisateur n'existe pas
+  }
+  // Ajouter le menuId à la liste des menus aimés par l'utilisateur
+  user.menuslIKE = menuId;
+  // Mise à jour de l'utilisateur dans la base de données
+  await updateUser(user);
+  return user;
+}
+
+async function updateUser(updatedUser) {
+  const users = parse(jsonDbPath, defaultUsers);
+  const indexToUpdate = users.findIndex((user) => user.id === updatedUser.id);
+  if (indexToUpdate >= 0) {
+    users[indexToUpdate] = updatedUser;
+    serialize(jsonDbPath, users);
+  }
+}
+
 function readAllUsers() {
   const data = parse(jsonDbPath, defaultUsers);
   return data;
 }
-
 function readOneUser(id) {
   const idnumer = parseInt(id, 10);
   const usersjsn = parse(jsonDbPath, defaultUsers);
   const indexOfUserFound = usersjsn.findIndex((user) => user.id === idnumer);
   if (indexOfUserFound < 0) return undefined;
-
   return usersjsn[indexOfUserFound];
 }
 
@@ -131,4 +151,5 @@ module.exports = {
   readAllUsers,
   readOneUser,
   readIdFromUsername,
+  addMenuLikeToUser,
 };
