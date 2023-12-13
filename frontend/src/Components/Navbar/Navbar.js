@@ -84,6 +84,8 @@ function renderNavbar() {
     <nav class="navbar">
 
       <a class="nav-link" aria-current="page" href="#" data-uri="/">Home</a>
+
+      <a class="nav-link" aria-current="page" href="#" data-uri="/adminpage">Admin page</a>
      
       <a class="nav-link disabled" href="#">${authenticatedUser?.username }</a>
       <a class="nav-link disabled" href="#">${authenticatedUser?.id}</a>
