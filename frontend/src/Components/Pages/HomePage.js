@@ -107,7 +107,7 @@ const HomePage = async () => {
               <a href="#" class="btn"> Order now</a>
               </a>
           </div>
-         
+    
       </div>
      
      ` 

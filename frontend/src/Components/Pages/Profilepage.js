@@ -1,7 +1,7 @@
 import { clearPage, renderPageTitle } from '../../utils/render';
 import { getAuthenticatedUser } from '../../utils/auths';
 
-import userinformation  from '../../models/profils';
+import {userinformation, getMenuByid} from '../../models/profils';
 
 const profilepage = () => {
     clearPage();
@@ -13,6 +13,8 @@ const profilepage = () => {
 async function Profilepagefuntion() {
   const authenticatedUser = getAuthenticatedUser();
   const infos = await userinformation(authenticatedUser.username);
+  const menuinfos = await getMenuByid(infos.menuslIKE);
+  
     const profile = `
     <div class="containerpanier p-5 px-5 py-5 ">
     <h1> My Profil </h1> <br> 
@@ -22,9 +24,8 @@ async function Profilepagefuntion() {
             <div class="card-body text-center">
               <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
                 class="rounded-circle img-fluid" style="width: 150px;">
-                <h5 class="my-3" >${infos.username}</h5>
-                <p class="text-muted mb-4">${infos.email}</p>
-                <p class="text-muted mb-4">STUDENT</p>
+                <h5 class="my-3"  display-4>${infos.username}</h5>
+                <p class="text-muted mb-4 lead">STUDENT</p>
                 
             </div>
             </div>
@@ -56,83 +57,83 @@ async function Profilepagefuntion() {
             </div>
           </div>
           <div class="col-lg-8">
-          <div class="card mb-4">
-            <div class="card-body">
-              <div class="row">
-                <div class="col-sm-3">
-                  <p class="mb-0">Username : ${infos.username}</p>
-                </div>
-                <div class="col-sm-9">
-                  <p class="text-muted mb-0"></p>
-                </div>
-              </div>
-              <hr>
-              <div class="row">
-                <div class="col-sm-3">
-                  <p class="mb-0">Email ${infos.email}</p>
-                </div>
-                <div class="col-sm-9">
-                  <p class="text-muted mb-0"></p>
-                </div>
-              </div>
-              <hr>
-              <div class="row">
-                <div class="col-sm-3">
-                  <p class="mb-0">TOTALS MENUS CREATED </p>
-                </div>
-                <div class="col-sm-9">
-                  <p class="text-muted mb-0"></p>
-                </div>
-              </div>
-              <hr>
-              <div class="row">
-                <div class="col-sm-3">
-                  <p class="mb-0">TOTALS MENUS COMMANDER : ${infos.totalOrder}</p>
-                </div>
-                <div class="col-sm-9">
-                  <p class="text-muted mb-0"></p>
-                </div>
-              </div>
-               <hr>
-              <div class="row">
-                <div class="col-sm-3">
-                  <p class="mb-0">Phone : ${infos.phone}</p>
-                </div>
-                <div class="col-sm-9">
-                  <p class="text-muted mb-0"></p>
-                </div>
-              </div>
-              
-              <hr>
-              <div class="row">
-                <div class="col-sm-3">
-                  <p class="mb-0">Adresse ${infos.adresse}</p>
-                </div>
-                <div class="col-sm-9">
-                  <p class="text-muted mb-0"> </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        <section class="packages" id="packages">
-          <h1 class="heading"> YOUR FAVOURITES <span> Menus </span> </h1>
-          <div class="box-container">
-          <div class="box" data-aos="fade-up">
+  <div class="card mb-4">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-3">
+          <p class="mb-0 h4 font-weight-bold">Username:</p>
+        </div>
+        <div class="col-sm-9">
+          <p class="text-muted mb-0 h5">${infos.username}</p>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-sm-3">
+          <p class="mb-0 h4 font-weight-bold">Email:</p>
+        </div>
+        <div class="col-sm-9">
+          <p class="text-muted mb-0 h5">${infos.email}</p>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-sm-3">
+          <p class="mb-0 h4 font-weight-bold">TOTAL MENUS CREATED:</p>
+        </div>
+        <div class="col-sm-9">
+          <p class="text-muted mb-0 h5">  </p>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-sm-3">
+          <p class="mb-0 h4 font-weight-bold">TOTAL MENUS ORDERED:</p>
+        </div>
+        <div class="col-sm-9">
+          <p class="text-muted mb-0 h5">${infos.totalOrder}</p>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-sm-3">
+          <p class="mb-0 h4 font-weight-bold">Phone:</p>
+        </div>
+        <div class="col-sm-9">
+          <p class="text-muted mb-0 h5">${infos.phone}</p>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-sm-3">
+          <p class="mb-0 h4 font-weight-bold">Address:</p>
+        </div>
+        <div class="col-sm-9">
+          <p class="text-muted mb-0 h5">${infos.adresse}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section class="packages" id="packages">
+  <h1 class="heading"> Your <span>  favourite Menu </span> </h1>
+  <div class="box-container">
+  <div class="box" data-aos="fade-up">
+      
           <div class="image">
-              <img src="" alt="">
-              <h3> <i class="fas fa-utensils"></i> </h3>
+          <a href= "">
+              <img src="${menuinfos.imagelink}" alt="">
+              <h3> <i class="fas fa-utensils"></i> ${menuinfos.type} </h3>
           </div>
           <div class="content">
-          <h1>  </h1>
-              <div class="price"> $ <span>350.99</span> </div>
-              <p> </p>
+          <h1>  ${menuinfos.title}</h1>
+              <div class="price"> ${menuinfos.price} €    </span> </div>
+              <p>${menuinfos.description} </p>
               <a href="#" class="btn"> Order now</a>
+              </a>
           </div>
-          
       </div>
       </div>
-      </section>
+    </section>
 
     `;
 
