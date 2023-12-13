@@ -17,6 +17,10 @@ const defaultUsers = [
     username: 'admin',
     email: 'muhammad.haziq@student.vinci.be',
     password: bcrypt.hashSync('admin', saltRounds),
+    phone: '0492',
+    adresse: 'null',
+    totalOrder: 1,
+    menuslIKE: 1,
   },
 ];
 
