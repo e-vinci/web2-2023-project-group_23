@@ -44,8 +44,11 @@ function renderNavbar() {
     <a class="nav-link" aria-current="page" href="#" data-uri="/">Home</a>
     <a class="nav-link" href="#" data-uri="/signinpage">Login Page</a>
     <a class="nav-link" href="#" data-uri="/signuppage">Signup</a>
+    <a class="nav-link" href="#" data-uri="/productpage">Product</a>
     
   </nav>
+
+  
    
 </header>
 
@@ -70,7 +73,6 @@ function renderNavbar() {
         
         <div class="fa-solid fa-person" href="#" data-uri="/profilepage" id="profil-btn"></div>
         <div class="fa-solid fa-cart-shopping"" href="#" data-uri="/cart" id="theme-btn"></div>
-        <div class="fas fa-user" href="#" data-uri="/signinpage" id="login-btn"></div>
         <div class="fa-solid fa-house" href="#" data-uri="/" id="theme-btn"></div>
 
         <div class="fa-sharp fa-regular fa-right-from-bracket" href="#" data-uri="/logout" id="theme-btn"></div>
@@ -83,9 +85,6 @@ function renderNavbar() {
     <nav class="navbar">
 
       <a class="nav-link" aria-current="page" href="#" data-uri="/">Home</a>
-      <a class="nav-link" href="#" data-uri="/signinpage">Login Page</a>
-      <a class="nav-link" href="#" data-uri="/signuppage">Signup</a>
-
      
       <a class="nav-link disabled" href="#">${authenticatedUser?.username}</a>
    
