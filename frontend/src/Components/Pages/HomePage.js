@@ -110,17 +110,19 @@ const HomePage = async () => {
 
       <div class="box" data-aos="fade-up">
           <div class="image">
-          <a href= "">
+          <a href= "" >
               <img src="${element.imagelink}" alt="">
               <h3> <i class="fas fa-utensils"></i> ${element.type} </h3>
-              </a>
+             
+           
           </div>
           <div class="content">
           <h1>  ${element.title}</h1>
               <div class="price"> ${element.price} €  <span>${number}€  </span> </div>
-              <p>${element.description} </p>
-              <a href="#" class="btn"> Order now</a>
+             /* <p>${element.description} </p>
               </a>
+              <a href="#" class="btn"> ADD TO CART</a>
+              <a href="#" class="btn favorite"> <i class="fas fa-heart"></i> </a>
           </div>
 
       </div>
