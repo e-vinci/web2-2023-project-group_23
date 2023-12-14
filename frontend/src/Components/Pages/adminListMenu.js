@@ -1,4 +1,4 @@
-import { readAllMenus, deleteOneMenu, updatePartiallyOneMenu } from '../../models/menus';
+import { readAllMenus, deleteOneMenu,  updateOneMenu  } from '../../models/menus';
 
 const ViewMenuPage = async () => {
   const main = document.querySelector('main');
@@ -11,10 +11,10 @@ const ViewMenuPage = async () => {
 
   menuWrapper.innerHTML = menusAsHtmlTable;
 
-  attachEventListeners();
+  attachEventListeners(); 
 };
 
-function getHtmlMenuTableAsString(movies) {
+function getHtmlMenuTableAsString(menus) {
   if (menus?.length === undefined || menus.length === 0) {
     return '<p class="p-5">No menu yet : (</p>';
   }
@@ -28,7 +28,7 @@ function getHtmlMenuTableAsString(movies) {
     <th scope="col">Type</th>
     <th scope="col">Description</th>
     <th scope="col">Price</th>  
-    <th scope="col">ImageLink</th>  
+    <th> ACTIONS </th>
   </tr>
 </thead>
 <tbody>  
@@ -41,8 +41,8 @@ function getHtmlMenuTableAsString(movies) {
       <td class="fw-bold text-info" contenteditable="true">${element.type}</td>
       <td class="fw-bold text-info" contenteditable="true">${element.description}</td>
       <td class="fw-bold text-info" contenteditable="true">${element.price}</td>
-      <td class="fw-bold text-info" contenteditable="true">${element.imageLink}</td>
     
+    <td>
         <button type="button" class="btn btn-info delete" data-element-id="${element.id}">Delete</button>
       </td>
       <td>
@@ -57,8 +57,9 @@ function getHtmlMenuTableAsString(movies) {
   return htmlMenuTable;
 }
 
+
 function attachEventListeners() {
-  const MenuWrapper = document.querySelector('#menuWrapper');
+  const menuWrapper = document.querySelector('#menuWrapper');
 
   menuWrapper.querySelectorAll('.delete').forEach((button) => {
     button.addEventListener('click', async (e) => {
@@ -67,23 +68,26 @@ function attachEventListeners() {
       ViewMenuPage();
     });
   });
+ 
 
   menuWrapper.querySelectorAll('.update').forEach((button) => {
     button.addEventListener('click', async (e) => {
       const { elementId } = e.target.dataset;
-
       const menuRow = e.target.parentElement.parentElement;
       const newMenumData = {
-        title: menuRow.children[0].innerText,
-        type: menuRow.children[1].innerText,
-        description: menuRow.children[2].innerText,
-        price: Number.parseInt(menuRow.children[3].innerText,10),
-        imageLink: menuRow.children[4].innerText,
+        title: menuRow.children[1].innerText,
+        type: menuRow.children[2].innerText,
+        description: menuRow.children[3].innerText,
+        price: Number.parseInt(menuRow.children[4].innerHTML,10),
       };
-      await updatePartiallyOneMenu(elementId, newMenumData);
+      console.log('Element ID:', elementId);
+      console.log('New Menu Data:', newMenumData);
+      await updateOneMenu(elementId, newMenumData);
       ViewMenuPage();
     });
   });
+
 }
+
 
 export default ViewMenuPage;

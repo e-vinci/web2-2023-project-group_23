@@ -12,7 +12,7 @@ import android from '../../img/google-play.png';
 import securityicon from '../../img/security-icon.svg';
 
 
-import readAllMenus from '../../models/menus';
+import {readAllMenus} from '../../models/menus';
 
 function initAutocomplete() {
   const locationInput = document.getElementById('location');
@@ -110,16 +110,15 @@ const HomePage = async () => {
 
       <div class="box" data-aos="fade-up">
           <div class="image">
-          <a href= "" >
+          <a href="#" class="menu-link" data-menu-id="${element.id}">
               <img src="${element.imagelink}" alt="">
               <h3> <i class="fas fa-utensils"></i> ${element.type} </h3>
-             
-           
+
           </div>
           <div class="content">
           <h1>  ${element.title}</h1>
               <div class="price"> ${element.price} €  <span>${number}€  </span> </div>
-             /* <p>${element.description} </p>
+             <p>${element.description} </p>
               </a>
               <a href="#" class="btn"> ADD TO CART</a>
               <a href="#" class="btn favorite"> <i class="fas fa-heart"></i> </a>
@@ -233,8 +232,15 @@ const HomePage = async () => {
         business hours very effectively.
       </p>
       <div class="d-flex">
+  
+        
+        
+        <a href="https://www.apple.com/be-fr/store" target="_blank">
         <img src="${apple}" alt="" />
+        </a>
+        <a href="https://play.google.com/store/myplayactivity" target="_blank">
         <img src="${android}" alt="" />
+        </a>
       </div>
     </div>
     
