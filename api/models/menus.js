@@ -122,9 +122,10 @@ function readOneMenus(id) {
   return menus[indexOfMenuFound];
 }
 
-function createOneMenus(title, type, description, price, imagelink) {
+function createOneMenu(title, type, description, price, imagelink) {
   const menus = parse(jsonDbPath, defaultMenus);
-  const createMenu = {
+
+  const createdMenu = {
     id: getNextId(),
     title,
     type,
@@ -133,9 +134,11 @@ function createOneMenus(title, type, description, price, imagelink) {
     imagelink,
   };
 
-  menus.push(createMenu);
-  serialize(jsonDbPath, defaultMenus);
-  return createMenu;
+  menus.push(createdMenu);
+
+  serialize(jsonDbPath, menus);
+
+  return createdMenu;
 }
 
 function getNextId() {
@@ -172,7 +175,7 @@ function updatePartiallyOneMenu(id, propertiesToUpdate) {
 module.exports = {
   readAllMenus,
   readOneMenus,
-  createOneMenus,
+  createOneMenu,
   deleteOneMenu,
   updatePartiallyOneMenu,
 };

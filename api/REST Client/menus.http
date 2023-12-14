@@ -5,3 +5,33 @@ GET {{baseUrl}}/menus
 
 ### Read pizza identified by 2
 GET {{baseUrl}}/menus/2
+
+### Create a film
+POST {{baseUrl}}/menus/
+Content-Type: application/json
+
+{
+    "title": "Classic Burger Menu",
+    "type": "Burger",
+    "description": "Le gentleman du burger saura t´ouvrir l´appétit. Composé d´un Steak Frais de race, d´Oignons Caramélisés, de Tomate, de Salade, de Cornichons, de Cheddar et de son appétissante sauce Classic.",
+    "price": 14.99,
+    "imagelink": "https://bnwburger.com/uploads/restaurant-menu/1/ea9faf88d7958fab6fdcdefd92e2068f.png"
+  
+}
+
+
+### Delete the Menu with ID == 2
+DELETE {{baseUrl}}/menus/13
+
+
+### Update film with ID == 2
+PATCH {{baseUrl}}/menus/2
+Content-Type: application/json
+
+{
+    "title":"French Burger Menu"
+    
+}
+
+
+
