@@ -30,7 +30,6 @@ router.post('/addMenuLike', async (req, res) => {
 });
 
 router.post('/username', async (req, res) => {
-  console.log("hello");
   const username = req?.body?.username?.length !== 0 ? req.body.username : undefined;
   if (!username) return res.sendStatus(400);
   const userFound = await readOneUserFromUsername(username);
