@@ -58,12 +58,12 @@ function readOneUser(id) {
   return usersjsn[indexOfUserFound];
 }
 
-  async function readIdFromUsername(username) {
-    const users = parse(jsonDbPath, defaultUsers);
-    const indexOfUserFound = users.findIndex((user) => user.username === username);
-    if (indexOfUserFound < 0) return undefined;
-    return parseInt(users[indexOfUserFound].id, 10);
-  }
+async function readIdFromUsername(username) {
+  const users = parse(jsonDbPath, defaultUsers);
+  const indexOfUserFound = users.findIndex((user) => user.username === username);
+  if (indexOfUserFound < 0) return undefined;
+  return parseInt(users[indexOfUserFound].id, 10);
+}
 
 async function login(username, password) {
   const userFound = readOneUserFromUsername(username);
@@ -114,7 +114,7 @@ function readOneUserFromUsername(username) {
 
 async function createOneUser(username, email, password, phone, adresse, totalOrder, menuslIKE) {
   const users = parse(jsonDbPath, defaultUsers);
-  
+
   const hashedPassword = await bcrypt.hash(password, saltRounds);
 
   const createdUser = {
