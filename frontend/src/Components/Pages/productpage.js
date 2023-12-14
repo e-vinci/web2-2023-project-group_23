@@ -1,72 +1,50 @@
 const ProductPage = () => {
-    renderproductPage(); 
-  };
-  
-  function renderproductPage() {
-    const render = `
-    <section style="background-color: #eee;">
-  <div class="container py-5">
-    <div class="row justify-content-center">
-      <div class="col-md-10 col-lg-8 col-xl-6"> <!-- Ajusté pour une plus grande largeur -->
-        <div class="card" style="border-radius: 15px;">
-          <div class="bg-image hover-overlay ripple ripple-surface ripple-surface-light"
-            data-mdb-ripple-color="light">
-            <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/12.webp"
-              style="border-top-left-radius: 15px; border-top-right-radius: 15px;" class="img-fluid"
-              alt="Laptop" />
-            <a href="#!">
-              <div class="mask"></div>
-            </a>
-          </div>
-          <div class="card-body pb-0">
-            <div class="d-flex justify-content-between">
-              <div>
-                <p><a href="#!" class="text-dark">Dell Xtreme 270</a></p>
-                <p class="small text-muted">Laptops</p>
-              </div>
-              <div>
-                <div class="d-flex flex-row justify-content-end mt-1 mb-4 text-danger">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                </div>
-                <p class="small text-muted">Rated 4.0/5</p>
-              </div>
-            </div>
-          </div>
-          <hr class="my-0" />
+  renderProductPage(); 
+};
 
-          <!-- Zone de texte ajoutée -->
-          <div class="card-body pb-0">
-            <p>Le Gentleman Du Burger Saura T´Ouvrir L´Appétit. Composé D´Un Steak Frais De Race, D´Oignons Caramélisés, De Tomate, De Salade, De Cornichons, De Cheddar Et De Son Appétissante Sauce Classic.</p>
+function renderProductPage() {
+  const render = `
+  <section style="background-color: #eee;">
+      <div class="container py-5">
+          <div class="row">
+              <div class="d-flex flex-row">
+                  <div class="flex-grow-1 me-3" style="flex-basis: 0;"> <!-- Section Image avec marge à droite -->
+                      <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/12.webp"
+                          style="width: 100%; height: auto; max-height: 600px; border-radius: 15px;" alt="Laptop" />
+                  </div>
+                  <div class="flex-grow-1" style="flex-basis: 0;"> <!-- Section Info -->
+                      <div class="card h-100" style="border-radius: 15px;">
+                          <div class="card-body d-flex flex-column">
+                              <h3 style="font-size: 2em;">Dell Xtreme 270</h3>
+                              <p class="small text-muted" style="font-size: 1.5em;">Laptops</p>
+                              <div class="ratings mb-2">
+                                  <i class="fas fa-star"></i>
+                                  <i class="fas fa-star"></i>
+                                  <i class="fas fa-star"></i>
+                                  <i class="fas fa-star"></i>
+                                  <p class="small text-muted" style="font-size: 1.5em;">Rated 4.0/5</p>
+                              </div>
+                              <p style="font-size: 1.7em;">Le Gentleman Du Burger Saura T´Ouvrir L´Appétit. 
+                              Composé D´Un Steak Frais De Race, D´Oignons Caramélisés, De Tomate, De Salade, 
+                              De Cornichons, De Cheddar Et De Son Appétissante Sauce Classic.</p>
+                              <p class="price" style="font-size: 2em;">$3,999</p>
+                              <p class="small text-muted" style="font-size: 1.5em;">VISA Platinum</p>
+                              <div class="mt-auto">
+                                  <button type="button" class="btn btn-secondary">Cancel</button>
+                                  <button type="button" class="btn btn-primary">Add to Cart</button>
+                                  <button type="button" class="btn btn-warning">Add to Favourite</button>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
           </div>
-          <hr class="my-0" />
-
-          <div class="card-body pb-0">
-            <div class="d-flex justify-content-between">
-              <p><a href="#!" class="text-dark">$3,999</a></p>
-              <p class="text-dark">#### 8787</p>
-            </div>
-            <p class="small text-muted">VISA Platinum</p>
-          </div>
-          <hr class="my-0" />
-          <div class="card-body">
-            <div class="d-flex justify-content-between align-items-center pb-2 mb-1">
-              <a href="#!" class="text-dark fw-bold">Cancel</a>
-              <button type="button" class="btn btn-primary">Buy now</button>
-            </div>
-          </div>
-        </div>
       </div>
-    </div>
-  </div>
-</section>
-    `;
-  
-    const main = document.querySelector("main");
-    main.innerHTML = render;
-  };
-  
-  export default ProductPage;
-  
+  </section>
+  `;
+
+  const main = document.querySelector("main");
+  main.innerHTML = render;
+};
+
+export default ProductPage;
