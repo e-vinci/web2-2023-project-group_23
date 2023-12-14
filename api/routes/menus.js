@@ -6,6 +6,8 @@ const {
   deleteOneMenu,
   createOneMenu,
   updatePartiallyOneMenu,
+  createOneMenu,
+  updatePartiallyOneMenu,
 } = require('../models/menus');
 
 const router = express.Router();
