@@ -85,10 +85,11 @@ function renderNavbar() {
 
       <a class="nav-link" aria-current="page" href="#" data-uri="/">Home</a>
 
-      <a class="nav-link" aria-current="page" href="#" data-uri="/adminpage">Admin page</a>
+      <a class="nav-link" aria-current="page" href="#" data-uri="/adminpage">View menu</a>
+      <a class="nav-link" aria-current="page" href="#" data-uri="/addmenu">Add a menu </a>
      
       <a class="nav-link disabled" href="#">${authenticatedUser?.username }</a>
-      <a class="nav-link disabled" href="#">${authenticatedUser?.id}</a>
+      
    
       
     </nav>

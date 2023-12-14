@@ -12,6 +12,7 @@ const ViewMenuPage = async () => {
   menuWrapper.innerHTML = menusAsHtmlTable;
 
   attachEventListeners(); 
+   // Ajoutez les liens d'administration
 };
 
 function getHtmlMenuTableAsString(menus) {
@@ -49,10 +50,12 @@ function getHtmlMenuTableAsString(menus) {
         <button type="button" class="btn btn-info update" data-element-id="${element.id}">Save</button>
       </td>
     </tr>
+    
     `,
     )
     .join('')}
-  </tbody></table>`;
+  </tbody></table>
+  `;
 
   return htmlMenuTable;
 }

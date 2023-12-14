@@ -12,6 +12,7 @@ import PaymentPage from '../Pages/PaymenPage';
 import Logout from '../logout';
 import ProductPage from '../Pages/productpage';
 import AdminPage from '../Pages/adminListMenu';
+import addMenuPage from '../Pages/addMenupage';
 
 
 const routes = {
@@ -28,6 +29,7 @@ const routes = {
   '/logout' : Logout,
   '/productpage' : ProductPage,
   '/adminpage': AdminPage,
+  '/addmenu' : addMenuPage,
 
 };
 
