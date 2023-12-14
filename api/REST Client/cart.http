@@ -1,0 +1,10 @@
+@baseUrl = http://localhost:3000
+
+POST {{baseUrl}}/cart/addCart
+Content-Type: application/json
+
+{
+    "userId":"1",
+    "articleId":"2",
+    "quantite":"2"
+}
