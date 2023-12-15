@@ -21,6 +21,7 @@ const defaultUsers = [
     adresse: 'null',
     totalOrder: 1,
     menuslIKE: 1,
+    isAdmin: true,
   },
 ];
 
@@ -126,6 +127,7 @@ async function createOneUser(username, email, password, phone, adresse, totalOrd
     adresse: escape(adresse),
     totalOrder: escape(totalOrder),
     menuslIKE: escape(menuslIKE),
+    isAdmin: false,
   };
 
   users.push(createdUser);
