@@ -12,6 +12,7 @@ import android from '../../img/google-play.png';
 import securityicon from '../../img/security-icon.svg';
 
 import { isAuthenticated } from '../../utils/auths';
+import Navigate from '../Router/Navigate';
 
 import { readAllMenus } from '../../models/menus';
 
@@ -78,7 +79,8 @@ const HomePage = async () => {
         </div>
       </div>
 
-      <input type="submit" value="book now" class="btn">
+      <input type="submit" id="booking"value="book now" class="btn">
+      <div id="errorContainer" class="alert alert-danger" role="alert"></div>
     </form>
   
 
@@ -255,11 +257,10 @@ const HomePage = async () => {
       console.log(place)
   
   });
+  ad();
 
 
 };
-
-
 
 
 const script = document.createElement('script');
@@ -271,11 +272,18 @@ script.onerror = () => {
 };
 document.head.appendChild(script);
 
-
-
 function numberrandom() {
   const nombre = Math.floor(Math.random() * 10) + 20;
   return nombre;
+}
+
+function ad (){
+  const bookinInBtn = document.querySelector('#booking')
+  bookinInBtn.addEventListener('click', async(e)=>{
+    e.preventDefault();
+    Navigate('/animation')
+    
+  });
 }
 
 

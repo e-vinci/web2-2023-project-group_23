@@ -13,6 +13,7 @@ import Logout from '../logout';
 import ProductPage from '../Pages/productpage';
 import AdminPage from '../Pages/adminListMenu';
 import addMenuPage from '../Pages/addMenupage';
+import AnimationPage from '../Pages/animationpage';
 
 
 const routes = {
@@ -30,6 +31,7 @@ const routes = {
   '/productpage' : ProductPage,
   '/adminpage': AdminPage,
   '/addmenu' : addMenuPage,
+  '/animation' : AnimationPage,
 
 };
 

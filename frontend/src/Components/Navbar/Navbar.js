@@ -35,9 +35,7 @@ async function renderNavbar() {
     <a class="nav-link" aria-current="page" href="#" data-uri="/">Home</a>
     <a class="nav-link" href="#" data-uri="/signinpage">Login Page</a>
     <a class="nav-link" href="#" data-uri="/signuppage">Signup</a>
-
   </nav>
-
 
 </header>
 
