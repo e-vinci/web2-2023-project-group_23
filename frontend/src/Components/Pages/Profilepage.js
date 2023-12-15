@@ -118,7 +118,6 @@ async function Profilepagefuntion() {
   <h1 class="heading"> Your <span>  favourite Menu </span> </h1>
   <div class="box-container">
   <div class="box" data-aos="fade-up">
-      
           <div class="image">
           <a href= "">
               <img src="${menuinfos.imagelink}" alt="">

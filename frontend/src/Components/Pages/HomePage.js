@@ -3,54 +3,30 @@ import logomain from '../../img/vinci-eats.png';
 import delivryboy from '../../img/delivery-icon.svg';
 import delivryboy2 from '../../img/delivery-guy-2.svg';
 import meatimage from '../../img/meat-icon.svg';
-import carlogo from '../../img/car-icon.svg'
+import carlogo from '../../img/car-icon.svg';
 import phonelogo from '../../img/phone-icon.svg';
-import dollarimage from '../../img/dollar-icon.svg'
+import dollarimage from '../../img/dollar-icon.svg';
 import mobileimage from '../../img/mobile.png';
 import apple from '../../img/app-store.png';
 import android from '../../img/google-play.png';
 import securityicon from '../../img/security-icon.svg';
 
-import {isAuthenticated } from '../../utils/auths';
+import { isAuthenticated } from '../../utils/auths';
 
-import {readAllMenus} from '../../models/menus';
+import { readAllMenus } from '../../models/menus';
 
 /*
 import {addOnemenutofavourites} from '../../models/profils';
 */
-
-function initAutocomplete() {
-  const locationInput = document.getElementById('location');
-  // eslint-disable-next-line no-unused-vars
-  const autocomplete = new google.maps.places.Autocomplete(locationInput);
-  autocomplete.addListener('place_changed', () => {
-      // eslint-disable-next-line no-unused-vars
-      const place = autocomplete.getPlace();
-
-  });
-}
-const script = document.createElement('script');
-script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyDY9V2SD0cPEzDfNid_CfJc8KVdWqeRiDQ&libraries=places&callback=initAutocomplete";
-script.defer = true;
-script.async = true; // Modification de "false" à "true"
-script.onerror = () => {
-  console.error('Erreur de chargement de l\'API Google Maps');
-};
-document.head.appendChild(script);
-
-
 
 const HomePage = async () => {
   const infos = await readAllMenus();
   const items = infos;
   let page = `
   <section class="home" id="home">
-
     <div class="image" data-aos="fade-down">
     <img src="${logomain}" href="#" data-uri="/" alt="">
     </div>
-
-
     <div class="content" data-aos="fade-up">
         <h3>Most tasty FOODS FOR YOU </h3>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis explicabo eius inventore reprehenderit alias eos facilis, ipsa est asperiores repellendus!</p>
@@ -88,7 +64,7 @@ const HomePage = async () => {
   `;
 
   // Ajoutez ces lignes pour créer les options directement dans la chaîne HTML
-  items.forEach(menu => {
+  items.forEach((menu) => {
     page += `<option value="${menu.id}">${menu.title}</option>`;
   });
 
@@ -109,11 +85,11 @@ const HomePage = async () => {
 <section class="packages" id="packages">
     <h1 class="heading"> our <span> Menus </span> </h1>
     <div class="box-container">
-    `
+    `;
 
-    items.forEach( async (element)  => {
+  items.forEach(async (element) => {
     const number = numberrandom();
-      page += ` 
+    page += ` 
 
       <div class="box" data-aos="fade-up">
           <div class="image">
@@ -129,18 +105,20 @@ const HomePage = async () => {
               </a>
               <a href="#" class="btn"> ADD TO CART</a>
             
-              ${isAuthenticated() ? `<button type="submit" id="likeme" data-menuid="${element.id}" class="btn favorite"><i class="fas fa-heart"></i></button>` : ''}
+              ${
+                isAuthenticated()
+                  ? `<button type="submit" id="likeme" data-menuid="${element.id}" class="btn favorite"><i class="fas fa-heart"></i></button>`
+                  : ''
+              }
 
           </div>
 
       </div>
      
-     ` 
-    });
+     `;
+  });
 
-    page +=
-    
-    `
+  page += `
     </div>
     </section>
     <section class="section services" id="services">
@@ -258,17 +236,30 @@ const HomePage = async () => {
 </section>
 <!-- packages section ends -->
 `;
- 
 
   const main = document.querySelector('main');
   main.innerHTML = page;
-  initAutocomplete();
+  const locationInput = document.getElementById('location');
+
+  const autocomplete = new google.maps.places.Autocomplete(locationInput);
+  autocomplete.addListener('place_changed', () => {
+    // eslint-disable-next-line no-unused-vars
+    const place = autocomplete.getPlace();
+  });
+};
 
 
+const script = document.createElement('script');
+script.src =
+  'https://maps.googleapis.com/maps/api/js?key=AIzaSyDY9V2SD0cPEzDfNid_CfJc8KVdWqeRiDQ&libraries=places&';
+script.defer = true;
+script.async = true; // Modification de "false" à "true"
+script.onerror = () => {
+  console.error("Erreur de chargement de l'API Google Maps");
+};
+document.head.appendChild(script);
 
-}
-
-function numberrandom(){
+function numberrandom() {
   const nombre = Math.floor(Math.random() * 10) + 20;
   return nombre;
 }
@@ -293,10 +284,5 @@ function addToFavorites() {
       console.log(m)
   });
 } */
-  
-
-
-
-
 
 export default HomePage;
