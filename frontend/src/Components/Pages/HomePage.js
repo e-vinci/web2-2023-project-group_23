@@ -239,25 +239,35 @@ const HomePage = async () => {
 
   const main = document.querySelector('main');
   main.innerHTML = page;
+  
   const locationInput = document.getElementById('location');
-
+  // eslint-disable-next-line no-unused-vars
   const autocomplete = new google.maps.places.Autocomplete(locationInput);
   autocomplete.addListener('place_changed', () => {
-    // eslint-disable-next-line no-unused-vars
-    const place = autocomplete.getPlace();
+      // eslint-disable-next-line no-unused-vars
+      const place = autocomplete.getPlace();
+      console.log(place)
+    
+
   });
+
+ 
 };
 
 
+
+  
+
 const script = document.createElement('script');
-script.src =
-  'https://maps.googleapis.com/maps/api/js?key=AIzaSyDY9V2SD0cPEzDfNid_CfJc8KVdWqeRiDQ&libraries=places&';
+script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyDY9V2SD0cPEzDfNid_CfJc8KVdWqeRiDQ&libraries=places";
 script.defer = true;
 script.async = true; // Modification de "false" à "true"
 script.onerror = () => {
-  console.error("Erreur de chargement de l'API Google Maps");
+  console.error('Erreur de chargement de l\'API Google Maps');
 };
 document.head.appendChild(script);
+
+
 
 function numberrandom() {
   const nombre = Math.floor(Math.random() * 10) + 20;

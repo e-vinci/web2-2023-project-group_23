@@ -13,9 +13,10 @@ const profilepage = () => {
 async function Profilepagefuntion() {
   const authenticatedUser = getAuthenticatedUser();
   const infos = await userinformation(authenticatedUser.username);
-  const menuinfos = await getMenuByid(infos.menuslIKE);
+
+ 
   
-    const profile = `
+    let profile = `
     <div class="containerpanier p-5 px-5 py-5 ">
     <h1> My Profil </h1> <br> 
       <div class="row">
@@ -114,6 +115,11 @@ async function Profilepagefuntion() {
       </div>
     </div>
   </div>
+  `;
+  if(infos.menuslIKE >= 1 ){
+    const menuinfos = await getMenuByid(infos.menuslIKE);
+    if (menuinfos) {
+    profile += `
   <section class="packages" id="packages">
   <h1 class="heading"> Your <span>  favourite Menu </span> </h1>
   <div class="box-container">
@@ -134,8 +140,10 @@ async function Profilepagefuntion() {
       </div>
     </section>
 
-    `;
-
+    `}else{
+      profile += `<p>No favorite menu found.</p>`;
+    }
+  }
     const main = document.querySelector('main');
     if (main) {
         main.innerHTML = profile;
