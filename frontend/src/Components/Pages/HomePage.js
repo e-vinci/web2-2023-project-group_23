@@ -15,9 +15,14 @@ import { isAuthenticated } from '../../utils/auths';
 
 import { readAllMenus } from '../../models/menus';
 
-/*
-import {addOnemenutofavourites} from '../../models/profils';
-*/
+/* ${
+                isAuthenticated()
+                
+                  ? `<button type="submit" id="likeme" data-menuid="${element.id}" class="btn favorite"><i class="fas fa-heart"></i></button>`
+                  : ''
+              }
+              */
+
 
 const HomePage = async () => {
   const infos = await readAllMenus();
@@ -93,7 +98,8 @@ const HomePage = async () => {
 
       <div class="box" data-aos="fade-up">
           <div class="image">
-          <a href="#" class="menu-link"  data-element-id="${element.id}">
+          <a class="menu-link" href="/productpage?id=${element.id}">
+          
               <img src="${element.imagelink}" alt="">
               <h3> <i class="fas fa-utensils"></i> ${element.type} </h3>
 
@@ -101,13 +107,13 @@ const HomePage = async () => {
           <div class="content">
           <h1>  ${element.title}</h1>
               <div class="price"> ${element.price} €  <span>${number}€  </span> </div>
-             <p>${element.description} </p>
+
               </a>
-              <a href="#" class="btn"> ADD TO CART</a>
+              <a href="/productpage?id=${element.id}" class="btn"> View details</a>
             
               ${
                 isAuthenticated()
-                  ? `<button type="submit" id="likeme" data-menuid="${element.id}" class="btn favorite"><i class="fas fa-heart"></i></button>`
+                  ? `<button type="submit" id="likeme" data-menuid="${element.id}" class="btn favorite"><i class="fas fa-shopping-cart"></i></button>`
                   : ''
               }
 
@@ -247,16 +253,14 @@ const HomePage = async () => {
       // eslint-disable-next-line no-unused-vars
       const place = autocomplete.getPlace();
       console.log(place)
-    
-
+  
   });
 
- 
+
 };
 
 
 
-  
 
 const script = document.createElement('script');
 script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyDY9V2SD0cPEzDfNid_CfJc8KVdWqeRiDQ&libraries=places";
@@ -273,6 +277,8 @@ function numberrandom() {
   const nombre = Math.floor(Math.random() * 10) + 20;
   return nombre;
 }
+
+
 
 /*
 function addToFavorites() {
