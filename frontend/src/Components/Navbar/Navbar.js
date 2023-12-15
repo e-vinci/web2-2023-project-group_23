@@ -24,7 +24,7 @@ async function renderNavbar() {
   <header class="header">
   <a href="#" data-uri="/" class="logo"> <i class="fas fa-utensils"></i> VINCI EATS </a>
   <div class="icons">
-      <div class="fa-solid fa-cart-shopping"" href="#" data-uri="/cart" id="theme-btn"></div>
+  
       <div class="fas fa-user" href="#" data-uri="/signinpage" id="login-btn"></div>
       <div class="fa-solid fa-house" href="#" data-uri="/" id="theme-btn"></div>
   </a>
@@ -35,8 +35,7 @@ async function renderNavbar() {
     <a class="nav-link" aria-current="page" href="#" data-uri="/">Home</a>
     <a class="nav-link" href="#" data-uri="/signinpage">Login Page</a>
     <a class="nav-link" href="#" data-uri="/signuppage">Signup</a>
-    <a class="nav-link" href="#" data-uri="/productpage">Product</a>
-    
+
   </nav>
 
 
