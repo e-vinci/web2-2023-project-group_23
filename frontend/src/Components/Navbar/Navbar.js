@@ -1,6 +1,9 @@
 // eslint-disable-next-line no-unused-vars
 import { Navbar as BootstrapNavbar } from 'bootstrap';
 import { getAuthenticatedUser, isAuthenticated } from '../../utils/auths';
+
+
+
 /**
  * Render the Navbar which is styled by using Bootstrap
  * Each item in the Navbar is tightly coupled with the Router configuration :
@@ -14,27 +17,16 @@ const Navbar = () => {
 };
  
 
-function renderNavbar() {
+async function renderNavbar() {
   const authenticatedUser = getAuthenticatedUser();
+  
   const anonymousUserNavbar = `
-
   <header class="header">
   <a href="#" data-uri="/" class="logo"> <i class="fas fa-utensils"></i> VINCI EATS </a>
-
-  <form action="" class="search-form">
-      <input type="search" name="" placeholder="search here..." id="searchBox">
-      <label for="searchBox" class="fas fa-searchheader"></label>
-  </form>
-
-  
   <div class="icons">
-      <div class="fas fa-search" id="search-btn"></div>
-      
       <div class="fa-solid fa-cart-shopping"" href="#" data-uri="/cart" id="theme-btn"></div>
       <div class="fas fa-user" href="#" data-uri="/signinpage" id="login-btn"></div>
       <div class="fa-solid fa-house" href="#" data-uri="/" id="theme-btn"></div>
-      
-  
   </a>
       <div class="fas fa-bars" id="menu-btn"></div>
   </div>
@@ -47,27 +39,17 @@ function renderNavbar() {
     
   </nav>
 
-  
-   
+
 </header>
 
   `;
  const authenticatedUserNavbar = `
+
  <header class="header">
 
     <a href="#" data-uri="/" class="logo"> <i class="fas fa-utensils"></i> VINCI EATS </a>
-
-    <form action="" class="search-form">
-        <input type="search" name="" placeholder="search here..." id="searchBox">
-        <label for="searchBox" class="fas fa-searchheader"></label>
-    </form>
-
-    
     <div class="icons">
-        <div class="fas fa-search" id="search-btn"></div>
-        
-        
-        
+    
         <div class="fa-solid fa-envelope" href="#" data-uri="/contactpage" id="theme-btn"></div>
         
         <div class="fa-solid fa-person" href="#" data-uri="/profilepage" id="profil-btn"></div>
@@ -83,17 +65,13 @@ function renderNavbar() {
 
     <nav class="navbar">
 
-      <a class="nav-link" aria-current="page" href="#" data-uri="/">Home</a>
-
-      <a class="nav-link" aria-current="page" href="#" data-uri="/adminpage">View menu</a>
-      <a class="nav-link" aria-current="page" href="#" data-uri="/addmenu">Add a menu </a>
-     
-      <a class="nav-link disabled" href="#">${authenticatedUser?.username }</a>
       
-   
+  <a class="nav-link disabled" href="#">${authenticatedUser?.username }</a>
+      <a class="nav-link" aria-current="page" href="#" data-uri="/adminpage">View menu</a>
+      
+      <a class="nav-link" aria-current="page" href="#" data-uri="/addmenu">Add a menu </a>
       
     </nav>
-  
 </header>
   `;
 
@@ -101,38 +79,36 @@ function renderNavbar() {
   navbarWrapper.innerHTML = isAuthenticated() ? authenticatedUserNavbar : anonymousUserNavbar;
 }
 
+// ...
+
 function navbartip() {
   const navbar = document.querySelector('.navbar');
-  const searchForm = document.querySelector('.search-form');
   const menuBtn = document.querySelector('#menu-btn');
 
-  menuBtn.onclick = () => {
+  // Vérifier si navbar et menuBtn existent avant d'ajouter les événements
+  if (navbar && menuBtn) {
+    menuBtn.onclick = () => {
       navbar.classList.toggle('active');
-      searchForm.classList.remove('active');
-  }
+    }
 
-  document.querySelector('#search-btn').onclick = () => {
-      searchForm.classList.toggle('active');
+    window.onscroll = () => {
       navbar.classList.remove('active');
-  }
+    }
 
-  window.onscroll = () => {
-      navbar.classList.remove('active');
-      searchForm.classList.remove('active');
-  }
-
-  document.addEventListener('click', (event) => {
+    document.addEventListener('click', (event) => {
       const isClickInsideNavbar = navbar.contains(event.target);
-      const isClickInsideSearchForm = searchForm.contains(event.target);
       const isClickInsideMenuBtn = menuBtn.contains(event.target);
 
-      
-      if (!isClickInsideNavbar && !isClickInsideSearchForm && !isClickInsideMenuBtn) {
-          navbar.classList.remove('active');
-          searchForm.classList.remove('active');
+      if (!isClickInsideNavbar && !isClickInsideMenuBtn) {
+        navbar.classList.remove('active');
       }
-  });
+    });
+  }
 }
+
+
+// ...
+
 
  
 export default Navbar;

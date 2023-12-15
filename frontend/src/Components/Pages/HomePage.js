@@ -11,8 +11,13 @@ import apple from '../../img/app-store.png';
 import android from '../../img/google-play.png';
 import securityicon from '../../img/security-icon.svg';
 
+import {isAuthenticated } from '../../utils/auths';
 
 import {readAllMenus} from '../../models/menus';
+
+/*
+import {addOnemenutofavourites} from '../../models/profils';
+*/
 
 function initAutocomplete() {
   const locationInput = document.getElementById('location');
@@ -32,6 +37,8 @@ script.onerror = () => {
   console.error('Erreur de chargement de l\'API Google Maps');
 };
 document.head.appendChild(script);
+
+
 
 const HomePage = async () => {
   const infos = await readAllMenus();
@@ -110,7 +117,7 @@ const HomePage = async () => {
 
       <div class="box" data-aos="fade-up">
           <div class="image">
-          <a href="#" class="menu-link" data-menu-id="${element.id}">
+          <a href="#" class="menu-link"  data-element-id="${element.id}">
               <img src="${element.imagelink}" alt="">
               <h3> <i class="fas fa-utensils"></i> ${element.type} </h3>
 
@@ -121,7 +128,9 @@ const HomePage = async () => {
              <p>${element.description} </p>
               </a>
               <a href="#" class="btn"> ADD TO CART</a>
-              <a href="#" class="btn favorite"> <i class="fas fa-heart"></i> </a>
+            
+              ${isAuthenticated() ? `<button type="submit" id="likeme" data-menuid="${element.id}" class="btn favorite"><i class="fas fa-heart"></i></button>` : ''}
+
           </div>
 
       </div>
@@ -135,6 +144,7 @@ const HomePage = async () => {
     </div>
     </section>
     <section class="section services" id="services">
+
       <div class="row container">
         <div class="col">
           <h2>Why we are Best in our Twon</h2>
@@ -253,12 +263,40 @@ const HomePage = async () => {
   const main = document.querySelector('main');
   main.innerHTML = page;
   initAutocomplete();
- 
+
+
+
 }
 
 function numberrandom(){
   const nombre = Math.floor(Math.random() * 10) + 20;
   return nombre;
 }
+
+/*
+function addToFavorites() {
+  const likemeBtn = document.querySelector('#likeme');
+  const authenticatedUser = getAuthenticatedUser();
+  
+
+  likemeBtn.addEventListener('click', async (e) => {
+    e.preventDefault();
+
+  
+      // Remplacez ces lignes avec votre logique pour récupérer le username et menuid
+      const user = authenticatedUser.username // Replace with your logic to get the username
+      const menuid = likemeBtn.getAttribute('data-menuid'); // Replace with your logic to get the menu id
+
+      // Appeler la fonction pour ajouter le menu aux favoris
+      const menulike = await addOnemenutofavourites(user, menuid);
+      return menulike;
+      console.log(m)
+  });
+} */
+  
+
+
+
+
 
 export default HomePage;

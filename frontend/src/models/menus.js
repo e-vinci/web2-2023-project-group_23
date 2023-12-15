@@ -9,20 +9,18 @@ const readAllMenus = async () => {
     }
   };
 
-  const addOnemenu= async (movie) => {
+  const addOnemenu = async (menu) => {
     try {
       const options = {
         method: 'POST',
-        body: JSON.stringify(movie),
+        body: JSON.stringify(menu),
         headers: {
           'Content-Type': 'application/json',
         },
       };
   
       const response = await fetch('/api/menus', options);
-  
       const createdMenu = await response.json();
-
       return createdMenu;
     } catch (err) {
       console.error('addOneMovie::error: ', err);
@@ -30,16 +28,14 @@ const readAllMenus = async () => {
     }
   };
 
+
   const deleteOneMenu = async (id) => {
     try {
       const options = {
         method: 'DELETE',
       };
-  
       const response = await fetch(`/api/menus/${id}`, options);
-  
       const deletedmenu= await response.json();
-  
       return deletedmenu;
     } catch (err) {
       console.error('deleteOneMovie::error: ', err);

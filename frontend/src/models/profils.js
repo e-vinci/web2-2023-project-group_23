@@ -28,4 +28,26 @@ const userinformation = async(username)=>{
       
     }
 
-    export {userinformation, getMenuByid};
+    
+const addOnemenutofavourites = async (username, menuid) => {
+  try {
+    const options = {
+      method: 'POST',
+      body: JSON.stringify(username, menuid),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+    const response = await fetch('/api/auths/addMenuLike', options);
+    const menulike = await response.json();
+
+    return menulike;
+  } catch (err) {
+    console.error('addOneMovie::error: ', err);
+    throw err;
+  }
+};
+
+  
+
+    export {userinformation, getMenuByid, addOnemenutofavourites};
