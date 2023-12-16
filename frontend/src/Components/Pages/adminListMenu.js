@@ -34,44 +34,43 @@ function getHtmlMenuTableAsString(menus) {
     return '<p class="p-5">No menu yet : (</p>';
   }
 
-  const htmlMenuTable = `<div class="table-responsive p-5">
-  <table class="table">
-<thead>
-  <tr>
-    <th scope="col">Id</th>
-    <th scope="col">Title</th>
-    <th scope="col">Type</th>
-    <th scope="col">Description</th>
-    <th scope="col">Price</th>  
-    <th> ACTIONS </th>
-  </tr>
-</thead>
-<tbody>  
-  ${menus
-    .map(
-      (element) => `
-    <tr>
-      <td class="fw-bold text-info" contenteditable="true">${element.id}</td>
-      <td class="fw-bold text-info" contenteditable="true">${element.title}</td>
-      <td class="fw-bold text-info" contenteditable="true">${element.type}</td>
-      <td class="fw-bold text-info" contenteditable="true">${element.description}</td>
-      <td class="fw-bold text-info" contenteditable="true">${element.price}</td>
-    
-    <td>
-        <button type="button" class="btn btn-info delete" data-element-id="${element.id}">Delete</button>
-      </td>
-      <td>
-        <button type="button" class="btn btn-info update" data-element-id="${element.id}">Save</button>
-      </td>
-    </tr>
-    
-    `,
-    )
-    .join('')}
-  </tbody></table>
-  `;
+  const htmlMenuTable = `
+  <div class="container mt-5 mb-5">
+    <h1 class="text-center">Welcome</h1>
+    <div class="table-responsive p-5">
+      <table class="table table-bordered border-secondary rounded">
+        <thead class="bg-primary text-light">
+          <tr>
+            <th scope="col" style="font-size: 20px; width: 140px; text-align: center;">Id</th>
+            <th scope="col" style="font-size: 18px; text-align: center;">Title</th>
+            <th scope="col" style="font-size: 18px; text-align: center;">Type</th>
+            <th scope="col" style="font-size: 18px; text-align: center;">Description</th>
+            <th scope="col" style="font-size: 18px; text-align: center;">Price</th>
+            <th scope="col" style="font-size: 18px; text-align: center;">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${menus.map((element) => `
+            <tr>
+              <td class="fw-bold text-black" style="font-size: 18px; text-align: center; padding: 10px;" contenteditable="true">${element.id}</td>
+              <td class="fw-bold text-black" style="font-size: 16px; text-align: center; padding: 10px;" contenteditable="true">${element.title}</td>
+              <td class="fw-bold text-black" style="font-size: 16px; text-align: center; padding: 10px;" contenteditable="true">${element.type}</td>
+              <td class="fw-bold text-success" style="font-size: 16px; text-align: center; padding: 10px;" contenteditable="true">${element.description}</td>
+              <td class="fw-bold text-black" style="font-size: 16px; text-align: center; padding: 10px;" contenteditable="true">${element.price}</td>
+              <td style="text-align: center;">
+                <button type="button" class="btn btn-danger btn-sm" style="font-size: 14px;" data-element-id="${element.id}">Delete</button>
+                <button type="button" class="btn btn-success btn-sm" style="font-size: 14px;" data-element-id="${element.id}">Save</button>
+              </td>
+            </tr>`
+          ).join('')}
+        </tbody>
+      </table>
+    </div>
+  </div>
+`;
 
-  return htmlMenuTable;
+return htmlMenuTable;
+
 }
 
 function attachEventListeners() {
