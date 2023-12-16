@@ -15,33 +15,51 @@ const addMenuPage = async () => {
     return;
   }
   const addmenu = `
-    <div class="text-center">
-      <h3>ADD A MENU</h3>
-      <form class="px-5" method="post">
-        <div class="mb-3">
-          <label for="title">Enter title</label>
-          <input class="form-control" type="text" name="title" id="title" required />
+  <div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-body">
+            <h3 class="text-center mb-4">ADD A MENU</h3>
+            <form method="post" class="px-4">
+
+              <div class="mb-3" style="margin-bottom: 15px;">
+                <label for="title" class="form-label" style="font-size: 18px;">Enter Title</label>
+                <input type="text" class="form-control" id="title" name="title" style="font-size: 16px; padding-bottom: 10px;" required>
+              </div>
+
+              <div class="mb-3" style="margin-bottom: 15px;">
+                <label for="type" class="form-label" style="font-size: 18px;">Enter Type</label>
+                <input type="text" class="form-control" id="type" name="type" style="font-size: 16px; padding-bottom: 10px;" required>
+              </div>
+
+              <div class="mb-3" style="margin-bottom: 15px;">
+                <label for="description" class="form-label" style="font-size: 18px;">Enter Description</label>
+                <input type="text" class="form-control" id="description" name="description" style="font-size: 16px; padding-bottom: 10px;" required>
+              </div>
+
+              <div class="mb-3" style="margin-bottom: 15px;">
+                <label for="price" class="form-label" style="font-size: 18px;">Enter Price (number)</label>
+                <input type="number" class="form-control mb-2" id="price" name="price" style="font-size: 16px; padding-bottom: 10px;" required>
+              </div>
+
+              <div class="mb-3" style="margin-bottom: 15px;">
+                <label for="link" class="form-label" style="font-size: 18px;">Enter Link</label>
+                <input type="url" class="form-control" id="link" name="link" style="font-size: 16px; padding-bottom: 10px;" required>
+              </div>
+
+              <div class="d-grid">
+                <button type="submit" class="btn btn-primary" style="font-size: 18px;">Add Menu</button>
+              </div>
+
+            </form>
+          </div>
         </div>
-        <div class="mb-3">
-          <label for="type">Enter Type</label>
-          <input class="form-control" type="text" name="type" id="type" required />
-        </div>
-        <div class="mb-3">
-          <label for="description">Enter Description</label>
-          <input class="form-control" type="text" name="description" id="description" required />
-        </div>
-        <div class="mb-3">
-          <label for="price">Enter Price (number)</label>
-          <input class="form-control" type="number" name="price" id="price" required />
-        </div>
-        <div class="mb-3">
-          <label for="link">Enter link</label>
-          <input class="form-control" type="url" name="link" id="link" required />
-        </div>
-        <input type="submit" class="btn btn-primary" value="Add Menu" />
-      </form>
+      </div>
     </div>
-  `;
+  </div>
+`;
+
 
   const main = document.querySelector("main");
   main.innerHTML = addmenu;
