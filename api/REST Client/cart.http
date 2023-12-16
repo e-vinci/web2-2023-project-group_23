@@ -1,10 +1,27 @@
 @baseUrl = http://localhost:3000
 
-POST {{baseUrl}}/cart/addCart
+POST {{baseUrl}}/cart/addMenuToPanier
 Content-Type: application/json
 
 {
-    "userId":"1",
-    "articleId":"2",
-    "quantite":"2"
+    "username": "admin",
+    "idmenu": 4
 }
+
+### Get informations from username (5)
+POST  {{baseUrl}}/cart/readcarteFromUsername
+Content-Type: application/json
+
+{
+    "username": "admin"
+}
+
+
+### Delete the Menu with ID == 2
+DELETE {{baseUrl}}/cart/deleteamenu/haziq/9
+
+{
+    "username": "haziq",
+    "idmenu": 9
+}
+
