@@ -1,7 +1,7 @@
 
-import {getMenuByid} from '../../models/profils';
+import {getMenuByid, addOnemenutofavourites} from '../../models/profils';
 
-import { isAuthenticated } from '../../utils/auths';
+import { isAuthenticated, getAuthenticatedUser } from '../../utils/auths';
 
 const ProductPage = () => {
   renderProductPage(); 
@@ -58,7 +58,16 @@ async function renderProductPage() {
 
   const main = document.querySelector("main");
   main.innerHTML = render;
-};
+  const likeButton = document.getElementById('likeme');
+  
+    likeButton.addEventListener('click', async () => {
+      const menuIdentity = likeButton.getAttribute('data-menuid');
+      const user = getAuthenticatedUser.username;
+      const result = await addOnemenutofavourites(user, menuIdentity);
+      // Faites quelque chose avec le résultat si nécessaire
+      console.log(result);
+    });
+  };
 
 
 function generateRandomRating() {
@@ -84,5 +93,7 @@ function generateStarRating(rating) {
   
     return starsHTML.join('');
   }
+
+
 
 export default ProductPage;

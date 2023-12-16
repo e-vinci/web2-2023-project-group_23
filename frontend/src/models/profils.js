@@ -29,11 +29,11 @@ const userinformation = async(username)=>{
     }
 
     
-const addOnemenutofavourites = async (username, menuid) => {
+const addOnemenutofavourites = async (username, menuId) => {
   try {
     const options = {
       method: 'POST',
-      body: JSON.stringify(username, menuid),
+      body: JSON.stringify({ username, menuId }),
       headers: {
         'Content-Type': 'application/json',
       },
@@ -43,7 +43,7 @@ const addOnemenutofavourites = async (username, menuid) => {
 
     return menulike;
   } catch (err) {
-    console.error('addOneMovie::error: ', err);
+    console.error('addOneMenu::error: ', err);
     throw err;
   }
 };

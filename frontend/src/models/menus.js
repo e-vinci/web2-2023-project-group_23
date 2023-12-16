@@ -1,3 +1,7 @@
+import { getAuthenticatedUser } from '../utils/auths';
+
+const authenticatedUser = getAuthenticatedUser();
+
 const readAllMenus = async () => {
     try {
       const res = await fetch('/api/menus');
@@ -16,6 +20,7 @@ const readAllMenus = async () => {
         body: JSON.stringify(menu),
         headers: {
           'Content-Type': 'application/json',
+          Authorization: authenticatedUser.token,
         },
       };
   
@@ -33,6 +38,10 @@ const readAllMenus = async () => {
     try {
       const options = {
         method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: authenticatedUser.token,
+        },
       };
       const response = await fetch(`/api/menus/${id}`, options);
       const deletedmenu= await response.json();
@@ -50,6 +59,7 @@ const readAllMenus = async () => {
         body: JSON.stringify(newMenuData),
         headers: {
           'Content-Type': 'application/json',
+          Authorization: authenticatedUser.token,
         },
       };
   
@@ -66,7 +76,4 @@ const readAllMenus = async () => {
 
 
   
-
-
-
  export {readAllMenus, addOnemenu, deleteOneMenu, updateOneMenu };

@@ -11,9 +11,8 @@ import CartPage from '../Pages/cartpage';
 import PaymentPage from '../Pages/PaymenPage';
 import Logout from '../logout';
 import ProductPage from '../Pages/productpage';
-import AdminPage from '../Pages/adminListMenu';
+import ViewMenuPage from '../Pages/adminListMenu';
 import addMenuPage from '../Pages/addMenupage';
-import AnimationPage from '../Pages/animationpage';
 
 
 const routes = {
@@ -29,9 +28,9 @@ const routes = {
   '/payment' : PaymentPage,
   '/logout' : Logout,
   '/productpage' : ProductPage,
-  '/adminpage': AdminPage,
+  '/adminpage': ViewMenuPage,
   '/addmenu' : addMenuPage,
-  '/animation' : AnimationPage,
+ 
 
 };
 

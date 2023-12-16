@@ -62,14 +62,15 @@ async function renderNavbar() {
 
     <nav class="navbar"
       
-  <a class="nav-link disabled" href="#">${authenticatedUser?.username }</a>
+    <p style="font-size: 15px;">CONNECTÉ EN TANT QUE : ${authenticatedUser?.username}</p>
   `;
   if (authenticatedUser) {
   const infos = await userinformation(authenticatedUser.username);
   if(infos.isAdmin === true){
     authenticatedUserNavbar += `
       <a class="nav-link" aria-current="page" href="#" data-uri="/adminpage">View menu</a>
-      <a class="nav-link" aria-current="page" href="#" data-uri="/addmenu">Add a menu </a>`
+      <a class="nav-link" aria-current="page" href="#" data-uri="/addmenu">Add a menu </a>
+      <a class="nav-link" aria-current="page" href="#" data-uri="">SEE ORDERS</a>`
   };
 };
   authenticatedUserNavbar += `

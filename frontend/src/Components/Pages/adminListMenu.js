@@ -15,6 +15,7 @@ const ViewMenuPage = async () => {
    // Ajoutez les liens d'administration
 };
 
+
 function getHtmlMenuTableAsString(menus) {
   if (menus?.length === undefined || menus.length === 0) {
     return '<p class="p-5">No menu yet : (</p>';
@@ -59,7 +60,6 @@ function getHtmlMenuTableAsString(menus) {
 
   return htmlMenuTable;
 }
-
 
 function attachEventListeners() {
   const menuWrapper = document.querySelector('#menuWrapper');
