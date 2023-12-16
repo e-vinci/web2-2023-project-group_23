@@ -17,7 +17,6 @@ router.get('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
   const foundMenu = readOneMenus(req.params.id);
-
   if (!foundMenu) return res.sendStatus(404);
 
   return res.json(foundMenu);
