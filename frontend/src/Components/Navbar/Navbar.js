@@ -1,6 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import { Navbar as BootstrapNavbar } from 'bootstrap';
 import { getAuthenticatedUser, isAuthenticated } from '../../utils/auths';
+import {userinformation} from '../../models/profils';
 
 
 
@@ -13,13 +14,16 @@ import { getAuthenticatedUser, isAuthenticated } from '../../utils/auths';
 
 const Navbar = () => {
   renderNavbar();
-  navbartip();
+  
 };
  
 
 async function renderNavbar() {
   const authenticatedUser = getAuthenticatedUser();
-  
+   // Add a null check for authenticatedUser
+   
+
+
   const anonymousUserNavbar = `
   <header class="header">
   <a href="#" data-uri="/" class="logo"> <i class="fas fa-utensils"></i> VINCI EATS </a>
@@ -40,53 +44,52 @@ async function renderNavbar() {
 </header>
 
   `;
- const authenticatedUserNavbar = `
+ let authenticatedUserNavbar = `
 
  <header class="header">
 
     <a href="#" data-uri="/" class="logo"> <i class="fas fa-utensils"></i> VINCI EATS </a>
     <div class="icons">
-    
+  
         <div class="fa-solid fa-envelope" href="#" data-uri="/contactpage" id="theme-btn"></div>
-        
         <div class="fa-solid fa-person" href="#" data-uri="/profilepage" id="profil-btn"></div>
         <div class="fa-solid fa-cart-shopping"" href="#" data-uri="/cart" id="theme-btn"></div>
         <div class="fa-solid fa-house" href="#" data-uri="/" id="theme-btn"></div>
-
         <div class="fa-sharp fa-regular fa-right-from-bracket" href="#" data-uri="/logout" id="theme-btn"></div>
-        
-    
     </a>
         <div class="fas fa-bars" id="menu-btn"></div>
     </div>
 
-    <nav class="navbar">
-
+    <nav class="navbar"
       
   <a class="nav-link disabled" href="#">${authenticatedUser?.username }</a>
+  `;
+  if (authenticatedUser) {
+  const infos = await userinformation(authenticatedUser.username);
+  if(infos.isAdmin === true){
+    authenticatedUserNavbar += `
       <a class="nav-link" aria-current="page" href="#" data-uri="/adminpage">View menu</a>
-      
-      <a class="nav-link" aria-current="page" href="#" data-uri="/addmenu">Add a menu </a>
-      
+      <a class="nav-link" aria-current="page" href="#" data-uri="/addmenu">Add a menu </a>`
+  };
+};
+  authenticatedUserNavbar += `
     </nav>
 </header>
   `;
-
   const navbarWrapper = document.querySelector('#navbarWrapper');
   navbarWrapper.innerHTML = isAuthenticated() ? authenticatedUserNavbar : anonymousUserNavbar;
+  navbartip();
 }
 
 // ...
-
 function navbartip() {
   const navbar = document.querySelector('.navbar');
   const menuBtn = document.querySelector('#menu-btn');
 
-  // Vérifier si navbar et menuBtn existent avant d'ajouter les événements
   if (navbar && menuBtn) {
-    menuBtn.onclick = () => {
+    menuBtn.addEventListener('click', () => {
       navbar.classList.toggle('active');
-    }
+    });
 
     window.onscroll = () => {
       navbar.classList.remove('active');
