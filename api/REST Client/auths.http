@@ -14,9 +14,10 @@ Content-Type: application/json
 @baseUrl = http://localhost:3000
 GET {{baseUrl}}/auths
 
+### Delete member with ID == 2
+DELETE {{baseUrl}}/auths/2
 
 ### Read member with ID == 1
-
 GET {{baseUrl}}/auths/2
 
 ### Read member with username == admin

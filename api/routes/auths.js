@@ -1,8 +1,10 @@
 /* eslint-disable max-len */
 const express = require('express');
 const {
-  register, login, readAllUsers, readOneUser, readOneUserFromUsername, readIdFromUsername, addMenuLikeToUser,
+  register, login, readAllUsers, readOneUser, readOneUserFromUsername, readIdFromUsername, addMenuLikeToUser,deleteOneUser,
 } = require('../models/users');
+
+const { authorize, isAdmin } = require('../utils/auths');
 
 const router = express.Router();
 
@@ -11,7 +13,7 @@ router.get('/', (req, res) => {
   return res.json(alluser);
 });
 
-router.get('/:id', (req, res) => {
+router.get('/:id', authorize, isAdmin, (req, res) => {
   const userfound = readOneUser(req?.params?.id);
   if (!userfound) return res.sendStatus(404);
   return res.json(userfound);
@@ -65,6 +67,12 @@ router.post('/register', async (req, res) => {
   return res.json(authenticatedUser);
 });
 
+router.delete('/:id', async (req, res) => {
+  const deletedUser = await deleteOneUser(req?.params?.id);
+  if (!deletedUser) return res.sendStatus(404);
+  return res.json(deletedUser);
+});
+
 /* Login a user */
 router.post('/login', async (req, res) => {
   const username = req?.body?.username?.length !== 0 ? req.body.username : undefined;
@@ -78,5 +86,6 @@ router.post('/login', async (req, res) => {
 
   return res.json(authenticatedUser);
 });
+
 
 module.exports = router;

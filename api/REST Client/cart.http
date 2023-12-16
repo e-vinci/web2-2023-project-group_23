@@ -18,10 +18,10 @@ Content-Type: application/json
 
 
 ### Delete the Menu with ID == 2
-DELETE {{baseUrl}}/cart/deleteamenu/haziq/9
+DELETE {{baseUrl}}/cart/deleteamenu
 
 {
-    "username": "haziq",
-    "idmenu": 9
+    "idmenu": 2,
+    "username": "admin",
 }
 

@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt');
 const path = require('node:path');
 const escape = require('escape-html');
 const { parse, serialize } = require('../utils/json');
+const { log } = require('node:console');
 
 const jwtSecret = 'ilovemypizza!';
 const lifetimeJwt = 24 * 60 * 60 * 1000; // in ms : 24 * 60 * 60 * 1000 = 24h
@@ -136,6 +137,18 @@ async function createOneUser(username, email, password, phone, adresse, totalOrd
 
   return createdUser;
 }
+function deleteOneUser(id) {
+  const idNumber = parseInt(id, 10);
+  const users = parse(jsonDbPath, defaultUsers);
+  const foundIndex = users.findIndex((user) => user.id === idNumber);
+  const isAdmin = users[foundIndex]?.isAdmin || false;
+  if (foundIndex < 0 || isAdmin) return undefined;
+  if (foundIndex < 0) return undefined;
+  const deletedUsers = users.splice(foundIndex, 1);
+  const deletedUser = deletedUsers[0];
+  serialize(jsonDbPath, users);
+  return deletedUser;
+}
 
 function getNextId() {
   const users = parse(jsonDbPath, defaultUsers);
@@ -154,4 +167,5 @@ module.exports = {
   readOneUser,
   readIdFromUsername,
   addMenuLikeToUser,
+  deleteOneUser,
 };
