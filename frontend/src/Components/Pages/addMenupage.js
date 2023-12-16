@@ -1,7 +1,19 @@
 import { addOnemenu } from '../../models/menus';
 import Navigate from '../Router/Navigate';
+import { getAuthenticatedUser, isAuthenticated } from '../../utils/auths';
+import {userinformation} from '../../models/profils';
 
-const addMenuPage = () => {
+const addMenuPage = async () => {
+  if(!isAuthenticated()){
+    Navigate('/');
+    return;
+  }
+  const authenticatedUser = getAuthenticatedUser();
+  const infos = await userinformation(authenticatedUser.username);
+  if(!infos.isAdmin){
+    Navigate('/');
+    return;
+  }
   const addmenu = `
     <div class="text-center">
       <h3>ADD A MENU</h3>

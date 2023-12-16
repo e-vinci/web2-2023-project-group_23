@@ -1,6 +1,19 @@
 import { readAllMenus, deleteOneMenu,  updateOneMenu  } from '../../models/menus';
+import { getAuthenticatedUser, isAuthenticated} from '../../utils/auths';
+import {userinformation} from '../../models/profils';
+import Navigate from '../Router/Navigate';
 
 const ViewMenuPage = async () => {
+  if(!isAuthenticated()){
+    Navigate('/');
+    return;
+  }
+  const authenticatedUser = getAuthenticatedUser();
+  const infos = await userinformation(authenticatedUser?.username);
+  if(!infos.isAdmin){
+    Navigate('/');
+    return;
+  }
   const main = document.querySelector('main');
   main.innerHTML = '<div id="menuWrapper"></div>';
 
