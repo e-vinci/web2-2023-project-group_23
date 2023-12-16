@@ -14,7 +14,6 @@ async function Profilepagefuntion() {
   const authenticatedUser = getAuthenticatedUser();
   const infos = await userinformation(authenticatedUser.username);
 
- 
   
     let profile = `
     <div class="containerpanier p-5 px-5 py-5 ">

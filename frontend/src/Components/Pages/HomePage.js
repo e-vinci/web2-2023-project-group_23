@@ -11,18 +11,13 @@ import apple from '../../img/app-store.png';
 import android from '../../img/google-play.png';
 import securityicon from '../../img/security-icon.svg';
 
-import { isAuthenticated } from '../../utils/auths';
+import { getAuthenticatedUser, isAuthenticated } from '../../utils/auths';
 import Navigate from '../Router/Navigate';
 
 import { readAllMenus } from '../../models/menus';
+import { addtopanier } from '../../models/cart';
 
-/* ${
-                isAuthenticated()
-                
-                  ? `<button type="submit" id="likeme" data-menuid="${element.id}" class="btn favorite"><i class="fas fa-heart"></i></button>`
-                  : ''
-              }
-              */
+
 
 
 const HomePage = async () => {
@@ -94,7 +89,7 @@ const HomePage = async () => {
     <div class="box-container">
     `;
 
-  items.forEach(async (element) => {
+  items.forEach(async (element, index) => {
     const number = numberrandom();
     page += ` 
 
@@ -115,8 +110,8 @@ const HomePage = async () => {
             
               ${
                 isAuthenticated()
-                  ? `<button type="submit" id="likeme" data-menuid="${element.id}" class="btn favorite"><i class="fas fa-shopping-cart"></i></button>`
-                  : ''
+                ? `<button type="submit" id="likeme${index}" data-menuid="${element.id}" class="btn favorite"><i class="fas fa-shopping-cart"></i></button>`
+                : ''
               }
 
           </div>
@@ -257,7 +252,9 @@ const HomePage = async () => {
       console.log(place)
   
   });
-  ad();
+
+  adcart();
+
 
 
 };
@@ -277,6 +274,27 @@ function numberrandom() {
   return nombre;
 }
 
+async function adcart() {
+  const infos = await readAllMenus();
+  const items = infos;
+  
+  items.forEach(async (_, index) => {
+    const likeButton = document.getElementById(`likeme${index}`);
+    
+    if (likeButton) {
+      likeButton.addEventListener('click', async (e) => {
+        e.preventDefault();
+        const menuId = likeButton.getAttribute('data-menuid');
+        const user = getAuthenticatedUser.username;
+
+        const data = await addtopanier(user, menuId);
+        console.log(data);
+        Navigate('/cart');
+      });
+    }
+  });
+}
+/*
 function ad (){
   const bookinInBtn = document.querySelector('#booking')
   bookinInBtn.addEventListener('click', async(e)=>{
@@ -285,6 +303,8 @@ function ad (){
     
   });
 }
+
+
 
 
 
