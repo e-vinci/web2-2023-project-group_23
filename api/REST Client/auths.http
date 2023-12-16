@@ -32,13 +32,13 @@ Content-Type: application/json
     "username": "HAZIKO22"
 }
 
-### Modifier user information 
+### Modifier Menu 
 POST {{baseUrl}}/auths/addMenuLike
 Content-Type: application/json
 
 {
     "username": "admin",
-    "menuId": 4
+    "menuId": 7
 }
 
 

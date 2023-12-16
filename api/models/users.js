@@ -20,7 +20,7 @@ const defaultUsers = [
     phone: '0492',
     adresse: 'null',
     totalOrder: 1,
-    menuslIKE: 1,
+    menuslIKE: 2,
     isAdmin: true,
   },
 ];

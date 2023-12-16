@@ -1,3 +1,31 @@
+
+### Create a pizza by using the admin account
+#### First login as the admin
+##### Define a request variable nammed admin :
+# @name admin
+POST {{baseUrl}}/auths/login
+Content-Type: application/json
+
+{
+    "username":"admin",
+    "password":"admin"
+}
+
+###  Create a film
+POST {{baseUrl}}/menus
+Content-Type: application/json
+
+{
+    "title": "Classic Burger Menu",
+    "type": "Burger",
+    "description": "Le gentleman du burger saura t´ouvrir l´appétit. Composé d´un Steak Frais de race, d´Oignons Caramélisés, de Tomate, de Salade, de Cornichons, de Cheddar et de son appétissante sauce Classic.",
+    "price": 14.99,
+    "imagelink": "https://bnwburger.com/uploads/restaurant-menu/1/ea9faf88d7958fab6fdcdefd92e2068f.png"
+
+}
+
+
+
 ### Get id from username (5)Read all Menus with File variable
 @baseUrl = http://localhost:3000
 GET {{baseUrl}}/menus

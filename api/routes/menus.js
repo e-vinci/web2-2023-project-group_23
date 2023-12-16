@@ -8,6 +8,8 @@ const {
   updatePartiallyOneMenu,
 } = require('../models/menus');
 
+const { authorize, isAdmin } = require('../utils/auths');
+
 const router = express.Router();
 
 router.get('/', (req, res) => {
@@ -23,7 +25,7 @@ router.get('/:id', (req, res) => {
 });
 
 // Create a Menu
-router.post('/', (req, res) => {
+router.post('/', authorize, isAdmin, async (req, res) => {
   const title = req?.body?.title?.trim()?.length !== 0 ? req.body.title : undefined;
   const type = req?.body?.type?.trim().length !== 0 ? req.body.type : undefined;
   // eslint-disable-next-line max-len
@@ -35,20 +37,20 @@ router.post('/', (req, res) => {
 
   if (!title || !type || !description || !price || !imagelink) return res.sendStatus(400);
 
-  const createdMenu = createOneMenu(title, type, description, price, imagelink);
+  const createdMenu = await createOneMenu(title, type, description, price, imagelink);
 
   return res.json(createdMenu);
 });
 
 // Delete a Menu
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', authorize, isAdmin, async (req, res) => {
   const deletedMenu = await deleteOneMenu(req?.params?.id);
   if (!deletedMenu) return res.sendStatus(404);
   return res.json(deletedMenu);
 });
 
 // Update one or more properties of a Menu identified by its id
-router.patch('/:id', (req, res) => {
+router.patch('/:id', authorize, isAdmin, async (req, res) => {
   const title = req?.body?.title;
   const type = req?.body?.type;
   const description = req?.body?.description;
@@ -64,8 +66,7 @@ router.patch('/:id', (req, res) => {
     || (imagelink !== undefined && !imagelink.trim())
   ) { return res.sendStatus(400); }
 
-  const updatedMenu = updatePartiallyOneMenu(req?.params?.id, req?.body);
-
+  const updatedMenu = await updatePartiallyOneMenu(req?.params?.id, req?.body);
   if (!updatedMenu) return res.sendStatus(404);
 
   return res.json(updatedMenu);
