@@ -1,3 +1,7 @@
+import { getAuthenticatedUser } from '../utils/auths';
+
+const authenticatedUser = getAuthenticatedUser();
+
 const userinformation = async(username)=>{
     try {
         const options = {
@@ -48,6 +52,36 @@ const addOnemenutofavourites = async (username, menuId) => {
   }
 };
 
+const readAllUsers = async()=>{
+  try {
+    const response = await fetch('/api/auths');
+    const users = await response.json();
+    return users;
+  } catch (err) {
+    console.error('readAllUsers::error: ', err);
+    throw err;
+  }
+};
+const deleteOneUser = async (id) => {
+  try {
+    const options = {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: authenticatedUser.token,
+      },
+    };
+    const response = await fetch(`/api/auths/${id}`, options);
+    const deleteduser= await response.json();
+    return deleteduser;
+  } catch (err) {
+    console.error('deleteOneUser::error: ', err);
+    throw err;
+  }
+};
+
+
+
   
 
-    export {userinformation, getMenuByid, addOnemenutofavourites};
+    export {userinformation, getMenuByid, addOnemenutofavourites,readAllUsers,deleteOneUser};

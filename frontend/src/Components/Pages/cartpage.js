@@ -12,8 +12,8 @@ const CartPage = async () => {
 async function renderCartPage() {
   const authenticatedUser = getAuthenticatedUser();
   const infoscart = await readcarteFromUsername(authenticatedUser.username);
-
   const cartItemsHTML = [];
+  let prix = 0;
 
  
   if (infoscart.menuid && infoscart.menuid.length > 0) {
@@ -23,62 +23,49 @@ async function renderCartPage() {
 
       // Utiliser chaque menuId pour générer le HTML de l'élément de panier
       const cartItemHTML = `
-        <!-- Single item -->
-        <div class="row">
-          <div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
-            <!-- Image -->
-            <div class="bg-image hover-overlay hover-zoom ripple rounded" data-mdb-ripple-color="light">
-              <img src="${menu.imagelink}" class="w-100" />
-              <a href="#!">
-                <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
-              </a>
-            </div>
-            <!-- Image -->
-          </div>
+      <div class="row border p-3 mb-3">
+  <div class="col-lg-3 col-md-12 mb-4 mb-lg-0 border-end">
+    <!-- Image -->
+    <div class="bg-image hover-overlay hover-zoom ripple rounded border" data-mdb-ripple-color="light">
+      <img src="${menu.imagelink}" class="w-100" />
+      <a href="#!">
+        <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
+      </a>
+    </div>
+    <!-- Image -->
+  </div>
 
-          <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
-            <!-- Data -->
-            <p><strong>${menu.title}</strong></p>
-            <p>${menu.type}</p>
-            <p>${menu.description}</p>
-            <button type="button" class="btn btn-primary btn-sm me-1 mb-2" data-mdb-toggle="tooltip" title="Remove item">
-              <i class="fas fa-trash"></i>
-            </button>
-            <button type="button" class="btn btn-danger btn-sm mb-2" data-mdb-toggle="tooltip" title="Move to the wish list">
-              <i class="fas fa-heart"></i>
-            </button>
-            <!-- Data -->
-          </div>
+  <div class="col-lg-5 col-md-6 mb-4 mb-lg-0 border-end">
+    <!-- Data -->
+    <p class="mb-0"><strong>${menu.title}</strong></p>
+    <p class="mb-0">${menu.type}</p>
+    <p class="mb-0">${menu.description}</p>
+    <!-- Data -->
+  </div>
 
-          <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
-            <!-- Quantity -->
-            <div class="d-flex mb-4" style="max-width: 300px">
-              <button class="btn btn-primary px-3 me-2" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                <i class="fas fa-minus"></i>
-              </button>
-
-              <div class="form-outline">
-                <input id="form1" min="0" name="quantity" value="1" type="number" class="form-control" />
-                <label class="form-label" for="form1">Quantity</label>
-              </div>
-
-              <button class="btn btn-primary px-3 ms-2" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                <i class="fas fa-plus"></i>
-              </button>
-            </div>
-            <!-- Quantity -->
-
-            <!-- Price -->
-            <p class="text-start text-md-center">
-              <strong>${menu.price} €</strong>
-            </p>
-            <!-- Price -->
-          </div>
-        </div>
-        <!-- Single item -->
+  <!-- Nouvelle colonne pour le prix et les boutons -->
+  <div class="col-lg-4 text-md-end d-flex flex-column justify-content-between"> <!-- Ajout de flex-column et justify-content-between pour aligner les éléments -->
+    <div class="text-center mb-2">
+      <p class="mb-0 fs-5">Le prix :</p>
+      <p class="text-start text-md-center mb-0">
+        <strong>${menu.price} €</strong>
+      </p>
+    </div>
+    <!-- Boutons -->
+    <div class="d-flex justify-content-end">
+      <button type="button" class="btn btn-primary btn-sm me-1" data-mdb-toggle="tooltip" title="Remove item">
+        <i class="fas fa-trash"></i>
+      </button>
+    </div>
+    <!-- Fin des boutons -->
+  </div>
+  <!-- Fin de la nouvelle colonne pour le prix et les boutons -->
+</div>
+<!-- Single item -->
       `;
-
+      prix = menu.price + prix;
       cartItemsHTML.push(cartItemHTML);
+
     }));
   } else {
     console.log('Aucun menu trouvé dans le panier.');
@@ -135,7 +122,7 @@ async function renderCartPage() {
               <li
                 class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
                 Products
-                <span>$53.98</span>
+                <span>${prix}</span>
               </li>
               <li class="list-group-item d-flex justify-content-between align-items-center px-0">
                 Shipping
@@ -149,7 +136,7 @@ async function renderCartPage() {
                     <p class="mb-0">(including VAT)</p>
                   </strong>
                 </div>
-                <span><strong>$53.98</strong></span>
+                <span><strong>${prix}</strong></span>
               </li>
             </ul>
             <a href="/payment"  class="btn btn-primary btn-lg btn-block">

@@ -70,6 +70,7 @@ async function renderNavbar() {
     authenticatedUserNavbar += `
       <a class="nav-link" aria-current="page" href="#" data-uri="/adminpage">View menu</a>
       <a class="nav-link" aria-current="page" href="#" data-uri="/addmenu">Add a menu </a>
+      <a class="nav-link" aria-current="page" href="#" data-uri="/adminListUser">View user </a>
       <a class="nav-link" aria-current="page" href="#" data-uri="">SEE ORDERS</a>`
   };
 };
