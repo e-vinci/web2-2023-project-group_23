@@ -1,6 +1,6 @@
 @baseUrl = http://localhost:3000
 
-### Try to login an unknow user
+### Try to login an adminuser
 POST {{baseUrl}}/auths/login
 Content-Type: application/json
 
@@ -17,7 +17,7 @@ GET {{baseUrl}}/auths
 ### Delete member with ID == 2
 DELETE {{baseUrl}}/auths/2
 
-### Read member with ID == 1
+### Read member with ID == 2
 GET {{baseUrl}}/auths/2
 
 ### Read member with username == admin
@@ -70,20 +70,6 @@ Content-Type: application/json
 {
     "username":"manager",
     "password":"manager"
-}
-
-### Create the manager user
-POST {{baseUrl}}/auths/register
-Content-Type: application/json
-
-{
-    "username":"manag",
-    "email":"muahmma",
-    "password":"manager",
-    "phone":"0492488977",
-    "adresse":"RUE DE S",
-    "totalOrder":1,
-    "menuslIKE":[2, 6]
 }
 
 ### Create the manager user

@@ -33,7 +33,6 @@ async function addMenuLikeToUser(username, menuId) {
   }
   // Ajouter le menuId à la liste des menus aimés par l'utilisateur
   user.menuslIKE = menuId;
-  // Mise à jour de l'utilisateur dans la base de données
   await updateUser(user);
   return user;
 }

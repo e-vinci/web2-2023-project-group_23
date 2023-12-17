@@ -17,8 +17,6 @@ function deleteapaniertotal(username) {
   if (indexOfUserFound !== -1) {
     // L'utilisateur a un panier, procédez à la suppression de l'utilisateur
     usersbuckets.splice(indexOfUserFound, 1);
-
-    // Enregistrez les changements dans le fichier JSON
     serialize(jsonDbPath, usersbuckets);
   }
 }
@@ -39,14 +37,11 @@ function addamenutoapanier(username, idmenu) {
     const newUserPanier = { username, menuid: [idmenu] };
     usersbuckets.push(newUserPanier);
   } else {
-    // Vérifier si l'identifiant du menu existe déjà dans la liste menuid
     const userPanier = usersbuckets[indexOfUserFound];
     if (!userPanier.menuid.includes(idmenu)) {
-      // Ajouter l'identifiant du menu à la liste menuid s'il n'existe pas encore
       userPanier.menuid.push(idmenu);
     }
   }
-  // Enregistrez les changements dans le fichier JSON
   serialize(jsonDbPath, usersbuckets);
 }
 
@@ -55,7 +50,6 @@ function deleteamenuPanier(username, idmenu) {
   const indexOfUserFound = usersbuckets.findIndex((user) => user.username === username);
 
   if (indexOfUserFound !== -1) {
-    // L'utilisateur a un panier, procédez à la suppression de l'identifiant du menu
     const userPanier = usersbuckets[indexOfUserFound];
     const menuIndex = userPanier.menuid.indexOf(idmenu);
 
@@ -63,7 +57,6 @@ function deleteamenuPanier(username, idmenu) {
       // L'identifiant du menu a été trouvé, le supprimer de la liste menuid
       userPanier.menuid.splice(menuIndex, 1);
 
-      // Enregistrez les changements dans le fichier JSON
       serialize(jsonDbPath, usersbuckets);
     }
   }
