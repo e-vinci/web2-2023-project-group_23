@@ -15,7 +15,6 @@ import ViewMenuPage from '../Pages/adminListMenu';
 import addMenuPage from '../Pages/addMenupage';
 import ViewUserPage from '../Pages/adminListUser';
 
-
 const routes = {
   '/': HomePage,
   '/game': GamePage,
@@ -32,7 +31,7 @@ const routes = {
   '/adminpage': ViewMenuPage,
   '/addmenu' : addMenuPage,
   '/adminListUser' : ViewUserPage,
- 
+
 };
 
 export default routes;
