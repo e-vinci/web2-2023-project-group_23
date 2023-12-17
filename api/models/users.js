@@ -3,7 +3,6 @@ const bcrypt = require('bcrypt');
 const path = require('node:path');
 const escape = require('escape-html');
 const { parse, serialize } = require('../utils/json');
-const { log } = require('node:console');
 
 const jwtSecret = 'ilovemypizza!';
 const lifetimeJwt = 24 * 60 * 60 * 1000; // in ms : 24 * 60 * 60 * 1000 = 24h

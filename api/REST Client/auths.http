@@ -30,7 +30,7 @@ POST {{baseUrl}}/auths/username
 Content-Type: application/json
 
 {
-    "username": "HAZIKO22"
+    "username": "admin"
 }
 
 ### Modifier Menu 
@@ -39,7 +39,7 @@ Content-Type: application/json
 
 {
     "username": "admin",
-    "menuId": 7
+    "menuId": 6
 }
 
 

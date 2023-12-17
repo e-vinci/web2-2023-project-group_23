@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 const express = require('express');
 const {
-  register, login, readAllUsers, readOneUser, readOneUserFromUsername, readIdFromUsername, addMenuLikeToUser,deleteOneUser,
+  register, login, readAllUsers, readOneUser, readOneUserFromUsername, readIdFromUsername, addMenuLikeToUser, deleteOneUser,
 } = require('../models/users');
 
 const { authorize, isAdmin } = require('../utils/auths');
@@ -86,6 +86,5 @@ router.post('/login', async (req, res) => {
 
   return res.json(authenticatedUser);
 });
-
 
 module.exports = router;
