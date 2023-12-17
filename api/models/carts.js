@@ -11,6 +11,18 @@ const defaultPaniers = [
 
 ];
 
+function deleteapaniertotal(username) {
+  const usersbuckets = parse(jsonDbPath, defaultPaniers);
+  const indexOfUserFound = usersbuckets.findIndex((user) => user.username === username);
+  if (indexOfUserFound !== -1) {
+    // L'utilisateur a un panier, procédez à la suppression de l'utilisateur
+    usersbuckets.splice(indexOfUserFound, 1);
+
+    // Enregistrez les changements dans le fichier JSON
+    serialize(jsonDbPath, usersbuckets);
+  }
+}
+
 function readOnePanierfromusername(usernameBucket) {
   const usersbuckets = parse(jsonDbPath, defaultPaniers);
   const indexOfUserFound = usersbuckets.findIndex((user) => user.username === usernameBucket);
@@ -57,4 +69,6 @@ function deleteamenuPanier(username, idmenu) {
   }
 }
 
-module.exports = { readOnePanierfromusername, addamenutoapanier, deleteamenuPanier };
+module.exports = {
+  readOnePanierfromusername, addamenutoapanier, deleteamenuPanier, deleteapaniertotal,
+};

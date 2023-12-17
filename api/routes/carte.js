@@ -6,6 +6,7 @@ const {
   readOnePanierfromusername,
   addamenutoapanier,
   deleteamenuPanier,
+  deleteapaniertotal,
 
 } = require('../models/carts');
 
@@ -31,6 +32,14 @@ router.delete('/deleteamenu', async (req, res) => {
   const deletedMenu = await deleteamenuPanier(username, idmenu);
   if (!deletedMenu) return res.sendStatus(404);
   return res.json(deletedMenu);
+});
+
+router.delete('/deletepaniertotal', async (req, res) => {
+  const username = req?.body?.username?.length !== 0 ? req.body.username : undefined;
+  if (!username) return res.status(400).json({ error: 'Paramètre manquant' });
+
+  await deleteapaniertotal(username);
+  return res.status(200).json({ success: true });
 });
 
 module.exports = router;

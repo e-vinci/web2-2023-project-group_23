@@ -13,7 +13,7 @@ POST  {{baseUrl}}/cart/readcarteFromUsername
 Content-Type: application/json
 
 {
-    "username": "admin"
+    "username": "manager"
 }
 
 
@@ -23,5 +23,14 @@ DELETE {{baseUrl}}/cart/deleteamenu
 {
     "idmenu": 2,
     "username": "admin",
+}
+
+
+### Get informations from username (5)
+DELETE  {{baseUrl}}/cart/deletepaniertotal
+Content-Type: application/json
+
+{
+    "username": "haziq"
 }
 
