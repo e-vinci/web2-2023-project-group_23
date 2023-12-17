@@ -195,7 +195,13 @@ function ad() {
       },
     };
     const response = await fetch('/api/auths/register', options);
-  if (!response.ok) throw new Error(`fetch error : ${response.status} : ${response.statusText}`); 
+
+    if (!response.ok) {
+      // Si la réponse n'est pas OK, afficher un message d'erreur
+      errorContainer.innerHTML = 'Username already existed';
+      errorContainer.style.display = 'block';
+      return;
+    }
    
   const authenticatedUser = await response.json();
   console.log('Newly registered & authenticated user : ', authenticatedUser);

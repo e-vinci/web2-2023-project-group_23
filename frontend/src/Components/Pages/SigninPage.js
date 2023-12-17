@@ -120,11 +120,16 @@ function ad (){
         'Content-Type': 'application/json',
       },
     };
+
     const response = await fetch('/api/auths/login', options);
-  if (!response.ok) throw new Error(`fetch error : ${response.status} : ${response.statusText}`);
+    if (!response.ok) {
+      // Si la réponse n'est pas OK, afficher un message d'erreur
+      errorContainer.innerHTML = 'Username or Password Incorrect';
+      errorContainer.style.display = 'block';
+      return;
+    }
   const authenticatedUser = await response.json();
   console.log('Newly registered & authenticated user : ', authenticatedUser);
-
 
   setAuthenticatedUser(authenticatedUser);
 
@@ -132,7 +137,7 @@ function ad (){
   
   Navigate('/');
   
-    
+
   })
 }
 
