@@ -14,6 +14,7 @@ import ProductPage from '../Pages/productpage';
 import ViewMenuPage from '../Pages/adminListMenu';
 import addMenuPage from '../Pages/addMenupage';
 import ViewUserPage from '../Pages/adminListUser';
+import AnimationPage from '../Pages/animation';
 
 
 const routes = {
@@ -32,6 +33,7 @@ const routes = {
   '/adminpage': ViewMenuPage,
   '/addmenu' : addMenuPage,
   '/adminListUser' : ViewUserPage,
+  '/animation' : AnimationPage,
  
 };
 
