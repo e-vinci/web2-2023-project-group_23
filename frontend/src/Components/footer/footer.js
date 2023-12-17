@@ -15,7 +15,7 @@ function renderfooter() {
 
             <div class="box" data-aos="fade-up">
                 <h3 class="center-text">Quick Links</h3>
-                <a href="#">Home</a>
+                <a href="/">Home</a>
             </div>
 
             <div class="box" data-aos="fade-up">

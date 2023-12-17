@@ -94,9 +94,23 @@ const render = `
   }
   
   async function handlePaymentButtonClick() {
+    const cardNumberInput1 = document.getElementById('formControlLgXc');
+    const cardNumberInput2 = document.getElementById('formControlLgXs');
+    const cardholderNameInput = document.getElementById('formControlLgXsd');
+    const expireInput = document.getElementById('formControlLgExpk');
+    const cvvInput = document.getElementById('formControlLgcvv');
+    if (
+      (!cardNumberInput1.value && !cardNumberInput2.value) ||
+      !cardholderNameInput.value ||
+      !expireInput.value ||
+      !cvvInput.value
+    ) {
+      alert('Please fill in at least one credit card field and all other required fields.');
+      return;
+    }
     // Appel de la fonction deleteCart
     await deleteCart(user);
-    Navigate('/'); 
+    Navigate('/animation'); 
   }
   
   export default PaymentPage;

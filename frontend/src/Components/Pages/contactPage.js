@@ -1,3 +1,5 @@
+import Navigate from "../Router/Navigate";
+
 const ContactPage = ()=>{
   rendercontactusPage(); 
   
@@ -75,7 +77,7 @@ function rendercontactusPage(){
             </form>
 
             <div class="text-center text-md-left">
-                <a class="btn btn-primary" onclick="document.getElementById('contact-form').submit();">Send</a>
+            <input type="submit" id="contactpage"value="Send" class="btn">
             </div>
             <div class="status"></div>
         </div>
@@ -107,8 +109,20 @@ function rendercontactusPage(){
 
 const main = document.querySelector("main");
 main.innerHTML = render;
+setupSendButton();
 
 
 };
+
+function setupSendButton() {
+    const sendButton = document.getElementById('contactpage');
+    if (sendButton) {
+      sendButton.addEventListener('click', handleSendButtonClick);
+    }
+  }
+  
+  function handleSendButtonClick() {
+    Navigate('/');
+  }
 
 export default ContactPage;

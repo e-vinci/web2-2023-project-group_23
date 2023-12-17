@@ -5,12 +5,13 @@ const AnimationPage = () => {
 };
 
 function renderanimationPage() {
+    const orderNumber = getRandomOrderNumber();
     const render = `
         <div style='text-align: center;'>
-            <p style='font-size: 28px; font-weight: bold; margin-top: 40px;'>Your order has been successfully processed</p>
+            <p style='font-size: 28px; font-weight: bold; margin-top: 40px;'>Your order  (#${orderNumber}) has been successfully processed</p>
             <div id='delivery-container' style='display: flex; flex-direction: column; align-items: center; height: 50vh; margin: 20px 0;'>
                 <div id='delivery'>
-                    <p style='font-size: 24px; margin-bottom: 10px;'>Your order will arrive shortly</p>
+                    <p style='font-size: 15px; margin-bottom: 10px;'>Your order will arrive shortly, you will be automaticaly redirected to homepage </p>
                     <a href="/" style='text-decoration: none; color: #f79f1f;'><i class="fa-solid fa-door-open" style="color: #f79f1f; font-size: 300%;"></i></a>
                 </div>
             </div>
@@ -36,6 +37,15 @@ function renderanimationPage() {
     } else {
         console.error("Container not found");
     }
+
+    // Rediriger vers la page d'accueil après 10 secondes
+    setTimeout(() => {
+        window.location.href = '/';
+    }, 10000); // 10000 millisecondes = 10 secondes
+}
+
+function getRandomOrderNumber() {
+    return Math.floor(Math.random() * 1000000); // Vous pouvez ajuster la plage selon vos besoins
 }
 
 export default AnimationPage;

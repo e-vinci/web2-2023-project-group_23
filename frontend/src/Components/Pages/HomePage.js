@@ -58,6 +58,8 @@ const HomePage = async () => {
             <input type="time">
         </div>
 
+     
+
         <div class="inputBox">
         <span>Menu</span>
         <div class="select-container"> <!-- Nouveau conteneur pour styliser le select -->
@@ -254,6 +256,7 @@ const HomePage = async () => {
   });
 
   adcart();
+  ad();
 
 
 
@@ -294,39 +297,23 @@ async function adcart() {
     }
   });
 }
-/*
+
+
 function ad (){
+  const locationInput = document.getElementById('location');
+  const dateInput = document.querySelector('input[type="date"]');
+  const timeInput = document.querySelector('input[type="time"]');
   const bookinInBtn = document.querySelector('#booking')
   bookinInBtn.addEventListener('click', async(e)=>{
     e.preventDefault();
-    Navigate('/animation')
+    if (!locationInput.value || !dateInput.value || !timeInput.value) {
+      alert('Veuillez remplir tous les champs.');
+      return;
+    }
+    Navigate('/payment')
     
   });
 }
 
-
-
-
-
-/*
-function addToFavorites() {
-  const likemeBtn = document.querySelector('#likeme');
-  const authenticatedUser = getAuthenticatedUser();
-  
-
-  likemeBtn.addEventListener('click', async (e) => {
-    e.preventDefault();
-
-  
-      // Remplacez ces lignes avec votre logique pour récupérer le username et menuid
-      const user = authenticatedUser.username // Replace with your logic to get the username
-      const menuid = likemeBtn.getAttribute('data-menuid'); // Replace with your logic to get the menu id
-
-      // Appeler la fonction pour ajouter le menu aux favoris
-      const menulike = await addOnemenutofavourites(user, menuid);
-      return menulike;
-      console.log(m)
-  });
-} */
 
 export default HomePage;
