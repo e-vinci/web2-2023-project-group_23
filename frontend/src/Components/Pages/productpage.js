@@ -2,6 +2,9 @@
 import {getMenuByid, addOnemenutofavourites} from '../../models/profils';
 
 import { isAuthenticated, getAuthenticatedUser } from '../../utils/auths';
+import Navigate from '../Router/Navigate';
+import { addtopanier } from '../../models/cart';
+
 
 const ProductPage = () => {
   renderProductPage(); 
@@ -40,7 +43,7 @@ async function renderProductPage() {
                     
                               <div class="mt-auto">
                           
-                                  <button type="button" class="btn btn-warning">Add to Cart</button>
+                                  <button type="button" id= 'cartbutton' data-menuid="${menuDetails.id}" class="btn btn-warning">Add to Cart</button>
                                   ${
                                     isAuthenticated()
                                       ? `<button type="submit" id="likeme" data-menuid="${menuDetails.id}" class="btn favorite"><i class="fas fa-heart"></i></button>`
@@ -59,7 +62,7 @@ async function renderProductPage() {
   const main = document.querySelector("main");
   main.innerHTML = render;
   const likeButton = document.getElementById('likeme');
-  
+    if (likeButton) {
     likeButton.addEventListener('click', async () => {
       const menuIdentity = likeButton.getAttribute('data-menuid');
       const user = getAuthenticatedUser.username;
@@ -67,11 +70,13 @@ async function renderProductPage() {
       // Faites quelque chose avec le résultat si nécessaire
       console.log(result);
     });
+   
+  }
+  setupAddToCartButton();
   };
 
 
 function generateRandomRating() {
-    // Générer un nombre aléatoire entre 3 et 5 avec une précision de deux décimales
     const randomRating = (Math.random() * (5 - 3) + 3).toFixed(1);
     return randomRating;
   }
@@ -92,6 +97,30 @@ function generateStarRating(rating) {
     }
   
     return starsHTML.join('');
+  }
+
+  function setupAddToCartButton() {
+    const cartButton = document.getElementById('cartbutton'); 
+    if (cartButton) {
+      cartButton.addEventListener('click', () => {
+        handleAddToCartClick(cartButton);
+      });
+    }
+  }
+  
+  async function handleAddToCartClick(cartButton) {
+    // Vérifier si l'utilisateur est connecté
+    if (!isAuthenticated()) {
+      // Afficher un message demandant à l'utilisateur de se connecter
+      alert('Veuillez vous connecter pour effectuer votre panier.');
+    } else {
+      const menuId = cartButton.getAttribute('data-menuid');
+      const user = getAuthenticatedUser().username;
+      const result = await addtopanier(user, menuId);
+      console.log(result);
+      Navigate('/cart')
+      
+    }
   }
 
 

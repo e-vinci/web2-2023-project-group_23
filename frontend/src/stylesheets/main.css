@@ -668,6 +668,23 @@ header .navbar {
 }
 
 
+/* pour cartepage */ 
+.larger-text {
+  font-size: 15px; /* Vous pouvez ajuster la taille de police en fonction de vos besoins */
+}
 
 
 
+.enlarge-text {
+  font-size: 16px; /* Taille de police initiale */
+  animation: enlarge 0.5s ease-in-out; /* Ajoutez une animation "enlarge" de 0.5 seconde avec un effet ease-in-out */
+}
+
+@keyframes enlarge {
+  from {
+    transform: scale(0.8); /* Commencez avec une échelle réduite à 80% de la taille normale */
+  }
+  to {
+    transform: scale(1); /* Terminez avec une échelle normale à 100% de la taille normale */
+  }
+}
