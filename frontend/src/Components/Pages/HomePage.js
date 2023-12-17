@@ -30,7 +30,7 @@ const HomePage = async () => {
     </div>
     <div class="content" data-aos="fade-up">
         <h3>Most tasty FOODS FOR YOU </h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis explicabo eius inventore reprehenderit alias eos facilis, ipsa est asperiores repellendus!</p>
+        <p>Explore a flavor festival at our restaurant. Delicious dishes that will tantalize your taste buds. Welcome to a world of culinary pleasure!"</p>
         <a href="#packages" class="btn">explore now</a>
     </div>
 

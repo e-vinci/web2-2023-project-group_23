@@ -1,5 +1,5 @@
 
-import GamePage from '../Pages/GamePage';
+
 import HomePage from '../Pages/HomePage';
 import signUpPage from '../Pages/Signup';
 import NewPage from '../Pages/NewPage';
@@ -19,7 +19,6 @@ import AnimationPage from '../Pages/animation';
 
 const routes = {
   '/': HomePage,
-  '/game': GamePage,
   '/new': NewPage,
   '/signuppage' : signUpPage,
   '/contactpage' : ContactPage,
