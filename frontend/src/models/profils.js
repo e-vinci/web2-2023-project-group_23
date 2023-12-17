@@ -1,6 +1,6 @@
 import { getAuthenticatedUser } from '../utils/auths';
 
-const authenticatedUser = getAuthenticatedUser();
+
 
 const userinformation = async(username)=>{
     try {
@@ -70,15 +70,23 @@ const readAllUsers = async()=>{
 };
 const deleteOneUser = async (id) => {
   try {
+    const user = getAuthenticatedUser();
+    if (!user || !user.token) {
+      console.error('Token manquant');
+      // Gérez l'erreur d'une manière appropriée, peut-être en redirigeant vers la page de connexion.
+      return;
+    }
+
     const options = {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: authenticatedUser.token,
+        Authorization: user.token,
       },
     };
     const response = await fetch(`/api/auths/${id}`, options);
     const deleteduser= await response.json();
+    // eslint-disable-next-line consistent-return
     return deleteduser;
   } catch (err) {
     console.error('deleteOneUser::error: ', err);

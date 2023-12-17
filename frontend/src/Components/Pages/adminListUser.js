@@ -42,8 +42,9 @@ function getHtmlMenuTableAsString(users) {
         <th scope="col">Email</th>
         <th scope="col">Adress</th>
         <th scope="col">Phone</th>
+        <th scope="col">IS Admin</th>
        
-        <th> ACTIONS </th>
+        <th> Actions</th>
       </tr>
     </thead>
     <tbody>  
