@@ -67,6 +67,7 @@ async function renderProductPage() {
       const menuIdentity = likeButton.getAttribute('data-menuid');
       const user = getAuthenticatedUser.username;
       const result = await addOnemenutofavourites(user, menuIdentity);
+      Navigate('/profilepage');
       // Faites quelque chose avec le résultat si nécessaire
       console.log(result);
     });

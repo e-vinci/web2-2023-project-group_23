@@ -124,7 +124,7 @@ async function Profilepagefuntion() {
   <div class="box-container">
   <div class="box" data-aos="fade-up">
           <div class="image">
-          <a href= "">
+          <a href= "/productpage?id=${menuinfos.id}">
               <img src="${menuinfos.imagelink}" alt="">
               <h3> <i class="fas fa-utensils"></i> ${menuinfos.type} </h3>
           </div>
@@ -132,7 +132,7 @@ async function Profilepagefuntion() {
           <h1>  ${menuinfos.title}</h1>
               <div class="price"> ${menuinfos.price} €    </span> </div>
               <p>${menuinfos.description} </p>
-              <a href="#" class="btn"> Order now</a>
+          
               </a>
           </div>
       </div>

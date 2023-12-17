@@ -34,10 +34,15 @@ const userinformation = async(username)=>{
 
     
 const addOnemenutofavourites = async (username, menuId) => {
+  const user = getAuthenticatedUser();
+  if (!user || !user.username) {
+      console.error('Nom d\'utilisateur manquant');
+      return; // ou gérer l'erreur d'une autre manière
+    }
   try {
     const options = {
       method: 'POST',
-      body: JSON.stringify({ username, menuId }),
+      body: JSON.stringify({ username: user.username, menuId}),
       headers: {
         'Content-Type': 'application/json',
       },
@@ -45,6 +50,7 @@ const addOnemenutofavourites = async (username, menuId) => {
     const response = await fetch('/api/auths/addMenuLike', options);
     const menulike = await response.json();
 
+    // eslint-disable-next-line consistent-return
     return menulike;
   } catch (err) {
     console.error('addOneMenu::error: ', err);
