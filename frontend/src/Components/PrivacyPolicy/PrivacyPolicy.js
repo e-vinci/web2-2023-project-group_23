@@ -1,33 +1,49 @@
-import { Modal } from 'bootstrap';
-import { checkPrivacyRead, setPrivacyRead } from '../../utils/privacy';
+const pivacyPolicyPage = () => {
+  renderPrivacy();
+}
 
-const PrivacyPolicy = () => {
-    const privacyRead = checkPrivacyRead();
-    if (privacyRead) {
-      return;
-    }
-  
-    const privacyPolicyWrapper = document.querySelector('#privacyPolicyWrapper');
-    const privacyPolicy = `
-    
-      <div class="modal fade" id="privacyPolicyModal" tabindex="-1" aria-labelledby="privacyPolicyModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-xl">
-              <div class="modal-content">
-                  <div class="modal-header">
-                      <h5 class="modal-title" id="privacyPolicyModalLabel">Privacy Policy</h5>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                  <h1>Privacy Policy</h1>
-  
-                  <p>This Privacy Policy describes how we collect, use, and protect the information you provide when using our website. We are committed to safeguarding your privacy and ensuring the security of your personal information.</p>
+function renderPrivacy() {
+  const privacypolicy = `
+
+  <div class="modal-dialog modal-xl">
+  <div class="modal-content">
+      <div class="modal-header">
+        
+      </div>
+      <div class="modal-body">
+          <style>
+              h1, h2 {
+                  color: #333; 
+                  border-bottom: 2px solid #ddd; 
+                  padding-bottom: 10px; 
+              }
+
+              ul {
+                  list-style-type: disc; 
+                  margin-left: 20px; 
+              }
+
+              p {
+                  line-height: 1.6; 
+                  font-size: 14px;
+              }
+
+              a {
+                  color: #007BFF; 
+                  text-decoration: underline; 
+              }
               
-                  <h2>Information We Collect</h2>
-                  <p>We collect and store the following information solely for the purpose of user authentication:</p>
-                  <ul>
-                      <li>Username</li>
-                      <li>Password (encrypted)</li>
-                  </ul>
+          </style>
+
+          <h1>Privacy Policy</h1>
+          <p>This Privacy Policy describes how we collect, use, and protect the information you provide when using our website. We are committed to safeguarding your privacy and ensuring the security of your personal information.</p>
+
+          <h2>Information We Collect</h2>
+          <p>We collect and store the following information solely for the purpose of user authentication:</p>
+          <ul>
+              <li>Username</li>
+              <li>Password (encrypted)</li>
+          </ul>
               
                   <h2>How We Use Your Information</h2>
                   <p>We use the collected information exclusively for user authentication purposes. Your username and password are stored securely and are not used for any other purposes.</p>
@@ -50,32 +66,19 @@ const PrivacyPolicy = () => {
                   <h2>Contact Us</h2>
                   <p>If you have any questions or concerns about this Privacy Policy, please contact us at ilovejs@always.com.</p>
               
-                  <p>Effective Date: September 29, 2023</p>
+                  <p>Effective Date: December 17 , 2023</p>
                   </div>
-                  <div class="modal-footer">
-                      <button id="okBtn" type="button" class="btn btn-secondary" data-bs-dismiss="modal">I have read</button>
-                  </div>
+                 
               </div>
           </div>
-      </div>
+     
       `;
-    privacyPolicyWrapper.innerHTML = privacyPolicy;
-    const myModal = new Modal(document.querySelector('#privacyPolicyModal'));
-    myModal.show();
+ 
+  const main = document.querySelector('main');
+  main.innerHTML = privacypolicy;
+
   
-    // save the user's choice in local storage
-    const myModalInDom = document.querySelector('#privacyPolicyModal');
-    myModalInDom.addEventListener('hidden.bs.modal', () => {
-      console.log('modal closed');
-    });
-  
-    const okBtn = document.querySelector('#okBtn');
-    okBtn.addEventListener('click', () => {
-      setPrivacyRead();
-    });
-  
-    
-  };
-  
-  export default PrivacyPolicy;
-  
+}
+
+
+export default pivacyPolicyPage;

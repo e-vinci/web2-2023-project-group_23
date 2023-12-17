@@ -24,7 +24,7 @@ const ViewUserPage = async () => {
   listUser.innerHTML = UserAsHtmlTable;
 
   attachEventListeners(); 
-   // Ajoutez les liens d'administration
+
 };
 
 

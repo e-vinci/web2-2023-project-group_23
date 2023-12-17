@@ -1,3 +1,5 @@
+
+
 const footerpage = () => {
     renderfooter();
 }
@@ -34,7 +36,8 @@ function renderfooter() {
 
         </div>
 
-        <div class="credit"> created by <span> VINCI EATS TEAM </span> | all rights reserved </div>
+        <div class="credit">created by <span>VINCI EATS TEAM</span> | all rights reserved | <a href="/privaypolicy">Privacy Policy</a></div>
+
 
     </section>
 

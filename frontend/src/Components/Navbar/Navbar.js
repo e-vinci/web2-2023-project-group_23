@@ -4,26 +4,13 @@ import { getAuthenticatedUser, isAuthenticated } from '../../utils/auths';
 import {userinformation} from '../../models/profils';
 
 
-
-/**
- * Render the Navbar which is styled by using Bootstrap
- * Each item in the Navbar is tightly coupled with the Router configuration :
- * - the URI associated to a page shall be given in the attribute "data-uri" of the Navbar
- * - the router will show the Page associated to this URI when the user click on a nav-link
- */
-
 const Navbar = () => {
   renderNavbar();
   
 };
  
-
 async function renderNavbar() {
-  const authenticatedUser = getAuthenticatedUser();
-   // Add a null check for authenticatedUser
-   
-
-
+  const authenticatedUser = getAuthenticatedUser(); 
   const anonymousUserNavbar = `
   <header class="header">
   <a href="#" data-uri="/" class="logo"> <i class="fas fa-utensils"></i> VINCI EATS </a>
@@ -50,10 +37,9 @@ async function renderNavbar() {
 
     <a href="#" data-uri="/" class="logo"> <i class="fas fa-utensils"></i> VINCI EATS </a>
     <div class="icons">
-  
+        <div class="fa-solid fa-cart-shopping"" href="#" data-uri="/cart" id="theme-btn"></div>
         <div class="fa-solid fa-envelope" href="#" data-uri="/contactpage" id="theme-btn"></div>
         <div class="fa-solid fa-person" href="#" data-uri="/profilepage" id="profil-btn"></div>
-        <div class="fa-solid fa-cart-shopping"" href="#" data-uri="/cart" id="theme-btn"></div>
         <div class="fa-solid fa-house" href="#" data-uri="/" id="theme-btn"></div>
         <div class="fa-solid fa-ban" href="#" data-uri="/logout" id="theme-btn"></div>
 
@@ -63,16 +49,15 @@ async function renderNavbar() {
 
     <nav class="navbar"
       
-    <p style="font-size: 15px;">CONNECTÉ EN TANT QUE : ${authenticatedUser?.username}</p>
+    <p style="font-size: 15px;">Connected : ${authenticatedUser?.username}</p>
   `;
   if (authenticatedUser) {
   const infos = await userinformation(authenticatedUser.username);
   if(infos.isAdmin === true){
     authenticatedUserNavbar += `
-      <a class="nav-link" aria-current="page" href="#" data-uri="/adminpage">View menu</a>
+      <a class="nav-link" aria-current="page" href="#" data-uri="/adminpage">View menus & modifications</a>
       <a class="nav-link" aria-current="page" href="#" data-uri="/addmenu">Add a menu </a>
-      <a class="nav-link" aria-current="page" href="#" data-uri="/adminListUser">View user </a>
-      <a class="nav-link" aria-current="page" href="#" data-uri="">SEE ORDERS</a>`
+      <a class="nav-link" aria-current="page" href="#" data-uri="/adminListUser">View users </a>`
   };
 };
   authenticatedUserNavbar += `
@@ -84,7 +69,7 @@ async function renderNavbar() {
   navbartip();
 }
 
-// ...
+
 function navbartip() {
   const navbar = document.querySelector('.navbar');
   const menuBtn = document.querySelector('#menu-btn');
@@ -109,8 +94,6 @@ function navbartip() {
   }
 }
 
-
-// ...
 
 
  

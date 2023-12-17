@@ -37,15 +37,13 @@ function renderanimationPage() {
     } else {
         console.error("Container not found");
     }
-
-    // Rediriger vers la page d'accueil après 10 secondes
     setTimeout(() => {
         window.location.href = '/';
-    }, 10000); // 10000 millisecondes = 10 secondes
+    }, 10000); 
 }
 
 function getRandomOrderNumber() {
-    return Math.floor(Math.random() * 1000000); // Vous pouvez ajuster la plage selon vos besoins
+    return Math.floor(Math.random() * 1000000); 
 }
 
 export default AnimationPage;

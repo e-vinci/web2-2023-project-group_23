@@ -10,13 +10,13 @@ import mobileimage from '../../img/mobile.png';
 import apple from '../../img/app-store.png';
 import android from '../../img/google-play.png';
 import securityicon from '../../img/security-icon.svg';
+import timeicon from '../../img/time-icon.svg';
 
 import { getAuthenticatedUser, isAuthenticated } from '../../utils/auths';
 import Navigate from '../Router/Navigate';
 
 import { readAllMenus } from '../../models/menus';
 import { addtopanier } from '../../models/cart';
-
 
 
 
@@ -57,9 +57,6 @@ const HomePage = async () => {
             <span>Time</span>
             <input type="time">
         </div>
-
-     
-
         <div class="inputBox">
         <span>Menu</span>
         <div class="select-container"> <!-- Nouveau conteneur pour styliser le select -->
@@ -79,13 +76,9 @@ const HomePage = async () => {
       <input type="submit" id="booking"value="book now" class="btn">
       <div id="errorContainer" class="alert alert-danger" role="alert"></div>
     </form>
-  
-
 </section>
 
-
 <!-- packages section starts  -->
-
 <section class="packages" id="packages">
     <h1 class="heading"> our <span> Menus </span> </h1>
     <div class="box-container">
@@ -181,7 +174,7 @@ const HomePage = async () => {
           <div class="card">
             <img src="${carlogo}" alt="" />
             <h4>Free Home Delivary</h4>
-            <span>For all orders over $50</span>
+            <span>For all orders </span>
           </div>
           <div class="card">
             <img src="${dollarimage}" alt="" />
@@ -196,9 +189,9 @@ const HomePage = async () => {
           </div>
           
           <div class="card">
-          <img src=${securityicon} alt="" />
-          <h4>Secure Payment</h4>
-          <span>100% Secure Payment</span>
+          <img src=${timeicon} alt="" />
+          <h4>Quality Support</h4>
+          <span>Always Online 24/7</span>
         </div>
           
         </div>
@@ -218,15 +211,11 @@ const HomePage = async () => {
     </div>
     <div class="col">
       <h2>
-        Never Feel Hungry! Download Our Mobile App Order Delicious Food
-      </h2>
-      <p>
-        Online ordering has enabled many restaurants to manage their peak
-        business hours very effectively.
-      </p>
+        Never Feel Hungry! Download Our Mobile App 
+        </h2>
+    
       <div class="d-flex">
   
-        
         
         <a href="https://www.apple.com/be-fr/store" target="_blank">
         <img src="${apple}" alt="" />
@@ -257,9 +246,6 @@ const HomePage = async () => {
 
   adcart();
   ad();
-
-
-
 };
 
 

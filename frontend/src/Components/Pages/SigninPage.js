@@ -12,7 +12,6 @@ const signInPage = () => {
   renderPageTitle('Sign-in');
   SignInpagefuntion();
   ad();
-
 };
 
 function SignInpagefuntion() {
@@ -41,14 +40,15 @@ function SignInpagefuntion() {
                   <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h5>
 
                   <div class="form-outline mb-4">
-                    <input type="email" id="username" class="form-control form-control-lg" />
-                    <label class="form-label" for="form2Example17">Username </label>
+                    <input type="text" id="username" class="form-control form-control-lg" style="text-transform: none;" />
+                    <label class="form-label" for="username">Username</label>
                   </div>
 
                   <div class="form-outline mb-4">
-                    <input type="password" id="passeword" class="form-control form-control-lg" />
-                    <label class="form-label" for="form2Example27">Password</label>
+                      <input type="password" id="password" class="form-control form-control-lg" style="text-transform: none;" />
+                      <label class="form-label" for="password">Password</label>
                   </div>
+
 
                   <div class="pt-1 mb-4">
                   <input type="submit" id="signINButton" class="btn" value="Sign IN" />
@@ -60,12 +60,8 @@ function SignInpagefuntion() {
                           <span style="font-size: 18px;">Don't have an account? </span>
                          <a class="nav-link" href="/signuppage" data-uri="/signuppage" style="color: #ff0000; font-weight: bold; font-size: 18px;">Register here</a>
                       </p>
-                  <a href="#!" class="small text-muted">Terms of use.</a>
                   <a href="/privaypolicy" class="small text-muted">Privacy policy</a>
-
-      
                 </form>
-
               </div>
             </div>
           </div>
@@ -79,7 +75,7 @@ function SignInpagefuntion() {
     `;
   const main = document.querySelector('main');
   main.innerHTML = signIn;
-  
+
 }
 
 function ad (){
@@ -88,7 +84,8 @@ function ad (){
   signInBtn.addEventListener('click', async(e)=>{
     e.preventDefault();
     const username = document.querySelector('#username').value;
-    const password = document.querySelector('#passeword').value;
+    const password = document.querySelector('#password').value; 
+
 
     // Réinitialiser les erreurs précédentes
     errorContainer.innerHTML = '';
@@ -137,7 +134,6 @@ function ad (){
   
   Navigate('/');
   
-
   })
 }
 

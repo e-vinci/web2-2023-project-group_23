@@ -36,7 +36,7 @@ function Signuppagefuntion() {
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
-                      <input type="text" id="username" class="form-control" placeholder="WILL BE USE TO SIGN IN "/>
+                      <input type="text" id="username" class="form-control" placeholder="WILL BE USE TO SIGN IN " style="text-transform: none;/>
                       <label class="form-label" for="form3Example1c">Your Username</label>
                     </div>
                   </div>
@@ -44,7 +44,7 @@ function Signuppagefuntion() {
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
-                      <input type="email" id="email" class="form-control" />
+                      <input type="email" id="email" class="form-control" style="text-transform: none;/>
                       <label class="form-label" for="form3Example3c">Your Email</label>
           
                     </div>
@@ -53,7 +53,7 @@ function Signuppagefuntion() {
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
-                      <input type="password" id="passeword" class="form-control" />
+                      <input type="password" id="passeword" class="form-control" style="text-transform: none;/>
                       <label class="form-label" for="form3Example4c">Password</label>
                     </div>
                   </div>
@@ -73,9 +73,6 @@ function Signuppagefuntion() {
                     <label class="form-label" for="form3Example4cd">Street Number</label>
                   </div>
                   </div>
-
-                  
-
                   <div class="row mb-4">
                   
                   <div class="col">
@@ -90,16 +87,12 @@ function Signuppagefuntion() {
                       <label class="form-label" for="form9Example4">Zip</label>
                     </div>
                   </div>
-                </div>
-                  
-
-                
+                </div>        
                   <div class="form-check d-flex justify-content-center mb-5">
                     <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3c" />
                     <label class="form-check-label" for="form2Example3">
                       I agree all statements in <a href="#!">Terms of service</a>
                     </label>
-                    
                   </div>
 
                   <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
@@ -114,7 +107,6 @@ function Signuppagefuntion() {
 
                 <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
                   class="img-fluid" alt="Sample image">
-
               </div>
             </div>
           </div>
@@ -147,12 +139,11 @@ function ad() {
     const adresse = `${street}, ${city}, ${zip}`;
     const termsCheckbox = document.querySelector('#form2Example3c');
 
-    // Réinitialiser les erreurs précédentes
     errorContainer.innerHTML = '';
     errorContainer.style.display = 'none';
 
 
-    // Validation des champs
+    
     const missingFields = [];
     if (!username) missingFields.push('Username');
     if (!email) missingFields.push('Email');
@@ -160,24 +151,19 @@ function ad() {
 
 
     if (missingFields.length > 0) {
-      // Construire le message d'erreur
+     
       const errorMessage = `Veuillez remplir les champs suivants : ${missingFields.join(', ')}.`;
 
-      // Afficher le message d'erreur dans l'élément approprié
       errorContainer.innerHTML = errorMessage;
-      errorContainer.style.display = 'block'; // Afficher le conteneur d'erreur
+      errorContainer.style.display = 'block'; 
 
       return;
     }
 
     
     if (!termsCheckbox.checked) {
-      // Construire le message d'erreur
-
-      // Afficher le message d'erreur dans l'élément approprié
       errorContainer.innerHTML = 'Veuillez accepter les conditions d\'utilisation.';
-      errorContainer.style.display = 'block'; // Afficher le conteneur d'erreur
-
+      errorContainer.style.display = 'block'; 
       return;
     }
 
@@ -197,7 +183,6 @@ function ad() {
     const response = await fetch('/api/auths/register', options);
 
     if (!response.ok) {
-      // Si la réponse n'est pas OK, afficher un message d'erreur
       errorContainer.innerHTML = 'Username already existed';
       errorContainer.style.display = 'block';
       return;
@@ -207,8 +192,7 @@ function ad() {
   console.log('Newly registered & authenticated user : ', authenticatedUser);
 
   setAuthenticatedUser(authenticatedUser);
-  Navbar();
-  
+  Navbar();  
   Navigate('/');
   
   })

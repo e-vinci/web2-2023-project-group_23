@@ -6,7 +6,6 @@ import NewPage from '../Pages/NewPage';
 import ContactPage from '../Pages/contactPage';
 import profilepage from '../Pages/Profilepage';
 import signInPage from '../Pages/SigninPage';
-import PrivacyPolicy from '../PrivacyPolicy/PrivacyPolicy';
 import CartPage from '../Pages/cartpage';
 import PaymentPage from '../Pages/PaymenPage';
 import Logout from '../logout';
@@ -15,6 +14,7 @@ import ViewMenuPage from '../Pages/adminListMenu';
 import addMenuPage from '../Pages/addMenupage';
 import ViewUserPage from '../Pages/adminListUser';
 import AnimationPage from '../Pages/animation';
+import pivacyPolicyPage from '../PrivacyPolicy/PrivacyPolicy';
 
 
 const routes = {
@@ -24,7 +24,7 @@ const routes = {
   '/contactpage' : ContactPage,
   '/profilepage' : profilepage,
   '/signinpage' : signInPage,
-  '/privaypolicy' : PrivacyPolicy,
+  '/privaypolicy' : pivacyPolicyPage,
   '/cart' : CartPage,
   '/payment' : PaymentPage,
   '/logout' : Logout,

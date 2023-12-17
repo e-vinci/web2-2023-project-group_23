@@ -15,6 +15,8 @@ const CartPage = async () => {
 
 async function renderCartPage() {
   const authenticatedUser = getAuthenticatedUser();
+  let cartItemHTML;
+  try{
   const infoscart = await readcarteFromUsername(authenticatedUser.username);
   const cartItemsHTML = [];
   let prix = 0;
@@ -22,7 +24,7 @@ async function renderCartPage() {
   if (infoscart.menuid && infoscart.menuid.length > 0) {
     await Promise.all(infoscart.menuid.map(async (menuId) => {
       const menu = await getMenuByid(menuId);
-      const cartItemHTML = `
+       cartItemHTML = `
       <div class="row border p-3 mb-3">
   <div class="col-lg-3 col-md-12 mb-4 mb-lg-0 border-end">
     <!-- Image -->
@@ -153,10 +155,24 @@ async function renderCartPage() {
   
   const main = document.querySelector("main");
   main.innerHTML = render;
+}catch(error){
+  cartItemHTML = `<div class="container mt-5 mb-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8"> <!-- Augmentation de la taille à col-md-8 -->
+      <div class="card">
+        <div class="card-body text-center">
+          <p class="card-text larger-text">Votre panier est actuellement vide.</p> <!-- Ajout de la classe larger-text -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>`;
+  const rien = document.querySelector("main");
+  rien.innerHTML = cartItemHTML;
+}
   
   };
 
  
-  
   export default CartPage;
   
