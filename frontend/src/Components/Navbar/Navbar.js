@@ -55,7 +55,8 @@ async function renderNavbar() {
         <div class="fa-solid fa-person" href="#" data-uri="/profilepage" id="profil-btn"></div>
         <div class="fa-solid fa-cart-shopping"" href="#" data-uri="/cart" id="theme-btn"></div>
         <div class="fa-solid fa-house" href="#" data-uri="/" id="theme-btn"></div>
-        <div class="fa-sharp fa-regular fa-right-from-bracket" href="#" data-uri="/logout" id="theme-btn"></div>
+        <div class="fa-solid fa-ban" href="#" data-uri="/logout" id="theme-btn"></div>
+
     </a>
         <div class="fas fa-bars" id="menu-btn"></div>
     </div>

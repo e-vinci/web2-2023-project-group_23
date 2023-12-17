@@ -1,18 +1,21 @@
 import bodymovin from 'bodymovin';
 
-
-
 const AnimationPage = () => {
     renderanimationPage();
 };
 
 function renderanimationPage() {
-    const render = ` 
-    <div id='delivery-container' style='display: flex; justify-content: center; align-items: center; height: 100vh;'>
-    <div id='delivery'></div>
-    </div>
-    ` 
-    ;
+    const render = `
+        <div style='text-align: center;'>
+            <p style='font-size: 28px; font-weight: bold; margin-top: 40px;'>Your order has been successfully processed</p>
+            <div id='delivery-container' style='display: flex; flex-direction: column; align-items: center; height: 50vh; margin: 20px 0;'>
+                <div id='delivery'>
+                    <p style='font-size: 24px; margin-bottom: 10px;'>Your order will arrive shortly</p>
+                    <a href="/" style='text-decoration: none; color: #f79f1f;'><i class="fa-solid fa-door-open" style="color: #f79f1f; font-size: 300%;"></i></a>
+                </div>
+            </div>
+        </div>
+    `;
 
     const main = document.querySelector("main");
     main.innerHTML = render;
