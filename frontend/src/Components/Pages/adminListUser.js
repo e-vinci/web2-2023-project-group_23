@@ -40,8 +40,9 @@ function getHtmlMenuTableAsString(users) {
         <th scope="col">Id</th>
         <th scope="col">Username</th>
         <th scope="col">Email</th>
+        <th scope="col">Adress</th>
         <th scope="col">Phone</th>
-        <th scope="col">Adresse</th>  
+       
         <th> ACTIONS </th>
       </tr>
     </thead>
@@ -51,10 +52,12 @@ function getHtmlMenuTableAsString(users) {
           (element) => `
             <tr>
               <td class="fw-bold text-info" contenteditable="true">${element.id}</td>
+              <td class="fw-bold text-info" contenteditable="true">${element.username}</td>
               <td class="fw-bold text-info" contenteditable="true">${element.email}</td>
-              <td class="fw-bold text-info" contenteditable="true">${element.phone}</td>
               <td class="fw-bold text-info" contenteditable="true">${element.adresse}</td>
-              <td class="fw-bold text-info" contenteditable="true">${element.price}</td>
+              <td class="fw-bold text-info" contenteditable="true">${element.phone}</td>
+              <td class="fw-bold text-info" contenteditable="true">${element.isAdmin}</td>
+              
               
               <td>
                 ${!element.isAdmin ? 

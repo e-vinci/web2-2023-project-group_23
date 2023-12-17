@@ -1,10 +1,14 @@
+import Navigate from '../Router/Navigate';
+import {deleteCart} from '../../models/cart';
+import {getAuthenticatedUser } from '../../utils/auths';
+
+const user = getAuthenticatedUser.username;
+
 const PaymentPage = ()=>{
     renderpaymentPage(); 
     
   };
   
-  
-
   function renderpaymentPage(){
 const render = `
 <section>
@@ -13,22 +17,22 @@ const render = `
       <div class="card rounded-3">
         <div class="card-body p-4">
           <div class="text-center mb-4">
-            <h3>Settings</h3>
-            <h6>Payment</h6>
+        
+            <h1>Payment</h1>
           </div>
           <form action="">
-            <p class="fw-bold mb-4 pb-2">Saved cards:</p>
+            <p class="fw-bold mb-4 pb-2">ENTER YOUR CARD INFORMATIONS :</p>
 
             <div class="d-flex flex-row align-items-center mb-4 pb-1">
               <img class="img-fluid" src="https://img.icons8.com/color/48/000000/mastercard-logo.png" />
               <div class="flex-fill mx-3">
                 <div class="form-outline">
                   <input type="text" id="formControlLgXc" class="form-control form-control-lg"
-                    value="**** **** **** 3193" />
+                  placeholder="**** **** **** 3193" />
                   <label class="form-label" for="formControlLgXc">Card Number</label>
                 </div>
               </div>
-              <a href="#!">Remove card</a>
+        
             </div>
 
             <div class="d-flex flex-row align-items-center mb-4 pb-1">
@@ -36,29 +40,21 @@ const render = `
               <div class="flex-fill mx-3">
                 <div class="form-outline">
                   <input type="text" id="formControlLgXs" class="form-control form-control-lg"
-                    value="**** **** **** 4296" />
+                  placeholder="**** **** **** 3193" />
                   <label class="form-label" for="formControlLgXs">Card Number</label>
                 </div>
               </div>
-              <a href="#!">Remove card</a>
+
             </div>
 
-            <p class="fw-bold mb-4">Add new card:</p>
-
+    
             <div class="form-outline mb-4">
               <input type="text" id="formControlLgXsd" class="form-control form-control-lg"
-                value="Anna Doe" />
+              placeholder="Your name" />
               <label class="form-label" for="formControlLgXsd">Cardholder's Name</label>
             </div>
 
-            <div class="row mb-4">
-              <div class="col-7">
-                <div class="form-outline">
-                  <input type="text" id="formControlLgXM" class="form-control form-control-lg"
-                    value="1234 5678 1234 5678" />
-                  <label class="form-label" for="formControlLgXM">Card Number</label>
-                </div>
-              </div>
+            
               <div class="col-3">
                 <div class="form-outline">
                   <input type="password" id="formControlLgExpk" class="form-control form-control-lg"
@@ -75,7 +71,7 @@ const render = `
               </div>
             </div>
 
-            <button class="btn btn-success btn-lg btn-block">Add card</button>
+            <button id="paymentButton"class="btn btn-success btn-lg btn-block">PAY</button>
           </form>
         </div>
       </div>
@@ -86,9 +82,22 @@ const render = `
   
   const main = document.querySelector("main");
   main.innerHTML = render;
-  
+  setupPaymentButton();
   
   };
+
+  function setupPaymentButton() {
+    const paymentButton = document.getElementById('paymentButton');
+    if (paymentButton) {
+      paymentButton.addEventListener('click', handlePaymentButtonClick);
+    }
+  }
+  
+  async function handlePaymentButtonClick() {
+    // Appel de la fonction deleteCart
+    await deleteCart(user);
+    Navigate('/'); 
+  }
   
   export default PaymentPage;
   
