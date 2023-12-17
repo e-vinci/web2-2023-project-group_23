@@ -48,17 +48,13 @@ async function renderCartPage() {
   <!-- Nouvelle colonne pour le prix et les boutons -->
   <div class="col-lg-4 text-md-end d-flex flex-column justify-content-between"> <!-- Ajout de flex-column et justify-content-between pour aligner les éléments -->
     <div class="text-center mb-2">
-      <p class="mb-0 fs-5">Le prix :</p>
+      <p class="mb-0 fs-5">Price :</p>
       <p class="text-start text-md-center mb-0 larger-text">
         <strong>${menu.price} €</strong>
       </p>
     </div>
-    <!-- Boutons -->
-    <div class="d-flex justify-content-end">
-      <button type="button" class="btn btn-primary btn-sm me-1" data-mdb-toggle="tooltip" title="Remove item">
-        <i class="fas fa-trash"></i>
-      </button>
-    </div>
+   
+  
     <!-- Fin des boutons -->
   </div>
   <!-- Fin de la nouvelle colonne pour le prix et les boutons -->

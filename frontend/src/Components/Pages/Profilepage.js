@@ -77,24 +77,7 @@ async function Profilepagefuntion() {
         </div>
       </div>
       <hr>
-      <div class="row">
-        <div class="col-sm-3">
-          <p class="mb-0 h4 font-weight-bold">TOTAL MENUS CREATED:</p>
-        </div>
-        <div class="col-sm-9">
-          <p class="text-muted mb-0 h5">  </p>
-        </div>
-      </div>
-      <hr>
-      <div class="row">
-        <div class="col-sm-3">
-          <p class="mb-0 h4 font-weight-bold">TOTAL MENUS ORDERED:</p>
-        </div>
-        <div class="col-sm-9">
-          <p class="text-muted mb-0 h5">${infos.totalOrder}</p>
-        </div>
-      </div>
-      <hr>
+  
       <div class="row">
         <div class="col-sm-3">
           <p class="mb-0 h4 font-weight-bold">Phone:</p>
